@@ -1,3 +1,4 @@
 [submodule "KoalaBox"]
 	path = KoalaBox
-	url = ../KoalaBox.git
+	url = https://github.com/acidicoala/KoalaBox.git
+
