@@ -1,11 +1,48 @@
-name: '🚧 Development Build'
+name: '🚧 Build SmokeAPI'
 
 on:
   push:
     branches:
-      - '**' # This prevents dev builds on tag pushes
+      - '**'
+  workflow_dispatch:
 
 jobs:
-  dev-build:
-    name: '🚧 Development Build'
-    uses: ./.github/workflows/matrix-build.yml
+  build:
+    name: SmokeAPI-${{ matrix.os }}-${{ matrix.bitness }}
+    runs-on: ${{ matrix.os == 'Linux' && 'ubuntu-24.04' || 'windows-2022' }}
+    container: ${{ matrix.os == 'Linux' && 'ghcr.io/acidicoala/koalabox:master' || '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ Windows, Linux ]
+        bitness: [ 32, 64 ]
+
+    env:
+      BUILD_DIR: ./build
+      C_COMPILER: ${{ matrix.os == 'Linux' && 'clang' || 'cl' }}
+      CXX_COMPILER: ${{ matrix.os == 'Linux' && 'clang++' || 'cl' }}
+      OUTPUT_PATH: ${{ matrix.os == 'Linux' && '*.so' || 'Release/*.dll' }}
+      WIN_FLAGS: ${{ matrix.os == 'Windows' && matrix.bitness == 32 && '-A Win32' || (matrix.os == 'Windows' && '-A x64' || '') }}
+      LINUX_FLAGS: ${{ matrix.os == 'Linux' && matrix.bitness == 32 && '-DCMAKE_C_FLAGS=-m32 -DCMAKE_CXX_FLAGS=-m32' || '' }}
+
+    steps:
+      - name: '📥 Check out repository code'
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: '⚙️ Generate build files'
+        shell: bash
+        run: |
+          cmake -B "${{ env.BUILD_DIR }}" -DMODULE=SmokeAPI -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=${{ env.C_COMPILER }} -DCMAKE_CXX_COMPILER=${{ env.CXX_COMPILER }} ${{ env.WIN_FLAGS }} ${{ env.LINUX_FLAGS }}
+
+      - name: '🏗️ Build SmokeAPI'
+        shell: bash
+        run: |
+          cmake --build "${{ env.BUILD_DIR }}" --config Release --target SmokeAPI
+
+      - name: '📤 Upload binaries'
+        uses: actions/upload-artifact@v4
+        with:
+          name: SmokeAPI-${{ matrix.os }}-${{ matrix.bitness }}
+          path: ${{ env.BUILD_DIR }}/${{ env.OUTPUT_PATH }}
