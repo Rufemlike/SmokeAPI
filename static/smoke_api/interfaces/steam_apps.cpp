@@ -73,8 +73,7 @@ namespace {
         for(const auto& [dlc_id_str, status] : smoke_api::config::get().override_dlc_status) {
             if(status == smoke_api::config::AppStatus::UNLOCKED) {
                 try {
-                    const auto dlc_id = static_cast<AppId_t>(std::stoul(dlc_id_str));
-                    override_dlcs.emplace_back(dlc_id, std::format("Arma 3 DLC {}", dlc_id));
+                    override_dlcs.emplace_back(dlc_id_str, std::format("Arma 3 DLC {}", dlc_id_str));
                 } catch(...) {}
             }
         }
