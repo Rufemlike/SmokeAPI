@@ -1,0 +1,2873 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      gcc.exe: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
+      gcc.exe: error: unrecognized command-line option '--target=arm-arm-none-eabi'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -Aa 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -D__CLASSIC_C__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      gcc.exe: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
+      gcc.exe: error: unrecognized command-line option '--target=arm-arm-none-eabi'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      gcc.exe: fatal error: no input files
+      compilation terminated.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+      gcc.exe: fatal error: no input files
+      compilation terminated.
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ar"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ar.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ar.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ranlib"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ranlib.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ranlib.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "strip"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/strip.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/strip.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ld.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/ld.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "nm"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/nm.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/nm.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objdump"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/objdump.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/objdump.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "objcopy"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/objcopy.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/objcopy.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "readelf"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/readelf.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/readelf.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dlltool"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/dlltool.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/dlltool.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "addr2line"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/addr2line.com"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/addr2line.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/dotnet/"
+      - "C:/servers/sslcpl.log/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Program Files/WireGuard/"
+      - "C:/Program Files/AmneziaWG/"
+      - "C:/Users/Admin/.local/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/Admin/AppData/Roaming/npm/"
+      - "C:/Program Files (x86)/Nmap/"
+      - "C:/Users/Admin/AppData/Local/Python/bin/"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/"
+      - "C:/Users/Admin/.dotnet/tools/"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/"
+    searched_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/tapi.com"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/tapi.exe"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/tapi"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/tapi.com"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/tapi.exe"
+      - "C:/Users/Admin/.gemini/antigravity-ide/bin/tapi"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/tapi.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/tapi.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/tapi"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/tapi.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/tapi.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/tapi"
+      - "C:/Windows/System32/tapi.com"
+      - "C:/Windows/System32/tapi.exe"
+      - "C:/Windows/System32/tapi"
+      - "C:/Windows/tapi.com"
+      - "C:/Windows/tapi.exe"
+      - "C:/Windows/tapi"
+      - "C:/Windows/System32/wbem/tapi.com"
+      - "C:/Windows/System32/wbem/tapi.exe"
+      - "C:/Windows/System32/wbem/tapi"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/tapi"
+      - "C:/Windows/System32/OpenSSH/tapi.com"
+      - "C:/Windows/System32/OpenSSH/tapi.exe"
+      - "C:/Windows/System32/OpenSSH/tapi"
+      - "C:/Program Files/nodejs/tapi.com"
+      - "C:/Program Files/nodejs/tapi.exe"
+      - "C:/Program Files/nodejs/tapi"
+      - "C:/Program Files/Git/cmd/tapi.com"
+      - "C:/Program Files/Git/cmd/tapi.exe"
+      - "C:/Program Files/Git/cmd/tapi"
+      - "C:/Program Files/dotnet/tapi.com"
+      - "C:/Program Files/dotnet/tapi.exe"
+      - "C:/Program Files/dotnet/tapi"
+      - "C:/servers/sslcpl.log/tapi.com"
+      - "C:/servers/sslcpl.log/tapi.exe"
+      - "C:/servers/sslcpl.log/tapi"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/tapi.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/tapi.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/tapi"
+      - "C:/Program Files/WireGuard/tapi.com"
+      - "C:/Program Files/WireGuard/tapi.exe"
+      - "C:/Program Files/WireGuard/tapi"
+      - "C:/Program Files/AmneziaWG/tapi.com"
+      - "C:/Program Files/AmneziaWG/tapi.exe"
+      - "C:/Program Files/AmneziaWG/tapi"
+      - "C:/Users/Admin/.local/bin/tapi.com"
+      - "C:/Users/Admin/.local/bin/tapi.exe"
+      - "C:/Users/Admin/.local/bin/tapi"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/tapi.com"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/tapi.exe"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/Scripts/tapi"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/tapi.com"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/tapi.exe"
+      - "C:/Users/Admin/AppData/Local/Programs/Python/Python312/tapi"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/tapi.com"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/tapi.exe"
+      - "C:/Users/Admin/AppData/Local/Microsoft/WindowsApps/tapi"
+      - "C:/Users/Admin/AppData/Roaming/npm/tapi.com"
+      - "C:/Users/Admin/AppData/Roaming/npm/tapi.exe"
+      - "C:/Users/Admin/AppData/Roaming/npm/tapi"
+      - "C:/Program Files (x86)/Nmap/tapi.com"
+      - "C:/Program Files (x86)/Nmap/tapi.exe"
+      - "C:/Program Files (x86)/Nmap/tapi"
+      - "C:/Users/Admin/AppData/Local/Python/bin/tapi.com"
+      - "C:/Users/Admin/AppData/Local/Python/bin/tapi.exe"
+      - "C:/Users/Admin/AppData/Local/Python/bin/tapi"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/tapi.com"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/tapi.exe"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/tapi"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/tapi.com"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/tapi.exe"
+      - "C:/Program Files/JetBrains/PyCharm 2025.3.5/bin/tapi"
+      - "C:/Users/Admin/.dotnet/tools/tapi.com"
+      - "C:/Users/Admin/.dotnet/tools/tapi.exe"
+      - "C:/Users/Admin/.dotnet/tools/tapi"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/tapi.com"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/tapi.exe"
+      - "C:/Users/Admin/Downloads/ffmpeg-master-latest-win64-gpl-shared/ffmpeg-master-latest-win64-gpl-shared/bin/tapi"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/tapi.com"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/tapi.exe"
+      - "C:/Users/Admin/AppData/Local/Programs/Antigravity IDE/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      1
+      g++.exe: error: unrecognized command-line option '--c++'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      1
+      g++.exe: error: unrecognized command-line option '--ec++'; did you mean '-Weffc++'?
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      g++.exe: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
+      g++.exe: error: unrecognized command-line option '--target=arm-arm-none-eabi'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --c++ 
+      
+      The output was:
+      1
+      g++.exe: error: unrecognized command-line option '--c++'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --ec++ 
+      
+      The output was:
+      1
+      g++.exe: error: unrecognized command-line option '--ec++'; did you mean '-Weffc++'?
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+      
+      The output was:
+      1
+      g++.exe: warning: '-mcpu=' is deprecated; use '-mtune=' or '-march=' instead
+      g++.exe: error: unrecognized command-line option '--target=arm-arm-none-eabi'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/"
+    found: "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:/Users/Admin/.gemini/antigravity-ide/bin"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\servers\\sslcpl.log"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Program Files\\WireGuard\\"
+        - "C:\\Program Files\\AmneziaWG\\"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312\\"
+        - "C:\\Users\\Admin\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Admin\\AppData\\Roaming\\npm"
+        - "C:\\Program Files (x86)\\Nmap"
+        - "C:\\Users\\Admin\\AppData\\Local\\Python\\bin"
+        - "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin"
+        - "C:\\Program Files\\JetBrains\\PyCharm 2025.3.5\\bin"
+        - "C:\\Users\\Admin\\.local\\bin"
+        - "C:\\Users\\Admin\\.dotnet\\tools"
+        - "C:\\Users\\Admin\\Downloads\\ffmpeg-master-latest-win64-gpl-shared\\ffmpeg-master-latest-win64-gpl-shared\\bin"
+        - "C:\\Users\\Admin\\AppData\\Local\\Programs\\Antigravity IDE\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/g++.exe 
+      Build flags: 
+      Id flags: -c;-I__does_not_exist__ 
+      
+      The output was:
+      1
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      g++.exe: fatal error: no input files
+      compilation terminated.
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+      g++.exe: fatal error: no input files
+      compilation terminated.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-vfx1wk"
+      binary: "C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-vfx1wk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-vfx1wk'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.3.5/bin/ninja/win/x64/ninja.exe" -v cmTC_e3f01
+        [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.5\\bin\\mingw\\bin\\gcc.exe    -o CMakeFiles\\cmTC_e3f01.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin\\cmake\\win\\x64\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+        FAILED: CMakeFiles/cmTC_e3f01.dir/CMakeCCompilerABI.c.obj 
+        C:\\PROGRA~1\\JETBRA~1\\CLION2~1.5\\bin\\mingw\\bin\\gcc.exe    -o CMakeFiles\\cmTC_e3f01.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\JetBrains\\CLion 2025.3.5\\bin\\cmake\\win\\x64\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.3.5/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/JetBrains/CLion 2025.3.5/bin/mingw/bin/gcc.exe"
+    directories:
+      source: "C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-zrifnc"
+      binary: "C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-zrifnc"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Admin/CLionProjects/SmokeAPI/build64/CMakeFiles/CMakeScratch/TryCompile-zrifnc'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.3.5/bin/ninja/win/x64/ninja.exe" -v cmTC_9657b
+        [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.5\\bin\\mingw\\bin\\gcc.exe    -o CMakeFiles\\cmTC_9657b.dir\\testCCompiler.c.obj -c C:\\Users\\Admin\\CLionProjects\\SmokeAPI\\build64\\CMakeFiles\\CMakeScratch\\TryCompile-zrifnc\\testCCompiler.c
+        FAILED: CMakeFiles/cmTC_9657b.dir/testCCompiler.c.obj 
+        C:\\PROGRA~1\\JETBRA~1\\CLION2~1.5\\bin\\mingw\\bin\\gcc.exe    -o CMakeFiles\\cmTC_9657b.dir\\testCCompiler.c.obj -c C:\\Users\\Admin\\CLionProjects\\SmokeAPI\\build64\\CMakeFiles\\CMakeScratch\\TryCompile-zrifnc\\testCCompiler.c
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
