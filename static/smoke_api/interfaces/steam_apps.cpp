@@ -61,7 +61,18 @@ namespace {
             std::ranges::copy(dlc_list, std::back_inserter(aggregated_dlcs));
         };
 
-        append_dlcs(smoke_api::config::get_extra_dlcs(app_id), "local config");
+        append_dlcs(smoke_api::config::get_extra_dlcs(app_id), "local config extra_dlcs");
+
+        std::vector<DLC> override_dlcs;
+        for(const auto& [dlc_id_str, status] : smoke_api::config::get().override_dlc_status) {
+            if(status == smoke_api::config::AppStatus::UNLOCKED) {
+                try {
+                    const auto dlc_id = static_cast<AppId_t>(std::stoul(dlc_id_str));
+                    override_dlcs.emplace_back(dlc_id, std::format("Arma 3 DLC {}", dlc_id));
+                } catch(...) {}
+            }
+        }
+        append_dlcs(override_dlcs, "override_dlc_status");
 
         const auto github_dlcs_opt = smoke_api::api::fetch_dlcs_from_github(app_id);
         if(github_dlcs_opt) {
@@ -79,10 +90,20 @@ namespace {
             append_dlcs(smoke_api::cache::get_dlcs(app_id), "disk cache");
         }
 
-        // Cache DLCs in memory and cache for future use
-        get_app_dlc_map()[app_id] = aggregated_dlcs;
+        // De-duplicate aggregated DLCs by AppId_t
+        std::vector<DLC> unique_dlcs;
+        std::set<AppId_t> seen_ids;
+        for(const auto& dlc : aggregated_dlcs) {
+            if(!seen_ids.contains(dlc.get_id())) {
+                seen_ids.insert(dlc.get_id());
+                unique_dlcs.push_back(dlc);
+            }
+        }
 
-        smoke_api::cache::save_dlcs(app_id, aggregated_dlcs);
+        // Cache DLCs in memory and cache for future use
+        get_app_dlc_map()[app_id] = unique_dlcs;
+
+        smoke_api::cache::save_dlcs(app_id, unique_dlcs);
     }
 }
 
