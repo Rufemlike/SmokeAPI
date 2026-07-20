@@ -1,1 +1,31 @@
-/build
+# Build directories
+/build/
+/build_msvc/
+/build_*/
+cmake-build-*/
+
+# CPM and CMake caches
+.cache/
+CMakeUserPresets.json
+
+# IDE and Editor files
+.idea/
+.vs/
+*.user
+*.suo
+
+# Compiled binaries and debug files
+*.dll
+*.so
+*.dylib
+*.pdb
+*.exp
+*.lib
+*.obj
+*.o
+*.a
+
+# Runtime logs and cache files
+*.log
+*.log.log
+SmokeAPI.cache.json
