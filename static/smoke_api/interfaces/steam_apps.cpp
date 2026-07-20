@@ -130,6 +130,7 @@ namespace smoke_api::steam_apps {
                 LOG_DEBUG("{} -> App ID: {}", function_name, app_id);
             }
 
+            const auto original_count = original_function();
             fetch_and_cache_dlcs(app_id);
 
             if(!get_app_dlc_map().empty() && get_app_dlc_map().contains(app_id)) {
