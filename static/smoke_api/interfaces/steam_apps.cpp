@@ -130,26 +130,16 @@ namespace smoke_api::steam_apps {
                 LOG_DEBUG("{} -> App ID: {}", function_name, app_id);
             }
 
-            const auto original_count = original_function();
-            LOG_DEBUG("{} -> Original DLC count: {}", function_name, original_count);
-
-            if(original_count < MAX_DLC) {
-                return total_count(original_count);
-            }
-
-            LOG_DEBUG(
-                "{} -> Game has {} or more DLCs. Fetching DLCs from remote sources.",
-                function_name, original_count
-            );
-
             fetch_and_cache_dlcs(app_id);
 
-            if(get_app_dlc_map().empty()) {
-                LOG_DEBUG("{} -> No cached DLCs, responding with original count", function_name);
-                return total_count(original_count);
+            if(!get_app_dlc_map().empty() && get_app_dlc_map().contains(app_id)) {
+                const auto& dlcs = get_app_dlc_map()[app_id];
+                if(!dlcs.empty()) {
+                    return total_count(static_cast<int>(dlcs.size()));
+                }
             }
 
-            return total_count(static_cast<int>(get_app_dlc_map()[app_id].size()));
+            return total_count(original_count);
         } catch(const std::exception& e) {
             LOG_ERROR("{} -> Uncaught exception: {}", function_name, e.what());
             return 0;
