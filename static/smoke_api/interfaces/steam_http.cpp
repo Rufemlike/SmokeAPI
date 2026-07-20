@@ -1,3 +1,7 @@
+#include <algorithm>
+#include <cstring>
+#include <string_view>
+
 #include <koalabox/logger.hpp>
 
 #include "smoke_api/interfaces/steam_http.hpp"
