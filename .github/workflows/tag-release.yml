@@ -8,7 +8,7 @@ on:
 jobs:
   build-binaries:
     name: '🏗️ Build Binaries'
-    uses: acidicoala/SmokeAPI/.github/workflows/matrix-build.yml@master
+    uses: ./.github/workflows/matrix-build.yml
 
   create-release:
     name: '📦 Create Release'

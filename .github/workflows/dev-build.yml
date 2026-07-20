@@ -8,4 +8,4 @@ on:
 jobs:
   dev-build:
     name: '🚧 Development Build'
-    uses: acidicoala/SmokeAPI/.github/workflows/matrix-build.yml@master
+    uses: ./.github/workflows/matrix-build.yml
