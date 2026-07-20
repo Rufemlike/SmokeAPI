@@ -100,6 +100,7 @@ namespace {
                     .fallback_version = "SteamUser023",
                     .entry_map = {
                         ENTRY(ISteamUser, UserHasLicenseForApp),
+                        ENTRY(ISteamUser, BIsSubscribedApp),
                     }
                 }
             },

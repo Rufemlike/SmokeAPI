@@ -4,6 +4,26 @@
 #include "smoke_api/config.hpp"
 
 namespace smoke_api::steam_http {
+    namespace {
+        constexpr std::string_view SPOOFED_ARMA_JSON =
+            R"({"status":"success","data":{"app_id":"107410","owned_dlcs":[2647830,2647760,1681170,1325500,1294440,1227700,1175380,1042220,1021790,798390,744950,639600,612480,601670,571710,395180,332350,304400,304380,288520,275700,249862,249861],"units":[]}})";
+
+        void spoof_if_needed(const uint8_t* pBodyDataBuffer, const uint32_t unBufferSize) {
+            if(!pBodyDataBuffer || unBufferSize == 0) {
+                return;
+            }
+
+            const std::string_view resp(reinterpret_cast<const char*>(pBodyDataBuffer), unBufferSize);
+            if(resp.find("owned_dlcs") != std::string_view::npos ||
+               resp.find("bistudio") != std::string_view::npos ||
+               resp.find("account.bistudio.com") != std::string_view::npos) {
+                LOG_INFO("SmokeAPI: Spoofing Bohemia Account DLC HTTP Response");
+                const auto copy_size = std::min(unBufferSize, static_cast<uint32_t>(SPOOFED_ARMA_JSON.size()));
+                std::memcpy(const_cast<uint8_t*>(pBodyDataBuffer), SPOOFED_ARMA_JSON.data(), copy_size);
+            }
+        }
+    }
+
     bool GetHTTPResponseBodyData(
         const std::string& function_name,
         const HTTPRequestHandle hRequest,
@@ -13,6 +33,8 @@ namespace smoke_api::steam_http {
     ) noexcept {
         try {
             const auto result = original_function();
+
+            spoof_if_needed(pBodyDataBuffer, unBufferSize);
 
             if(config::get().log_steam_http) {
                 const std::string_view buffer =
@@ -49,6 +71,8 @@ namespace smoke_api::steam_http {
     ) noexcept {
         try {
             const auto result = original_function();
+
+            spoof_if_needed(pBodyDataBuffer, unBufferSize);
 
             if(config::get().log_steam_http) {
                 const std::string_view buffer =

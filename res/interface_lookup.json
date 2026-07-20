@@ -393,7 +393,8 @@
         "LogOn": 24,
         "LogOnAndLinkSteamAccountToPSN": 25,
         "LogOnAndCreateNewSteamAccountIfNeeded": 26,
-        "GetConsoleSteamID": 27
+        "GetConsoleSteamID": 27,
+        "BIsSubscribedApp": 6
     },
     "STEAMHTTP_INTERFACE_VERSION002": {
         "CreateHTTPRequest": 0,
@@ -670,7 +671,8 @@
         "InitiateGameConnection": 3,
         "TerminateGameConnection": 4,
         "TrackAppUsageEvent": 5,
-        "RefreshSteam2Login": 6
+        "RefreshSteam2Login": 6,
+        "BIsSubscribedApp": 6
     },
     "STEAMAPPLIST_INTERFACE_VERSION001": {
         "GetNumInstalledApps": 0,
@@ -1373,7 +1375,8 @@
         "BIsPhoneRequiringVerification": 28,
         "GetMarketEligibility": 29,
         "GetDurationControl": 30,
-        "BSetDurationControlOnlineState": 31
+        "BSetDurationControlOnlineState": 31,
+        "BIsSubscribedApp": 6
     },
     "STEAMSCREENSHOTS_INTERFACE_VERSION003": {
         "WriteScreenshot": 0,
@@ -1764,7 +1767,8 @@
         "LogOn": 22,
         "LogOnAndLinkSteamAccountToPSN": 23,
         "LogOnAndCreateNewSteamAccountIfNeeded": 24,
-        "GetConsoleSteamID": 25
+        "GetConsoleSteamID": 25,
+        "BIsSubscribedApp": 6
     },
     "STEAMHTTP_INTERFACE_VERSION001": {
         "CreateHTTPRequest": 0,
@@ -1981,7 +1985,8 @@
         "BeginAuthSession": 13,
         "EndAuthSession": 14,
         "CancelAuthTicket": 15,
-        "UserHasLicenseForApp": 16
+        "UserHasLicenseForApp": 16,
+        "BIsSubscribedApp": 6
     },
     "SteamInput005": {
         "Init": 0,
@@ -2646,7 +2651,8 @@
         "BIsPhoneVerified": 25,
         "BIsTwoFactorEnabled": 26,
         "BIsPhoneIdentifying": 27,
-        "BIsPhoneRequiringVerification": 28
+        "BIsPhoneRequiringVerification": 28,
+        "BIsSubscribedApp": 6
     },
     "STEAMUGC_INTERFACE_VERSION008": {
         "CreateQueryUserUGCRequest": 0,
@@ -3239,7 +3245,8 @@
         "BIsPhoneRequiringVerification": 29,
         "GetMarketEligibility": 30,
         "GetDurationControl": 31,
-        "BSetDurationControlOnlineState": 32
+        "BSetDurationControlOnlineState": 32,
+        "BIsSubscribedApp": 6
     },
     "SteamNetworking004": {
         "SendP2PPacket": 0,
@@ -3413,7 +3420,8 @@
         "GetEncryptedAppTicket": 20,
         "LogOn": 21,
         "LogOnAndLinkSteamAccountToPSN": 22,
-        "LogOnAndCreateNewSteamAccountIfNeeded": 23
+        "LogOnAndCreateNewSteamAccountIfNeeded": 23,
+        "BIsSubscribedApp": 6
     },
     "SteamController004": {
         "Init": 0,
@@ -3916,7 +3924,8 @@
         "BIsPhoneIdentifying": 27,
         "BIsPhoneRequiringVerification": 28,
         "GetMarketEligibility": 29,
-        "GetDurationControl": 30
+        "GetDurationControl": 30,
+        "BIsSubscribedApp": 6
     },
     "STEAMUGC_INTERFACE_VERSION012": {
         "CreateQueryUserUGCRequest": 0,
@@ -4493,7 +4502,8 @@
         "BIsPhoneRequiringVerification": 28,
         "GetMarketEligibility": 29,
         "GetDurationControl": 30,
-        "BSetDurationControlOnlineState": 31
+        "BSetDurationControlOnlineState": 31,
+        "BIsSubscribedApp": 6
     },
     "STEAMUGC_INTERFACE_VERSION001": {
         "CreateQueryUserUGCRequest": 0,
@@ -4643,7 +4653,8 @@
         "GetAuthSessionTicket": 11,
         "BeginAuthSession": 12,
         "EndAuthSession": 13,
-        "CancelAuthTicket": 14
+        "CancelAuthTicket": 14,
+        "BIsSubscribedApp": 6
     },
     "STEAMREMOTESTORAGE_INTERFACE_VERSION008": {
         "FileWrite": 0,
@@ -4834,7 +4845,8 @@
         "GetSteamID": 2,
         "InitiateGameConnection": 3,
         "TerminateGameConnection": 4,
-        "TrackAppUsageEvent": 5
+        "TrackAppUsageEvent": 5,
+        "BIsSubscribedApp": 6
     },
     "STEAMAPPS_INTERFACE_VERSION007": {
         "BIsSubscribed": 0,
@@ -4928,7 +4940,8 @@
         "LogOn": 25,
         "LogOnAndLinkSteamAccountToPSN": 26,
         "LogOnAndCreateNewSteamAccountIfNeeded": 27,
-        "GetConsoleSteamID": 28
+        "GetConsoleSteamID": 28,
+        "BIsSubscribedApp": 6
     },
     "STEAMUGC_INTERFACE_VERSION003": {
         "CreateQueryUserUGCRequest": 0,
@@ -5498,7 +5511,8 @@
         "StartVoiceRecording": 7,
         "StopVoiceRecording": 8,
         "GetCompressedVoice": 9,
-        "DecompressVoice": 10
+        "DecompressVoice": 10,
+        "BIsSubscribedApp": 6
     },
     "SteamClient016": {
         "CreateSteamPipe": 0,

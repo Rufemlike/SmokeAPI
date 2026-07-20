@@ -42,6 +42,7 @@ VIRTUAL(bool) ISteamInventory_CheckResultSteamID(PARAMS(SteamInventoryResult_t, 
 
 // ISteamUser
 VIRTUAL(EUserHasLicenseForAppResult) ISteamUser_UserHasLicenseForApp(PARAMS(CSteamID, AppId_t)) noexcept;
+VIRTUAL(bool) ISteamUser_BIsSubscribedApp(PARAMS(AppId_t)) noexcept;
 
 // ISteamUtils
 VIRTUAL(AppId_t) ISteamUtils_GetAppID(PARAMS()) noexcept; // Unhooked
