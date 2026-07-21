@@ -68,6 +68,9 @@ namespace {
         };
 
         append_dlcs(smoke_api::config::get_extra_dlcs(app_id), "local config extra_dlcs");
+        if(app_id != 107410) {
+            append_dlcs(smoke_api::config::get_extra_dlcs(107410), "base game 107410 extra_dlcs");
+        }
 
         std::vector<DLC> override_dlcs;
         for(const auto& [dlc_id_str, status] : smoke_api::config::get().override_dlc_status) {
