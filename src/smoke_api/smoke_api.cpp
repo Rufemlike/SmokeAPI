@@ -56,6 +56,7 @@ namespace {
     namespace kb = koalabox;
 
     void* original_steamapi_handle = nullptr;
+    void* g_steamclient_handle = nullptr;
     bool is_hook_mode;
 
     void check_for_updates() {
@@ -104,7 +105,7 @@ namespace {
             versions.insert(i->str());
         }
 
-        LOG_DEBUG("Found {} steamclient version(s) in read-only section: {}", versions.size(), versions);
+        LOG_DEBUG("Found {} steamclient version(s) in read-only section", versions.size());
 
         return versions;
     }
@@ -127,7 +128,13 @@ namespace {
 
     // ReSharper disable once CppDFAConstantFunctionResult
     bool on_steamclient_loaded(void* steamclient_handle) {
-        KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
+        g_steamclient_handle = steamclient_handle;
+
+        if(is_hook_mode) {
+            KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
+        } else {
+            LOG_DEBUG("Proxy mode active: skipping binary detour of CreateInterface");
+        }
 
         if(!is_hook_mode) {
             return true;
@@ -372,5 +379,20 @@ namespace smoke_api {
         LOG_ERROR("Failed to find App ID");
 
         return 0;
+    }
+
+    void* get_steamclient_handle() {
+        if (!g_steamclient_handle) {
+            g_steamclient_handle = kb::lib::get_lib_handle(STEAMCLIENT_DLL);
+            if (!g_steamclient_handle) {
+                if (auto opt_handle = kb::lib::load(STEAMCLIENT_DLL)) {
+                    g_steamclient_handle = *opt_handle;
+                }
+            }
+            if (g_steamclient_handle) {
+                LOG_DEBUG("get_steamclient_handle: resolved to {}", g_steamclient_handle);
+            }
+        }
+        return g_steamclient_handle;
     }
 }

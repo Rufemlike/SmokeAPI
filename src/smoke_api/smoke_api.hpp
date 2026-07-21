@@ -15,4 +15,5 @@ namespace smoke_api {
     void shutdown();
 
     AppId_t get_app_id();
+    void* get_steamclient_handle();
 }
