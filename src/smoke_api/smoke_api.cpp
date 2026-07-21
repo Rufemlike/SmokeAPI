@@ -130,15 +130,7 @@ namespace {
     bool on_steamclient_loaded(void* steamclient_handle) {
         g_steamclient_handle = steamclient_handle;
 
-        if(is_hook_mode) {
-            KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
-        } else {
-            LOG_DEBUG("Proxy mode active: skipping binary detour of CreateInterface");
-        }
-
-        if(!is_hook_mode) {
-            return true;
-        }
+        KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
 
         // Check for late hooking
 

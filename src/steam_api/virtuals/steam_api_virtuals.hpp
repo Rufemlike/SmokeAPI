@@ -11,6 +11,7 @@ VIRTUAL(bool) ISteamApps_BGetDLCDataByIndex(PARAMS(int, AppId_t*, bool*, char*, 
 // ISteamClient
 VIRTUAL(void*) ISteamClient_GetISteamApps(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamUser(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
+VIRTUAL(void*) ISteamClient_GetISteamGameServer(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamGenericInterface(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamInventory(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamUtils(PARAMS(HSteamPipe, const char*)) noexcept; // Unhooked

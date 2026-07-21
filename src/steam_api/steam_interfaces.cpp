@@ -52,6 +52,7 @@ namespace {
             data.entry_map = {
                 ENTRY(ISteamClient, GetISteamApps),
                 ENTRY(ISteamClient, GetISteamUser),
+                ENTRY(ISteamClient, GetISteamGameServer),
                 ENTRY(ISteamClient, GetISteamGenericInterface),
                 ENTRY(ISteamClient, GetISteamInventory),
             };
