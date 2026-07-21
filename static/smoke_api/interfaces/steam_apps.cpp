@@ -98,14 +98,17 @@ namespace {
             append_dlcs(smoke_api::cache::get_dlcs(app_id), "disk cache");
         }
 
-        // De-duplicate aggregated DLCs by AppId_t
-        std::vector<DLC> unique_dlcs;
-        std::set<AppId_t> seen_ids;
+        // De-duplicate aggregated DLCs by AppId_t, preserving the first assigned name (from extra_dlcs)
+        std::map<AppId_t, DLC> unique_dlcs_map;
         for(const auto& dlc : aggregated_dlcs) {
-            if(!seen_ids.contains(dlc.get_id())) {
-                seen_ids.insert(dlc.get_id());
-                unique_dlcs.push_back(dlc);
+            if (!unique_dlcs_map.contains(dlc.get_id())) {
+                unique_dlcs_map[dlc.get_id()] = dlc;
             }
+        }
+
+        std::vector<DLC> unique_dlcs;
+        for(const auto& [id, dlc] : unique_dlcs_map) {
+            unique_dlcs.push_back(dlc);
         }
 
         // Cache DLCs in memory and cache for future use

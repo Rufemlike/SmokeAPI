@@ -1,0 +1,13 @@
+=== SmokeAPI (Arma 3 Ready Pack) ===
+
+УСТАНОВКА В 3 ШАГА:
+
+1. Зайдите в папку с игрой:
+   D:\SteamLibrary\steamapps\common\Arma 3\
+
+2. Переименуйте оригинальный файл в папке игры:
+   steam_api64.dll  -->  steam_api64_o.dll
+
+3. Скопируйте файлы из этого архива (steam_api64.dll и SmokeAPI.config.json) в папку игры.
+
+Всё готово! Все 23 DLC, включая Creator DLC и Contact (Ливония), полностью активированы.

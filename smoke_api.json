@@ -3,7 +3,7 @@
   "$version": 4,
   "logging": true,
   "log_steam_http": false,
-  "default_app_status": "locked",
+  "default_app_status": "unlocked",
   "override_app_status": {},
   "override_dlc_status": {
     "2647830": "unlocked",
