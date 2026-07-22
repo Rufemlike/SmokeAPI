@@ -154,40 +154,10 @@ namespace {
                 0x0F, 0x85, 0xDA, 0x00, 0x00, 0x00        // jne 0x67c57d (jumps to clean exit!)
             });
 
-            // Pattern for Mod/DLC object constructor check logic at RVA 0x6712ea:
-            // Force the constructor to set [+0x1c] = 1 (owned) for all DLCs.
-            // is_owned_2 checks [+0x1c] != 0 → returns 1 (owned). So we need [+0x1c]=1.
-            //
-            // Original flow:
-            //   test dil, dil; jne skip_to_xor_cl  → if param4!=0, cl=0
-            //   cmp [rcx+0xf60], dil; jne skip     → if global!=0, cl=0
-            //   mov cl, 1; jmp set                 → cl=1
-            //   xor cl, cl                          → cl=0 (skip target)
-            //
-            // We jump directly to `mov cl, 1` (0x6712f8), skipping ALL checks.
-            // jmp offset = 0x6712f8 - (0x6712ea + 2) = 0x0C
-            apply_patch("dlc_constructor_patch", "40 84 ff 75 0d 40 38 b9 60 0f 00 00", {
-                0xeb, 0x0c, 0x90, 0x90, 0x90,             // jmp 0x6712f8 (mov cl, 1); nop; nop; nop
-                0x40, 0x38, 0xb9, 0x60, 0x0f, 0x00, 0x00  // (remaining signature bytes, never reached)
-            });
-
-            // REMOVED: bypass_dlc_restrictions_patch
-            // Previously NOPed `mov [rax+0x1c], 1` at RVA 0x17b7302.
-            // But [+0x1c]=1 means OWNED (is_owned_2 checks [+0x1c]!=0).
-            // NOPing it out was PREVENTING the owned flag from being set!
-
-            // Pattern for Mod/DLC copy constructor / sync logic at RVA 0x1839e55:
-            // Force [rcx + 0x1c] = 1 (owned) while preserving other flags.
-            // is_owned_2 checks [+0x1c] != 0 to return "owned".
-            apply_patch("dlc_copy_constructor_patch", "89 41 18 0f b6 42 40 88 41 1c 0f b6 42 41 88 41 1d 0f b6 42 42 88 41 1e", {
-                0x89, 0x41, 0x18,                         // mov [rcx + 0x18], eax (same as original)
-                0xc6, 0x41, 0x1c, 0x01,                   // mov byte [rcx + 0x1c], 1 (force OWNED)
-                0x90, 0x90, 0x90,                         // nop nop nop (pad)
-                0x0f, 0xb6, 0x42, 0x41,                   // movzx eax, [rdx + 0x41] (load from packet)
-                0x88, 0x41, 0x1d,                         // mov [rcx + 0x1d], al (write to object)
-                0x0f, 0xb6, 0x42, 0x42,                   // movzx eax, [rdx + 0x42] (load from packet)
-                0x88, 0x41, 0x1e                          // mov [rcx + 0x1e], al (write to object)
-            });
+            // Disabled dlc_constructor_patch & dlc_copy_constructor_patch
+            // These patches forced [+0x1c]=1 for ALL DLCs indiscriminately,
+            // which caused Contact platform (1021790) to auto-activate on boot.
+            // Map terrain ownership is handled specifically by map_dlc_check & map_dlc_check_2.
 
         } catch (const std::exception& e) {
             LOG_ERROR("DLC patch failed: {}", e.what());
