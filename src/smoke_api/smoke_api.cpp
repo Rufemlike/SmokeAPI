@@ -4,6 +4,8 @@
 #include <glob/glob.h>
 #include <polyhook2/MemProtector.hpp>
 
+#include <koalabox/patcher.hpp>
+
 #include <koalabox/config.hpp>
 #include <koalabox/globals.hpp>
 #include <koalabox/hook.hpp>
@@ -58,6 +60,122 @@ namespace {
     void* original_steamapi_handle = nullptr;
     void* g_steamclient_handle = nullptr;
     bool is_hook_mode;
+
+#ifdef KB_WIN
+    /**
+     * Patches the game's internal DLC ownership check function to always return true.
+     * This bypasses client-side DLC verification without needing server-side SmokeAPI.
+     *
+     * The target function in Arma 3 (arma3_x64.exe) checks if a player owns a specific
+     * DLC by examining an internal data structure. By patching it to "mov al, 1; ret",
+     * the function always reports DLC as owned.
+     *
+     * Pattern: 44 8B CA 83 FA 10 75 08 83 79 1C 00 0F 9F C0 C3
+     * This is the unique signature of the ownership_check function.
+     */
+    void patch_dlc_ownership_check() {
+        try {
+            auto* exe_handle = kb::lib::get_exe_handle();
+            if (!exe_handle) {
+                LOG_WARN("DLC patch: Failed to get exe handle");
+                return;
+            }
+
+            const auto text_section = kb::lib::get_section(exe_handle, kb::lib::CODE_SECTION);
+            if (!text_section) {
+                LOG_WARN("DLC patch: Failed to find .text section");
+                return;
+            }
+
+            const auto base = reinterpret_cast<uintptr_t>(text_section->start_address);
+            const auto size = text_section->size;
+
+            auto apply_patch = [&](const std::string& name, const std::string& pattern, const std::vector<uint8_t>& patch_bytes) {
+                const auto address = kb::patcher::find_pattern_address(
+                    base, size, name, pattern
+                );
+
+                if (!address) {
+                    LOG_WARN("DLC patch: {} pattern not found (game may have been updated)", name);
+                    return;
+                }
+
+                PLH::MemAccessor accessor;
+                PLH::MemoryProtector protector(
+                    address, patch_bytes.size(),
+                    PLH::ProtFlag::R | PLH::ProtFlag::W | PLH::ProtFlag::X,
+                    accessor,
+                    false
+                );
+
+                std::memcpy(reinterpret_cast<void*>(address), patch_bytes.data(), patch_bytes.size());
+
+                LOG_INFO(
+                    "DLC patch: Successfully patched {} at {}",
+                    name,
+                    reinterpret_cast<void*>(address)
+                );
+            };
+
+            const std::vector<uint8_t> patch_true = { 0xB0, 0x01, 0xC3 }; // mov al, 1; ret
+
+            // Pattern for the DLC ownership check function:
+            // mov r9d, edx; cmp edx, 0x10; jne +8; cmp [rcx+0x1c], 0; setg al; ret
+            apply_patch("ownership_check_1", "44 8B CA 83 FA 10 75 08 83 79 1C 00 0F 9F C0 C3", patch_true);
+
+            // Pattern for pre-check function:
+            // mov qword ptr [rsp + 8], rcx; push rdi; sub rsp, 0x50; cmp qword ptr [rcx + 0x10], 0
+            apply_patch("ownership_check_2", "48 89 4C 24 08 57 48 83 EC 50 48 83 79 10 00", patch_true);
+
+            // Pattern for small is_owned check 1:
+            // cmp dword ptr [rcx + 0x18], 0; je +9; cmp byte ptr [rcx + 0x1d], 0; je +3; mov al, 1; ret; xor al, al; ret
+            apply_patch("is_owned_1", "83 79 18 00 74 09 80 79 1D 00 74 03 B0 01 C3 32 C0 C3", patch_true);
+
+            // Pattern for small is_owned check 2:
+            // cmp dword ptr [rcx + 0x18], 0; je +9; cmp byte ptr [rcx + 0x1c], 0; je +3; mov al, 1; ret; xor al, al; ret
+            apply_patch("is_owned_2", "83 79 18 00 74 09 80 79 1C 00 74 03 B0 01 C3 32 C0 C3", patch_true);
+
+            // Pattern for small is_owned check 3 (field 0x1e):
+            // movzx eax, byte ptr [rcx + 0x1e]; ret
+            apply_patch("is_owned_3", "0F B6 41 1E C3", { 0xB0, 0x01, 0xC3, 0x90, 0x90 });
+
+            // Pattern for small is_owned check 4 (field 0x1f):
+            // movzx eax, byte ptr [rcx + 0x1f]; ret
+            apply_patch("is_owned_4", "0F B6 41 1F C3", { 0xB0, 0x01, 0xC3, 0x90, 0x90 });
+
+            // Pattern for map ownership / BIsDlcOwned check in UI layout setup function:
+            // This is a unique 27-byte signature that precisely targets the call to [rax+50h] at RVA 0x67c2c7.
+            // We replace the virtual call instruction `ff 50 50` at offset +15 with `32 c0 90` (xor al, al; nop).
+            // This forces the check to return 0 (not restricted/not locked), which immediately triggers the
+            // conditional jump `je 0x67c3c0` (skip displaying warning layout page entirely).
+            apply_patch("map_dlc_check", "48 85 F6 0F 84 FF 00 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EE 00 00 00 48 8B 06", {
+                0x48, 0x85, 0xF6,                         // test rsi, rsi
+                0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00,       // je +255
+                0x48, 0x8B, 0x06,                         // mov rax, [rsi]
+                0x48, 0x8B, 0xCE,                         // mov rcx, rsi
+                0x32, 0xC0, 0x90,                         // xor al, al; nop (replaces ff 50 50)
+                0x84, 0xC0,                               // test al, al
+                0x0F, 0x84, 0xEE, 0x00, 0x00, 0x00,       // je +238
+                0x48, 0x8B, 0x06                          // mov rax, [rsi]
+            });
+
+            // Pattern for the second map ownership check block at RVA 0x67c474:
+            // We replace the virtual call instruction `ff 50 50` at offset +15 with `32 c0 90` (xor al, al; nop).
+            // This forces the second check to also return 0, bypassing the second warning UI setup block.
+            apply_patch("map_dlc_check_2", "48 85 F6 0F 84 00 01 00 00 48 8B 06 48 8B CE FF 50 50 84 C0", {
+                0x48, 0x85, 0xF6,                         // test rsi, rsi
+                0x0F, 0x84, 0x00, 0x01, 0x00, 0x00,       // je +256
+                0x48, 0x8B, 0x06,                         // mov rax, [rsi]
+                0x48, 0x8B, 0xCE,                         // mov rcx, rsi
+                0x32, 0xC0, 0x90,                         // xor al, al; nop (replaces ff 50 50)
+                0x84, 0xC0                                // test al, al
+            });
+
+        } catch (const std::exception& e) {
+            LOG_ERROR("DLC patch failed: {}", e.what());
+        }
+    }
+#endif
 
     void check_for_updates() {
         try {
@@ -304,6 +422,11 @@ namespace smoke_api {
             }
 
             init_lib_monitor();
+
+#ifdef KB_WIN
+            // Patch game's internal DLC ownership check (client-only bypass)
+            patch_dlc_ownership_check();
+#endif
 
             init_complete = true;
             LOG_INFO("Initialization complete");
