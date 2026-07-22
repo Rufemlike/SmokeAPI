@@ -29,3 +29,8 @@ CMakeUserPresets.json
 *.log
 *.log.log
 SmokeAPI.cache.json
+
+# Release artifacts and archives
+SmokeAPI_Release/
+*.zip
+*.rar
