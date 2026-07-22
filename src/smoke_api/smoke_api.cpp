@@ -121,31 +121,37 @@ namespace {
 
 
             // Pattern for map ownership + mod state checks (0x67c2c7):
-            // Bypasses BOTH isDlcOwned [rax+0x50] AND getModState [rax+0x218] checks.
-            // Sets eax = 2 (FULL_ACTIVE) and NOPs out both conditional error jumps (0x67c3c0).
+            // Forces isDlcOwned=1 and modItemCount=0.
+            // Prevents loading promo infoPages (avoiding "Config: infoPages array does not have 1 entries" error).
             apply_patch("map_dlc_check", "48 85 F6 0F 84 FF 00 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EE 00 00 00 48 8B 06 48 8B CE FF 90 18 02 00 00 85 C0 0F 8E DA 00 00 00", {
                 0x48, 0x85, 0xF6,                         // test rsi, rsi
                 0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00,       // je +255 (to 0x67c3c0)
                 0x48, 0x8B, 0x06,                         // mov rax, [rsi]
                 0x48, 0x8B, 0xCE,                         // mov rcx, rsi
-                0xB8, 0x02, 0x00, 0x00, 0x00,             // mov eax, 2 (forces mod status = 2)
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90                          // 6 NOPs (total 26 NOPs)
+                0xB0, 0x01,                               // mov al, 1 (forces isDlcOwned = true)
+                0x84, 0xC0,                               // test al, al
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90,       // 6 NOPs (nops out je 0x67c3c0)
+                0x31, 0xC0,                               // xor eax, eax (forces promo page count = 0)
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 11 NOPs (nops out call [rax+0x218])
+                0x85, 0xC0,                               // test eax, eax
+                0x0F, 0x8E, 0xDA, 0x00, 0x00, 0x00        // jle 0x67c3c0 (jumps to skip promo pages loop!)
             });
 
             // Pattern for the second map ownership + mod state check block (0x67c483):
-            // Bypasses BOTH isDlcOwned [rax+0x50] AND getModState [rax+0x218] checks.
-            // Sets eax = 2 (FULL_ACTIVE) and NOPs out both conditional error jumps (0x67c57d).
+            // Forces isDlcOwned=1 and modItemCount=0.
+            // Prevents loading promo infoPages (avoiding "Config: infoPages array does not have 1 entries" error).
             apply_patch("map_dlc_check_2", "48 85 F6 0F 84 00 01 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EF 00 00 00 48 8B 06 48 8B CE FF 90 18 02 00 00 83 F8 02 0F 85 DA 00 00 00", {
                 0x48, 0x85, 0xF6,                         // test rsi, rsi
                 0x0F, 0x84, 0x00, 0x01, 0x00, 0x00,       // je +256 (to 0x67c57d)
                 0x48, 0x8B, 0x06,                         // mov rax, [rsi]
                 0x48, 0x8B, 0xCE,                         // mov rcx, rsi
-                0xB8, 0x02, 0x00, 0x00, 0x00,             // mov eax, 2 (forces mod status = 2)
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
-                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90                    // 7 NOPs (total 27 NOPs)
+                0xB0, 0x01,                               // mov al, 1 (forces isDlcOwned = true)
+                0x84, 0xC0,                               // test al, al
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90,       // 6 NOPs (nops out je 0x67c57d)
+                0x31, 0xC0,                               // xor eax, eax (forces promo page count = 0)
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 11 NOPs (nops out call [rax+0x218])
+                0x83, 0xF8, 0x02,                         // cmp eax, 2
+                0x0F, 0x85, 0xDA, 0x00, 0x00, 0x00        // jne 0x67c57d (jumps to clean exit!)
             });
 
             // Pattern for Mod/DLC object constructor check logic at RVA 0x6712ea:
