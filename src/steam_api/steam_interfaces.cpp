@@ -99,6 +99,7 @@ namespace {
             data.fallback_version = "SteamUser023";
             data.entry_map = {
                 ENTRY(ISteamUser, UserHasLicenseForApp),
+                ENTRY(ISteamUser, BIsSubscribedApp),
             };
             map.emplace("SteamUser", std::move(data));
         }

@@ -119,29 +119,6 @@ namespace {
 
             const std::vector<uint8_t> patch_true = { 0xB0, 0x01, 0xC3 }; // mov al, 1; ret
 
-            // Pattern for the DLC ownership check function:
-            // mov r9d, edx; cmp edx, 0x10; jne +8; cmp [rcx+0x1c], 0; setg al; ret
-            apply_patch("ownership_check_1", "44 8B CA 83 FA 10 75 08 83 79 1C 00 0F 9F C0 C3", patch_true);
-
-            // Pattern for pre-check function:
-            // mov qword ptr [rsp + 8], rcx; push rdi; sub rsp, 0x50; cmp qword ptr [rcx + 0x10], 0
-            apply_patch("ownership_check_2", "48 89 4C 24 08 57 48 83 EC 50 48 83 79 10 00", patch_true);
-
-            // Pattern for small is_owned check 1:
-            // cmp dword ptr [rcx + 0x18], 0; je +9; cmp byte ptr [rcx + 0x1d], 0; je +3; mov al, 1; ret; xor al, al; ret
-            apply_patch("is_owned_1", "83 79 18 00 74 09 80 79 1D 00 74 03 B0 01 C3 32 C0 C3", patch_true);
-
-            // Pattern for small is_owned check 2:
-            // cmp dword ptr [rcx + 0x18], 0; je +9; cmp byte ptr [rcx + 0x1c], 0; je +3; mov al, 1; ret; xor al, al; ret
-            apply_patch("is_owned_2", "83 79 18 00 74 09 80 79 1C 00 74 03 B0 01 C3 32 C0 C3", patch_true);
-
-            // Pattern for small is_owned check 3 (field 0x1e):
-            // movzx eax, byte ptr [rcx + 0x1e]; ret
-            apply_patch("is_owned_3", "0F B6 41 1E C3", { 0xB0, 0x01, 0xC3, 0x90, 0x90 });
-
-            // Pattern for small is_owned check 4 (field 0x1f):
-            // movzx eax, byte ptr [rcx + 0x1f]; ret
-            apply_patch("is_owned_4", "0F B6 41 1F C3", { 0xB0, 0x01, 0xC3, 0x90, 0x90 });
 
             // Pattern for map ownership / BIsDlcOwned check in UI layout setup function:
             // This is a unique 27-byte signature that precisely targets the call to [rax+50h] at RVA 0x67c2c7.
