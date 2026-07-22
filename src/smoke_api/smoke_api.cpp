@@ -120,32 +120,32 @@ namespace {
             const std::vector<uint8_t> patch_true = { 0xB0, 0x01, 0xC3 }; // mov al, 1; ret
 
 
-            // Pattern for map ownership / BIsDlcOwned check in UI layout setup function:
-            // This is a unique 27-byte signature that precisely targets the call to [rax+50h] at RVA 0x67c2c7.
-            // We replace the virtual call instruction `ff 50 50` at offset +15 with `b0 01 90` (mov al, 1; nop).
-            // This forces isDlcOwned to return 1 (owned), so the game loads DLC content normally
-            // and the `je` (jump if not owned) does NOT trigger, preventing the warning popup.
-            apply_patch("map_dlc_check", "48 85 F6 0F 84 FF 00 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EE 00 00 00 48 8B 06", {
+            // Pattern for map ownership + mod state checks (0x67c2c7):
+            // Bypasses BOTH isDlcOwned [rax+0x50] AND getModState [rax+0x218] checks.
+            // Sets eax = 2 (FULL_ACTIVE) and NOPs out both conditional error jumps (0x67c3c0).
+            apply_patch("map_dlc_check", "48 85 F6 0F 84 FF 00 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EE 00 00 00 48 8B 06 48 8B CE FF 90 18 02 00 00 85 C0 0F 8E DA 00 00 00", {
                 0x48, 0x85, 0xF6,                         // test rsi, rsi
-                0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00,       // je +255
+                0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00,       // je +255 (to 0x67c3c0)
                 0x48, 0x8B, 0x06,                         // mov rax, [rsi]
                 0x48, 0x8B, 0xCE,                         // mov rcx, rsi
-                0xB0, 0x01, 0x90,                         // mov al, 1; nop (replaces ff 50 50)
-                0x84, 0xC0,                               // test al, al
-                0x0F, 0x84, 0xEE, 0x00, 0x00, 0x00,       // je +238 (won't jump because al=1)
-                0x48, 0x8B, 0x06                          // mov rax, [rsi]
+                0xB8, 0x02, 0x00, 0x00, 0x00,             // mov eax, 2 (forces mod status = 2)
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90                          // 6 NOPs (total 26 NOPs)
             });
 
-            // Pattern for the second map ownership check block at RVA 0x67c474:
-            // We replace the virtual call instruction `ff 50 50` at offset +15 with `b0 01 90` (mov al, 1; nop).
-            // This forces isDlcOwned to return 1 (owned), same fix as map_dlc_check.
-            apply_patch("map_dlc_check_2", "48 85 F6 0F 84 00 01 00 00 48 8B 06 48 8B CE FF 50 50 84 C0", {
+            // Pattern for the second map ownership + mod state check block (0x67c483):
+            // Bypasses BOTH isDlcOwned [rax+0x50] AND getModState [rax+0x218] checks.
+            // Sets eax = 2 (FULL_ACTIVE) and NOPs out both conditional error jumps (0x67c57d).
+            apply_patch("map_dlc_check_2", "48 85 F6 0F 84 00 01 00 00 48 8B 06 48 8B CE FF 50 50 84 C0 0F 84 EF 00 00 00 48 8B 06 48 8B CE FF 90 18 02 00 00 83 F8 02 0F 85 DA 00 00 00", {
                 0x48, 0x85, 0xF6,                         // test rsi, rsi
-                0x0F, 0x84, 0x00, 0x01, 0x00, 0x00,       // je +256
+                0x0F, 0x84, 0x00, 0x01, 0x00, 0x00,       // je +256 (to 0x67c57d)
                 0x48, 0x8B, 0x06,                         // mov rax, [rsi]
                 0x48, 0x8B, 0xCE,                         // mov rcx, rsi
-                0xB0, 0x01, 0x90,                         // mov al, 1; nop (replaces ff 50 50)
-                0x84, 0xC0                                // test al, al
+                0xB8, 0x02, 0x00, 0x00, 0x00,             // mov eax, 2 (forces mod status = 2)
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // 10 NOPs
+                0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90                    // 7 NOPs (total 27 NOPs)
             });
 
             // Pattern for Mod/DLC object constructor check logic at RVA 0x6712ea:
