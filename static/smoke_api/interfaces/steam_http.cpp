@@ -24,7 +24,31 @@ namespace smoke_api::steam_http {
                 LOG_INFO("SmokeAPI: Spoofing Bohemia Account DLC HTTP Response");
                 const auto copy_size = std::min(unBufferSize, static_cast<uint32_t>(SPOOFED_ARMA_JSON.size()));
                 std::memcpy(const_cast<uint8_t*>(pBodyDataBuffer), SPOOFED_ARMA_JSON.data(), copy_size);
+                
+                if (copy_size < unBufferSize) {
+                    const_cast<uint8_t*>(pBodyDataBuffer)[copy_size] = '\0';
+                }
             }
+        }
+    }
+
+    bool GetHTTPResponseBodySize(
+        const std::string& function_name,
+        const HTTPRequestHandle hRequest,
+        uint32_t* pBodySize,
+        const std::function<bool()>& original_function
+    ) noexcept {
+        try {
+            const auto result = original_function();
+            if(result && pBodySize) {
+                if(*pBodySize < SPOOFED_ARMA_JSON.size() + 1) {
+                    *pBodySize = SPOOFED_ARMA_JSON.size() + 1; // +1 for null terminator
+                }
+            }
+            return result;
+        } catch(const std::exception& e) {
+            LOG_ERROR("{} -> Error: {}", __func__, e.what());
+            return false;
         }
     }
 

@@ -3,6 +3,23 @@
 #include "smoke_api/interfaces/steam_http.hpp"
 #include "steam_api/virtuals/steam_api_virtuals.hpp"
 
+VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodySize(
+    PARAMS(
+        const HTTPRequestHandle hRequest,
+        uint32_t* pBodySize
+    )
+) noexcept {
+    return smoke_api::steam_http::GetHTTPResponseBodySize(
+        __func__,
+        hRequest,
+        pBodySize,
+        SWAPPED_CALL_CLOSURE(
+            ISteamHTTP_GetHTTPResponseBodySize,
+            ARGS(hRequest, pBodySize)
+        )
+    );
+}
+
 VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodyData(
     PARAMS(
         const HTTPRequestHandle hRequest,

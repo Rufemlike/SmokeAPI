@@ -73,6 +73,7 @@ namespace {
             data.fallback_version = "STEAMHTTP_INTERFACE_VERSION003";
             data.entry_map = {
                 ENTRY(ISteamHTTP, GetHTTPResponseBodyData),
+                ENTRY(ISteamHTTP, GetHTTPResponseBodySize),
                 ENTRY(ISteamHTTP, GetHTTPStreamingResponseBodyData),
                 ENTRY(ISteamHTTP, SetHTTPRequestRawPostBody),
             };
@@ -99,6 +100,7 @@ namespace {
             data.fallback_version = "SteamUser023";
             data.entry_map = {
                 ENTRY(ISteamUser, UserHasLicenseForApp),
+                ENTRY(ISteamUser, BIsSubscribedApp),
             };
             map.emplace("SteamUser", std::move(data));
         }

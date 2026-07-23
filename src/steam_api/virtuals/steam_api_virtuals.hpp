@@ -17,6 +17,7 @@ VIRTUAL(void*) ISteamClient_GetISteamInventory(PARAMS(HSteamUser, HSteamPipe, co
 VIRTUAL(void*) ISteamClient_GetISteamUtils(PARAMS(HSteamPipe, const char*)) noexcept; // Unhooked
 
 // ISteamHTTP
+VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodySize(PARAMS(HTTPRequestHandle, uint32_t*)) noexcept;
 VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodyData(PARAMS(HTTPRequestHandle, const uint8_t*, uint32_t)) noexcept;
 VIRTUAL(bool) ISteamHTTP_GetHTTPStreamingResponseBodyData(
     PARAMS(HTTPRequestHandle, uint32_t, const uint8_t*, uint32_t)
