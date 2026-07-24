@@ -4,6 +4,8 @@
 
 // ISteamApps
 VIRTUAL(bool) ISteamApps_BIsSubscribedApp(PARAMS(AppId_t)) noexcept;
+VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(AppId_t)) noexcept;
+VIRTUAL(bool) ISteamApps_GetDlcDownloadProgress(PARAMS(AppId_t, uint64_t*, uint64_t*)) noexcept;
 VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(AppId_t)) noexcept;
 VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(AppId_t)) noexcept;
 VIRTUAL(int) ISteamApps_GetDLCCount(PARAMS()) noexcept;
