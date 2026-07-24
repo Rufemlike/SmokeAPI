@@ -10,6 +10,7 @@
 #include <sstream>
 #include <koalabox/http_client.hpp>
 #include <koalabox/logger.hpp>
+#include <filesystem>
 
 #ifdef _WIN32
 #pragma comment(lib, "urlmon.lib")
@@ -140,6 +141,10 @@ namespace dlc_downloader {
         return false;
     }
 
+    std::wstring get_steam_downloading_path() {
+        return (koalabox::paths::get_self_dir().parent_path().parent_path().parent_path() / L"downloading" / L"107410").wstring();
+    }
+
     void start_download(uint32_t dlc_id) {
         {
             std::map<uint32_t, uint64_t> expected_sizes = {
@@ -179,6 +184,12 @@ namespace dlc_downloader {
                 LOG_INFO("Created placeholder directory for game: {}", std::string(placeholder_path.begin(), placeholder_path.end()));
             }
         }
+
+        // Create Steam downloading folder to fool the launcher into thinking a Steam download is active
+        std::wstring steam_download_dir = get_steam_downloading_path();
+        std::error_code ec;
+        std::filesystem::create_directories(steam_download_dir, ec);
+        LOG_INFO("Created fake Steam downloading folder to preserve UI progress: {}", std::string(steam_download_dir.begin(), steam_download_dir.end()));
 
 #ifdef _WIN32
         std::thread([dlc_id]() {
@@ -268,9 +279,23 @@ namespace dlc_downloader {
                 LOG_ERROR("Error downloading/installing DLC {}: {}", dlc_id, e.what());
             }
 
+            bool any_downloading = false;
             {
                 std::lock_guard<std::mutex> lock(g_download_mutex);
                 g_download_states[dlc_id].is_downloading = false;
+                for (const auto& [id, state] : g_download_states) {
+                    if (state.is_downloading) {
+                        any_downloading = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!any_downloading) {
+                std::wstring steam_download_dir = get_steam_downloading_path();
+                std::error_code ec;
+                std::filesystem::remove_all(steam_download_dir, ec);
+                LOG_INFO("Cleaned up fake Steam downloading folder: {}", std::string(steam_download_dir.begin(), steam_download_dir.end()));
             }
         }).detach();
 #else
