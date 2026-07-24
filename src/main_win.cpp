@@ -9,14 +9,19 @@
 
 DLL_MAIN(void* handle, const uint32_t reason, void*) {
     if(reason == DLL_PROCESS_ATTACH) {
-        // Pin the DLL in memory so it doesn't get unloaded by FreeLibrary when the launcher refreshes.
-        // This ensures our download state (g_download_states) and background threads survive.
-        HMODULE hDummy;
-        BOOL pinned = GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
-                                         (LPCWSTR)handle, &hDummy);
+        // Pin the DLL in memory by loading it again. This increments the reference count
+        // and guarantees the DLL (and our background threads) will never be unloaded by FreeLibrary.
+        wchar_t self_path[MAX_PATH];
+        BOOL pinned = FALSE;
+        if (GetModuleFileNameW((HMODULE)handle, self_path, MAX_PATH)) {
+            HMODULE hSelf = LoadLibraryW(self_path);
+            if (hSelf != NULL) {
+                pinned = TRUE;
+            }
+        }
                            
         smoke_api::init(handle);
-        LOG_INFO("DLL Pin status: {}", pinned ? "SUCCESS" : "FAILED");
+        LOG_INFO("DLL Pin status (LoadLibrary): {}", pinned ? "SUCCESS" : "FAILED");
     } else if(reason == DLL_PROCESS_DETACH) {
         smoke_api::shutdown();
     }
