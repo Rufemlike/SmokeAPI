@@ -1,6 +1,8 @@
+#ifdef _WIN32
 #include <windows.h>
 #include <shellapi.h>
 #include <urlmon.h>
+#endif
 #include <map>
 #include <string>
 #include <thread>
@@ -9,7 +11,9 @@
 #include <koalabox/http_client.hpp>
 #include <koalabox/logger.hpp>
 
+#ifdef _WIN32
 #pragma comment(lib, "urlmon.lib")
+#endif
 
 namespace dlc_downloader {
     struct DownloadState {
@@ -21,6 +25,7 @@ namespace dlc_downloader {
     static std::map<uint32_t, DownloadState> g_download_states;
     static std::mutex g_download_mutex;
 
+#ifdef _WIN32
     class DownloadProgressCallback : public IBindStatusCallback {
     private:
         uint32_t m_dlc_id;
@@ -54,6 +59,7 @@ namespace dlc_downloader {
         STDMETHODIMP OnDataAvailable(DWORD grfBSCF, DWORD dwSize, FORMATETC* pformatetc, STGMEDIUM* pstgmed) { return S_OK; }
         STDMETHODIMP OnObjectAvailable(REFIID riid, IUnknown* punk) { return S_OK; }
     };
+#endif
 
     bool get_progress(uint32_t dlc_id, uint64_t* downloaded, uint64_t* total) {
         std::lock_guard<std::mutex> lock(g_download_mutex);
@@ -77,6 +83,7 @@ namespace dlc_downloader {
             g_download_states[dlc_id] = {0, 0, true};
         }
 
+#ifdef _WIN32
         std::thread([dlc_id]() {
             LOG_INFO("Starting background downloader for DLC {}", dlc_id);
 
@@ -169,5 +176,8 @@ namespace dlc_downloader {
                 g_download_states[dlc_id].is_downloading = false;
             }
         }).detach();
+#else
+        LOG_INFO("DLC background downloader is not supported on Linux yet.");
+#endif
     }
 }
