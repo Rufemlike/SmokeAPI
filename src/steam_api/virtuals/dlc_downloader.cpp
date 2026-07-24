@@ -160,6 +160,26 @@ namespace dlc_downloader {
             g_download_states[dlc_id] = {0, expected_total, true};
         }
 
+        // Create a placeholder directory in the game root so the game shows the hotbar immediately!
+        std::map<uint32_t, std::wstring> cdlc_folders = {
+            { 1227700, L"vn" },
+            { 1042220, L"GM" },
+            { 1175380, L"SPE" },
+            { 1294440, L"CSLA" },
+            { 1681170, L"WS" },
+            { 2647760, L"RF" },
+            { 2647830, L"EF" }
+        };
+        if (cdlc_folders.contains(dlc_id)) {
+            std::wstring dlc_folder = cdlc_folders[dlc_id];
+            std::wstring placeholder_path = (koalabox::paths::get_self_dir().parent_path() / dlc_folder).wstring();
+            std::error_code ec;
+            if (!std::filesystem::exists(placeholder_path, ec)) {
+                std::filesystem::create_directory(placeholder_path, ec);
+                LOG_INFO("Created placeholder directory for game: {}", std::string(placeholder_path.begin(), placeholder_path.end()));
+            }
+        }
+
 #ifdef _WIN32
         std::thread([dlc_id]() {
             LOG_INFO("Starting background downloader for DLC {}", dlc_id);

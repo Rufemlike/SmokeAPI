@@ -53,6 +53,14 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept 
     
     if (cdlc_folders.contains(dlc_id)) {
         if (is_launcher_process()) {
+            // If the DLC is currently downloading in the background, always claim it is NOT installed to the launcher
+            // so that the launcher continues to display the progress bar instead of marking it as complete immediately.
+            uint64_t downloaded = 0, total = 0;
+            if (dlc_downloader::get_progress(dlc_id, &downloaded, &total)) {
+                LOG_INFO("ISteamApps_BIsDlcInstalled (Launcher) -> DLC ID: {} is downloading in background, claiming Installed: false", dlc_id);
+                return false;
+            }
+
             std::error_code ec;
             std::wstring folderName = cdlc_folders[dlc_id];
             
