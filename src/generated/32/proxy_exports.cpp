@@ -19,6 +19,11 @@
 #include <string>
 
 static void(*original_SteamAPI_ISteamApps_InstallDLC)(void*, uint32_t) = nullptr;
+static bool(*original_SteamAPI_ISteamApps_GetDlcDownloadProgress)(void*, uint32_t, uint64_t*, uint64_t*) = nullptr;
+
+namespace dlc_downloader {
+    extern bool get_progress(uint32_t dlc_id, uint64_t* downloaded, uint64_t* total);
+}
 
 #define EXPORT extern "C" __attribute__((visibility("default"))) __attribute__((naked))
 
@@ -1037,9 +1042,15 @@ EXPORT void SteamAPI_ISteamApps_GetDLCCount() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_ISteamApps_GetDlcDownloadProgress() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
+extern "C" __attribute__((visibility("default"))) bool SteamAPI_ISteamApps_GetDlcDownloadProgress(void* self, uint32_t dlc_id, uint64_t* punBytesDownloaded, uint64_t* punBytesTotal) {
+    if (dlc_downloader::get_progress(dlc_id, punBytesDownloaded, punBytesTotal)) {
+        return true;
+    }
+    
+    if (original_SteamAPI_ISteamApps_GetDlcDownloadProgress) {
+        return original_SteamAPI_ISteamApps_GetDlcDownloadProgress(self, dlc_id, punBytesDownloaded, punBytesTotal);
+    }
+    return false;
 }
 
 EXPORT void SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime() {
@@ -9439,11 +9450,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_GetDlcDownloadProgress");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_GetDlcDownloadProgress");
-        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_GetDlcDownloadProgress' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
+        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_GetDlcDownloadProgress' src: {}", __func__, src_address);
+        original_SteamAPI_ISteamApps_GetDlcDownloadProgress = reinterpret_cast<bool(*)(void*, uint32_t, uint64_t*, uint64_t*)>(src_address);
 
         dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime");

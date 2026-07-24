@@ -8,6 +8,7 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(AppId_t)) noexcept;
 VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(AppId_t)) noexcept;
 VIRTUAL(int) ISteamApps_GetDLCCount(PARAMS()) noexcept;
 VIRTUAL(bool) ISteamApps_BGetDLCDataByIndex(PARAMS(int, AppId_t*, bool*, char*, int)) noexcept;
+VIRTUAL(bool) ISteamApps_GetDlcDownloadProgress(PARAMS(AppId_t, uint64_t*, uint64_t*)) noexcept;
 
 // ISteamClient
 VIRTUAL(void*) ISteamClient_GetISteamApps(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;

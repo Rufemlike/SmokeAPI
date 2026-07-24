@@ -43,6 +43,7 @@ namespace {
                 ENTRY(ISteamApps, InstallDLC),
                 ENTRY(ISteamApps, GetDLCCount),
                 ENTRY(ISteamApps, BGetDLCDataByIndex),
+                ENTRY(ISteamApps, GetDlcDownloadProgress),
             };
             map.emplace("STEAMAPPS_INTERFACE_VERSION", std::move(data));
         }
