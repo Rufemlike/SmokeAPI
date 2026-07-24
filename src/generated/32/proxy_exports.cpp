@@ -11,6 +11,15 @@
 
 #include "proxy_exports.hpp"
 
+#ifdef KB_WIN
+#include <windows.h>
+#include <shellapi.h>
+#endif
+#include <map>
+#include <string>
+
+static void(*original_SteamAPI_ISteamApps_InstallDLC)(void*, uint32_t) = nullptr;
+
 #define EXPORT extern "C" __attribute__((visibility("default"))) __attribute__((naked))
 
 EXPORT void CAddAppDependencyResult_t_RemoveCallResult() {
@@ -1068,9 +1077,38 @@ EXPORT void SteamAPI_ISteamApps_GetPublisherOwnedAppData() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_ISteamApps_InstallDLC() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
+extern "C" __attribute__((visibility("default"))) void SteamAPI_ISteamApps_InstallDLC(void* self, uint32_t dlc_id) {
+    std::wstring custom_url;
+    
+    std::map<uint32_t, std::wstring> custom_links = {
+        { 1227700, L"https://disk.yandex.ru/d/nj5Ul8x4So8Epw" }, // SOG
+        { 1042220, L"https://disk.yandex.ru/d/-xC0SdseCArXYw" }, // GM
+        { 1175380, L"https://disk.yandex.ru/d/hPHm5qdT74eITg" }, // Spearhead
+        { 1294440, L"https://disk.yandex.ru/d/jANLf30L-UZaLQ" }, // CSLA
+        { 1681170, L"https://disk.yandex.ru/d/Bpo9PSE19s0MFw" }, // Western Sahara
+        { 2647760, L"https://disk.yandex.ru/d/WgGFfb5e7B9klQ" }, // Reaction Forces
+        { 2647830, L"https://disk.yandex.ru/d/dED2jqTk2tuhvQ" }  // Expeditionary
+    };
+    
+    if (custom_links.contains(dlc_id)) {
+        custom_url = custom_links[dlc_id];
+    } else {
+        custom_url = L"https://disk.yandex.ru/d/xCJaj_NRswhojA";
+    }
+    
+#ifdef KB_WIN
+    SHELLEXECUTEINFOW exec_info = {0};
+    exec_info.cbSize = sizeof(SHELLEXECUTEINFOW);
+    exec_info.lpVerb = L"open";
+    exec_info.lpFile = custom_url.c_str();
+    exec_info.nShow = SW_SHOWNORMAL;
+    
+    ShellExecuteExW(&exec_info);
+#endif
+
+    if (original_SteamAPI_ISteamApps_InstallDLC) {
+        original_SteamAPI_ISteamApps_InstallDLC(self, dlc_id);
+    }
 }
 
 EXPORT void SteamAPI_ISteamApps_MarkContentCorrupt() {
@@ -9449,11 +9487,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_InstallDLC");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_InstallDLC");
-        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_InstallDLC' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
+        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_InstallDLC' src: {}", __func__, src_address);
+        original_SteamAPI_ISteamApps_InstallDLC = reinterpret_cast<void(*)(void*, uint32_t)>(src_address);
 
         dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_MarkContentCorrupt");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_MarkContentCorrupt");
