@@ -1,5 +1,6 @@
 #include <regex>
 #include <set>
+#include <glob/glob.h>
 #include <polyhook2/MemProtector.hpp>
 
 #include <koalabox/config.hpp>
