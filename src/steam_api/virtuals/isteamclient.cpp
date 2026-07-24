@@ -78,3 +78,20 @@ VIRTUAL(void*) ISteamClient_GetISteamInventory(
         )
     );
 }
+
+VIRTUAL(void*) ISteamClient_GetISteamHTTP(
+    PARAMS(
+        const HSteamUser hSteamUser,
+        const HSteamPipe hSteamPipe,
+        const char* pchVersion
+    )
+) noexcept {
+    return steam_client::GetGenericInterface(
+        __func__,
+        pchVersion,
+        SWAPPED_CALL_CLOSURE(
+            ISteamClient_GetISteamHTTP,
+            ARGS(hSteamUser, hSteamPipe, pchVersion)
+        )
+    );
+}

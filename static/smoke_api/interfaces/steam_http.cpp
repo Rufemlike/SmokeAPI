@@ -2,6 +2,8 @@
 #include <cstring>
 #include <string_view>
 
+#include <unordered_set>
+#include <mutex>
 #include <koalabox/logger.hpp>
 
 #include "smoke_api/interfaces/steam_http.hpp"
@@ -10,25 +12,60 @@
 namespace smoke_api::steam_http {
     namespace {
         constexpr std::string_view SPOOFED_ARMA_JSON =
-            R"({"status":"success","data":{"app_id":"107410","owned_dlcs":[2647830,2647760,1681170,1325500,1294440,1227700,1175380,1042220,1021790,798390,744950,639600,612480,601670,571710,395180,332350,304400,304380,288520,275700,249862,249861],"units":[]}})";
+            R"({"status":"success","data":{"app_id":"107410","owned_dlcs":[2647830,2647760,2521550,1874880,1681170,1325500,1294440,1227700,1224290,1175380,1042220,1021790,798390,744950,639600,612480,601670,571710,395180,332350,304400,304380,288520,275700,249862,249861],"units":[]}})";
+
+        std::mutex tracked_requests_mutex;
+        std::unordered_set<HTTPRequestHandle> tracked_bohemia_requests;
 
         void spoof_if_needed(const uint8_t* pBodyDataBuffer, const uint32_t unBufferSize) {
             if(!pBodyDataBuffer || unBufferSize == 0) {
                 return;
             }
-
-            const std::string_view resp(reinterpret_cast<const char*>(pBodyDataBuffer), unBufferSize);
-            if(resp.find("owned_dlcs") != std::string_view::npos ||
-               resp.find("bistudio") != std::string_view::npos ||
-               resp.find("account.bistudio.com") != std::string_view::npos) {
-                LOG_INFO("SmokeAPI: Spoofing Bohemia Account DLC HTTP Response");
-                const auto copy_size = std::min(unBufferSize, static_cast<uint32_t>(SPOOFED_ARMA_JSON.size()));
-                std::memcpy(const_cast<uint8_t*>(pBodyDataBuffer), SPOOFED_ARMA_JSON.data(), copy_size);
+            LOG_INFO("SmokeAPI: Spoofing Bohemia Account DLC HTTP Response based on tracked handle");
+            const auto copy_size = std::min(unBufferSize, static_cast<uint32_t>(SPOOFED_ARMA_JSON.size()));
+            std::memcpy(const_cast<uint8_t*>(pBodyDataBuffer), SPOOFED_ARMA_JSON.data(), copy_size);
                 
-                if (copy_size < unBufferSize) {
-                    const_cast<uint8_t*>(pBodyDataBuffer)[copy_size] = '\0';
+            if (copy_size < unBufferSize) {
+                const_cast<uint8_t*>(pBodyDataBuffer)[copy_size] = '\0';
+            }
+        }
+    }
+
+    HTTPRequestHandle CreateHTTPRequest(
+        const std::string& function_name,
+        const uint32_t eHTTPRequestMethod,
+        const char* pchAbsoluteURL,
+        const std::function<HTTPRequestHandle()>& original_function
+    ) noexcept {
+        try {
+            const auto result = original_function();
+            if (pchAbsoluteURL) {
+                std::string_view url(pchAbsoluteURL);
+                if (url.find("account.bistudio.com") != std::string_view::npos) {
+                    std::lock_guard<std::mutex> lock(tracked_requests_mutex);
+                    tracked_bohemia_requests.insert(result);
+                    LOG_INFO("{} -> Tracking Bohemia request: {} (Handle: {})", function_name, url, result);
                 }
             }
+            return result;
+        } catch(const std::exception& e) {
+            LOG_ERROR("{} -> Error: {}", __func__, e.what());
+            return 0;
+        }
+    }
+
+    bool ReleaseHTTPRequest(
+        const std::string& function_name,
+        const HTTPRequestHandle hRequest,
+        const std::function<bool()>& original_function
+    ) noexcept {
+        try {
+            std::lock_guard<std::mutex> lock(tracked_requests_mutex);
+            tracked_bohemia_requests.erase(hRequest);
+            return original_function();
+        } catch(const std::exception& e) {
+            LOG_ERROR("{} -> Error: {}", __func__, e.what());
+            return false;
         }
     }
 
@@ -41,7 +78,13 @@ namespace smoke_api::steam_http {
         try {
             const auto result = original_function();
             if(result && pBodySize) {
-                if(*pBodySize < SPOOFED_ARMA_JSON.size() + 1) {
+                bool is_tracked = false;
+                {
+                    std::lock_guard<std::mutex> lock(tracked_requests_mutex);
+                    is_tracked = tracked_bohemia_requests.contains(hRequest);
+                }
+                
+                if (is_tracked && *pBodySize < SPOOFED_ARMA_JSON.size() + 1) {
                     *pBodySize = SPOOFED_ARMA_JSON.size() + 1; // +1 for null terminator
                 }
             }
@@ -62,7 +105,15 @@ namespace smoke_api::steam_http {
         try {
             const auto result = original_function();
 
-            spoof_if_needed(pBodyDataBuffer, unBufferSize);
+            bool is_tracked = false;
+            {
+                std::lock_guard<std::mutex> lock(tracked_requests_mutex);
+                is_tracked = tracked_bohemia_requests.contains(hRequest);
+            }
+
+            if (is_tracked) {
+                spoof_if_needed(pBodyDataBuffer, unBufferSize);
+            }
 
             if(config::get().log_steam_http) {
                 const std::string_view buffer =
@@ -100,7 +151,15 @@ namespace smoke_api::steam_http {
         try {
             const auto result = original_function();
 
-            spoof_if_needed(pBodyDataBuffer, unBufferSize);
+            bool is_tracked = false;
+            {
+                std::lock_guard<std::mutex> lock(tracked_requests_mutex);
+                is_tracked = tracked_bohemia_requests.contains(hRequest);
+            }
+
+            if (is_tracked) {
+                spoof_if_needed(pBodyDataBuffer, unBufferSize);
+            }
 
             if(config::get().log_steam_http) {
                 const std::string_view buffer =
