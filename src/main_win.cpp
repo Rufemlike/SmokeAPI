@@ -1,5 +1,5 @@
-// ReSharper disable CppUnusedIncludeDirective
 #include <koalabox/win.hpp>
+#include <koalabox/logger.hpp>
 
 #include "smoke_api/smoke_api.hpp"
 
@@ -12,10 +12,11 @@ DLL_MAIN(void* handle, const uint32_t reason, void*) {
         // Pin the DLL in memory so it doesn't get unloaded by FreeLibrary when the launcher refreshes.
         // This ensures our download state (g_download_states) and background threads survive.
         HMODULE hDummy;
-        GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
-                           (LPCSTR)&smoke_api::init, &hDummy);
+        BOOL pinned = GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                                         (LPCWSTR)handle, &hDummy);
                            
         smoke_api::init(handle);
+        LOG_INFO("DLL Pin status: {}", pinned ? "SUCCESS" : "FAILED");
     } else if(reason == DLL_PROCESS_DETACH) {
         smoke_api::shutdown();
     }
