@@ -166,18 +166,21 @@ namespace steam_interfaces {
         static std::mutex section;
         const std::lock_guard guard(section);
 
-        static std::set<const void*> processed_interfaces;
-
-        if(processed_interfaces.contains(interface_ptr)) {
-            LOG_DEBUG("Interface '{}' @ {} has already been processed.", version_string, interface_ptr);
-            return;
-        }
-        processed_interfaces.insert(interface_ptr);
-
         static const auto virtual_hook_map = get_virtual_hook_map();
         for(const auto& [prefix, data] : virtual_hook_map) {
             if(not version_string.starts_with(prefix)) {
                 continue;
+            }
+
+            // Check if this specific object's vtable is already hooked.
+            // When games like Arma 3 restart Steam API without unloading our DLL,
+            // the object pointer might be identical but it has the original, unhooked vtable.
+            if (!data.entry_map.empty()) {
+                const auto& first_entry = data.entry_map.begin()->second;
+                if (koalabox::hook::is_vt_hooked(interface_ptr, first_entry.function_name)) {
+                    LOG_DEBUG("Interface '{}' @ {} is already hooked.", version_string, interface_ptr);
+                    return;
+                }
             }
 
             LOG_INFO("Processing '{}' @ {} found in virtual hook map", version_string, interface_ptr);

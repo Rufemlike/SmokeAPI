@@ -315,11 +315,7 @@ namespace smoke_api {
 
             config::get() = kb::config::parse<config::Config>();
 
-            if(config::get().logging) {
-                kb::logger::init_file_logger(kb::paths::get_log_path());
-            } else {
-                kb::logger::init_null_logger();
-            }
+            kb::logger::init_file_logger(kb::paths::get_log_path());
 
             LOG_INFO("{} v{}{} | Built at '{}'", PROJECT_NAME, PROJECT_VERSION, VERSION_SUFFIX, __TIMESTAMP__);
             LOG_DEBUG("Parsed config:\n{}", nlohmann::ordered_json(config::get()).dump(2));

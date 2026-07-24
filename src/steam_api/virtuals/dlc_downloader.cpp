@@ -15,6 +15,8 @@
 #pragma comment(lib, "urlmon.lib")
 #endif
 
+#include <koalabox/paths.hpp>
+
 namespace dlc_downloader {
     struct DownloadState {
         uint64_t downloaded = 0;
@@ -48,10 +50,22 @@ namespace dlc_downloader {
         STDMETHODIMP OnProgress(ULONG ulProgress, ULONG ulProgressMax, ULONG ulStatusCode, LPCWSTR szStatusText) {
             std::lock_guard<std::mutex> lock(g_download_mutex);
             auto& state = g_download_states[m_dlc_id];
-            state.downloaded = ulProgress;
-            if (ulProgressMax > 0) {
-                state.total = ulProgressMax;
+            
+            // Only update progress when actually downloading data
+            if (ulStatusCode == 4 /* BINDSTATUS_BEGINDOWNLOADDATA */ || 
+                ulStatusCode == 5 /* BINDSTATUS_DOWNLOADINGDATA */ || 
+                ulStatusCode == 6 /* BINDSTATUS_ENDDOWNLOADDATA */) {
+                
+                state.downloaded = ulProgress;
+                
+                // Only update total if it wasn't already set from expected_sizes
+                if (state.total == 0 && ulProgressMax > 0) {
+                    state.total = ulProgressMax;
+                }
             }
+
+            LOG_INFO("DLC Downloader OnProgress: dlc_id={}, ulProgress={}, ulProgressMax={}, statusCode={}, downloaded={}, total={}", 
+                     m_dlc_id, ulProgress, ulProgressMax, ulStatusCode, state.downloaded, state.total);
             return S_OK;
         }
         STDMETHODIMP OnStopBinding(HRESULT hresult, LPCWSTR szError) { return S_OK; }
@@ -62,25 +76,93 @@ namespace dlc_downloader {
 #endif
 
     bool get_progress(uint32_t dlc_id, uint64_t* downloaded, uint64_t* total) {
-        std::lock_guard<std::mutex> lock(g_download_mutex);
-        if (g_download_states.contains(dlc_id)) {
-            const auto& state = g_download_states[dlc_id];
-            if (state.is_downloading) {
-                *downloaded = state.downloaded;
-                *total = state.total;
-                return true;
+        {
+            std::lock_guard<std::mutex> lock(g_download_mutex);
+            if (g_download_states.contains(dlc_id)) {
+                const auto& state = g_download_states[dlc_id];
+                if (state.is_downloading) {
+                    if (downloaded) *downloaded = state.downloaded;
+                    if (total) *total = state.total;
+                    
+                    // We only log every ~50th call to avoid spamming the log if called frequently, 
+                    // or we can log it with a static counter.
+                    static int log_counter = 0;
+                    if (++log_counter % 50 == 0) {
+                        LOG_INFO("DLC Downloader get_progress (memory): dlc_id={}, downloaded={}, total={}", dlc_id, state.downloaded, state.total);
+                    }
+                    return true;
+                }
             }
         }
+
+        // Fallback: Check if the zip file exists on disk.
+        // This handles cases where the launcher spawns a helper process or reloads the DLL,
+        // so the download state is lost from memory but the download is still running in the background.
+        std::map<uint32_t, std::wstring> cdlc_folders = {
+            { 1227700, L"vn" },
+            { 1042220, L"GM" },
+            { 1175380, L"SPE" },
+            { 1294440, L"CSLA" },
+            { 1681170, L"WS" },
+            { 2647760, L"RF" },
+            { 2647830, L"EF" }
+        };
+
+        if (cdlc_folders.contains(dlc_id)) {
+            // Use absolute path to avoid CWD issues in multi-process architectures
+            std::wstring dlc_folder = cdlc_folders[dlc_id];
+            std::wstring zip_path = (koalabox::paths::get_self_dir().parent_path() / (L"temp_" + dlc_folder + L".zip")).wstring();
+            
+            // Use FindFirstFileW to get file size even if it's exclusively locked by another process/thread (URLDownloadToFileW)
+            WIN32_FIND_DATAW findData;
+            HANDLE hFind = FindFirstFileW(zip_path.c_str(), &findData);
+            if (hFind != INVALID_HANDLE_VALUE) {
+                LARGE_INTEGER size;
+                size.HighPart = findData.nFileSizeHigh;
+                size.LowPart = findData.nFileSizeLow;
+                FindClose(hFind);
+
+                std::map<uint32_t, uint64_t> expected_sizes = {
+                    { 1227700, (uint64_t)(35.74 * 1024 * 1024 * 1024) },
+                    { 1042220, (uint64_t)(35.71 * 1024 * 1024 * 1024) },
+                    { 1175380, (uint64_t)(28.88 * 1024 * 1024 * 1024) },
+                    { 1294440, (uint64_t)(9.76 * 1024 * 1024 * 1024) },
+                    { 1681170, (uint64_t)(4.93 * 1024 * 1024 * 1024) },
+                    { 2647760, (uint64_t)(4.01 * 1024 * 1024 * 1024) },
+                    { 2647830, (uint64_t)(3.31 * 1024 * 1024 * 1024) }
+                };
+                
+                if (downloaded) *downloaded = size.QuadPart;
+                if (total) *total = expected_sizes[dlc_id];
+                
+                LOG_INFO("DLC Downloader Fallback: SUCCESS for dlc_id={}. File size={}, Total={}", dlc_id, size.QuadPart, expected_sizes[dlc_id]);
+                return true;
+            } else {
+                LOG_ERROR("DLC Downloader Fallback: FindFirstFileW failed for dlc_id={} (error {})", dlc_id, GetLastError());
+            }
+        }
+
         return false;
     }
 
     void start_download(uint32_t dlc_id) {
         {
+            std::map<uint32_t, uint64_t> expected_sizes = {
+                { 1227700, (uint64_t)(35.74 * 1024 * 1024 * 1024) }, // SOG
+                { 1042220, (uint64_t)(35.71 * 1024 * 1024 * 1024) }, // GM
+                { 1175380, (uint64_t)(28.88 * 1024 * 1024 * 1024) }, // SPE
+                { 1294440, (uint64_t)(9.76 * 1024 * 1024 * 1024) },  // CSLA
+                { 1681170, (uint64_t)(4.93 * 1024 * 1024 * 1024) },  // WS
+                { 2647760, (uint64_t)(4.01 * 1024 * 1024 * 1024) },  // RF
+                { 2647830, (uint64_t)(3.31 * 1024 * 1024 * 1024) }   // EF
+            };
+            uint64_t expected_total = expected_sizes.contains(dlc_id) ? expected_sizes[dlc_id] : 0;
+
             std::lock_guard<std::mutex> lock(g_download_mutex);
             if (g_download_states.contains(dlc_id) && g_download_states[dlc_id].is_downloading) {
                 return; // Already downloading
             }
-            g_download_states[dlc_id] = {0, 0, true};
+            g_download_states[dlc_id] = {0, expected_total, true};
         }
 
 #ifdef _WIN32
@@ -129,15 +211,15 @@ namespace dlc_downloader {
                     dlc_folder = cdlc_folders[dlc_id];
                 }
 
-                std::wstring zip_path = L"..\\temp_" + dlc_folder + L".zip";
-                std::wstring temp_extract_path = L"..\\temp_extract_" + dlc_folder;
-                std::wstring final_dest_path = L"..\\" + dlc_folder;
+                std::wstring temp_extract_path = (koalabox::paths::get_self_dir().parent_path() / (L"temp_" + dlc_folder)).wstring();
+                std::wstring zip_path = temp_extract_path + L".zip";
+                std::wstring final_dest_path = (koalabox::paths::get_self_dir().parent_path() / dlc_folder).wstring();
 
                 DownloadProgressCallback callback(dlc_id);
-                std::wstring whref(href.begin(), href.end());
                 
-                LOG_INFO("Downloading zip to {}", std::string(zip_path.begin(), zip_path.end()));
-                HRESULT hr = URLDownloadToFileW(NULL, whref.c_str(), zip_path.c_str(), 0, &callback);
+                LOG_INFO("Downloading DLC {} from {} to {}", dlc_id, href, std::string(zip_path.begin(), zip_path.end()));
+
+                HRESULT hr = URLDownloadToFileW(NULL, std::wstring(href.begin(), href.end()).c_str(), zip_path.c_str(), 0, &callback);
                 
                 if (FAILED(hr)) {
                     throw std::runtime_error("URLDownloadToFileW failed with code " + std::to_string(hr));
@@ -149,7 +231,7 @@ namespace dlc_downloader {
                 ws << L"powershell -WindowStyle Hidden -Command \""
                    << L"Expand-Archive -Path '" << zip_path << L"' -DestinationPath '" << temp_extract_path << L"' -Force; "
                    << L"if (Test-Path '" << temp_extract_path << L"\\" << dlc_folder << L"') { "
-                   << L"  Move-Item -Path '" << temp_extract_path << L"\\" << dlc_folder << L"' -Destination '..' -Force; "
+                   << L"  Move-Item -Path '" << temp_extract_path << L"\\" << dlc_folder << L"' -Destination '" << final_dest_path << L"' -Force; "
                    << L"  Remove-Item -Path '" << temp_extract_path << "' -Recurse -Force; "
                    << L"} else { "
                    << L"  Move-Item -Path '" << temp_extract_path << "' -Destination '" << final_dest_path << L"' -Force; "

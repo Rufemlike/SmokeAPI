@@ -1,0 +1,1439 @@
+﻿2026-07-24T18:07:21.3430043Z Current runner version: '2.336.0'
+2026-07-24T18:07:21.3467038Z ##[group]Runner Image Provisioner
+2026-07-24T18:07:21.3468368Z Hosted Compute Agent
+2026-07-24T18:07:21.3469605Z Version: 20260707.563
+2026-07-24T18:07:21.3470873Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-07-24T18:07:21.3472182Z Build Date: 2026-07-07T19:33:50Z
+2026-07-24T18:07:21.3473397Z Worker ID: {2a21428e-0d22-4ecf-8591-4e4aeafde84f}
+2026-07-24T18:07:21.3474595Z Azure Region: eastus
+2026-07-24T18:07:21.3475570Z ##[endgroup]
+2026-07-24T18:07:21.3477820Z ##[group]Operating System
+2026-07-24T18:07:21.3479159Z Ubuntu
+2026-07-24T18:07:21.3480126Z 24.04.4
+2026-07-24T18:07:21.3480916Z LTS
+2026-07-24T18:07:21.3482286Z ##[endgroup]
+2026-07-24T18:07:21.3483357Z ##[group]Runner Image
+2026-07-24T18:07:21.3484343Z Image: ubuntu-24.04
+2026-07-24T18:07:21.3485376Z Version: 20260720.247.2
+2026-07-24T18:07:21.3487481Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-07-24T18:07:21.3490502Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-07-24T18:07:21.3492165Z ##[endgroup]
+2026-07-24T18:07:21.3494244Z ##[group]GITHUB_TOKEN Permissions
+2026-07-24T18:07:21.3497136Z Contents: read
+2026-07-24T18:07:21.3498191Z Metadata: read
+2026-07-24T18:07:21.3499408Z Packages: read
+2026-07-24T18:07:21.3500265Z ##[endgroup]
+2026-07-24T18:07:21.3503420Z Secret source: Actions
+2026-07-24T18:07:21.3505820Z Prepare workflow directory
+2026-07-24T18:07:21.4209330Z Prepare all required actions
+2026-07-24T18:07:21.4252328Z Getting action download info
+2026-07-24T18:07:21.5673966Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-07-24T18:07:21.7815142Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-07-24T18:07:21.9895008Z Complete job name: SmokeAPI-Linux-64
+2026-07-24T18:07:22.0466712Z ##[group]Checking docker version
+2026-07-24T18:07:22.0480113Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-07-24T18:07:22.1193102Z '1.48'
+2026-07-24T18:07:22.1211946Z Docker daemon API version: '1.48'
+2026-07-24T18:07:22.1212868Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-07-24T18:07:22.1378891Z '1.48'
+2026-07-24T18:07:22.1391867Z Docker client API version: '1.48'
+2026-07-24T18:07:22.1399099Z ##[endgroup]
+2026-07-24T18:07:22.1403826Z ##[group]Clean up resources from previous jobs
+2026-07-24T18:07:22.1410562Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=33b1c2"
+2026-07-24T18:07:22.1548201Z ##[command]/usr/bin/docker network prune --force --filter "label=33b1c2"
+2026-07-24T18:07:22.1678237Z ##[endgroup]
+2026-07-24T18:07:22.1679094Z ##[group]Create local container network
+2026-07-24T18:07:22.1689272Z ##[command]/usr/bin/docker network create --label 33b1c2 github_network_0d97c3b2792e4828b528d728f869dcc6
+2026-07-24T18:07:22.2182517Z 85aaa666f8ab757c5141fe0e725576ccb0bee4dc779afa98d657633587bde2c2
+2026-07-24T18:07:22.2202637Z ##[endgroup]
+2026-07-24T18:07:22.2230491Z ##[group]Starting job container
+2026-07-24T18:07:22.2255962Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_bddf6b16-58d8-4de5-8070-af0f38740080 login ghcr.io -u KormoK --password-stdin
+2026-07-24T18:07:22.3882206Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_bddf6b16-58d8-4de5-8070-af0f38740080 pull ghcr.io/acidicoala/koalabox:master
+2026-07-24T18:07:22.6119971Z master: Pulling from acidicoala/koalabox
+2026-07-24T18:07:22.6648740Z 20d00f72b79f: Pulling fs layer
+2026-07-24T18:07:22.6650165Z 9e25fa94686e: Pulling fs layer
+2026-07-24T18:07:22.6650988Z b9928ca9cb93: Pulling fs layer
+2026-07-24T18:07:22.6651597Z 3aee29ba1aaf: Pulling fs layer
+2026-07-24T18:07:22.6652190Z c8ca39249451: Pulling fs layer
+2026-07-24T18:07:22.6652789Z eb780644d114: Pulling fs layer
+2026-07-24T18:07:22.6653421Z 3aee29ba1aaf: Waiting
+2026-07-24T18:07:22.6653889Z c8ca39249451: Waiting
+2026-07-24T18:07:22.6654671Z eb780644d114: Waiting
+2026-07-24T18:07:22.7224275Z 9e25fa94686e: Verifying Checksum
+2026-07-24T18:07:22.7225813Z 9e25fa94686e: Download complete
+2026-07-24T18:07:22.9245338Z b9928ca9cb93: Verifying Checksum
+2026-07-24T18:07:22.9250310Z b9928ca9cb93: Download complete
+2026-07-24T18:07:22.9789979Z c8ca39249451: Verifying Checksum
+2026-07-24T18:07:22.9793542Z c8ca39249451: Download complete
+2026-07-24T18:07:23.0371157Z eb780644d114: Verifying Checksum
+2026-07-24T18:07:23.0372944Z eb780644d114: Download complete
+2026-07-24T18:07:24.7513737Z 20d00f72b79f: Verifying Checksum
+2026-07-24T18:07:24.7514434Z 20d00f72b79f: Download complete
+2026-07-24T18:07:30.4852521Z 20d00f72b79f: Pull complete
+2026-07-24T18:07:32.5489821Z 3aee29ba1aaf: Verifying Checksum
+2026-07-24T18:07:32.5490635Z 3aee29ba1aaf: Download complete
+2026-07-24T18:07:33.2920808Z 9e25fa94686e: Pull complete
+2026-07-24T18:07:33.7684713Z b9928ca9cb93: Pull complete
+2026-07-24T18:07:50.5825685Z 3aee29ba1aaf: Pull complete
+2026-07-24T18:07:50.5961559Z c8ca39249451: Pull complete
+2026-07-24T18:07:50.6110562Z eb780644d114: Pull complete
+2026-07-24T18:07:50.6153662Z Digest: sha256:67da1908609c8a191f09e9529c41fc1750702ce1bf9facd7da0a2308306ce235
+2026-07-24T18:07:50.6167946Z Status: Downloaded newer image for ghcr.io/acidicoala/koalabox:master
+2026-07-24T18:07:50.6177916Z ghcr.io/acidicoala/koalabox:master
+2026-07-24T18:07:50.6268607Z ##[command]/usr/bin/docker create --name fa82ba9a9a544f74b5b86569e358723f_ghcrioacidicoalakoalaboxmaster_11f6fe --label 33b1c2 --workdir /__w/SmokeAPI/SmokeAPI --network github_network_0d97c3b2792e4828b528d728f869dcc6  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/acidicoala/koalabox:master "-f" "/dev/null"
+2026-07-24T18:07:50.6580496Z bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:07:50.6606964Z ##[command]/usr/bin/docker start bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:07:50.8412743Z bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:07:50.8435613Z ##[command]/usr/bin/docker ps --all --filter id=bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-07-24T18:07:50.8575211Z bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e Up Less than a second
+2026-07-24T18:07:50.8597431Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:07:50.8730198Z HOME=/github/home
+2026-07-24T18:07:50.8730602Z GITHUB_ACTIONS=true
+2026-07-24T18:07:50.8730949Z CI=true
+2026-07-24T18:07:50.8731280Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-07-24T18:07:50.8731679Z LANG=C.UTF-8
+2026-07-24T18:07:50.8749239Z ##[endgroup]
+2026-07-24T18:07:50.8759102Z ##[group]Waiting for all services to be ready
+2026-07-24T18:07:50.8760886Z ##[endgroup]
+2026-07-24T18:07:50.9046294Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-24T18:07:50.9054906Z ##[group]Run actions/checkout@v4
+2026-07-24T18:07:50.9055380Z with:
+2026-07-24T18:07:50.9055614Z   submodules: recursive
+2026-07-24T18:07:50.9055872Z   repository: Rufemlike/SmokeAPI
+2026-07-24T18:07:50.9058249Z   token: ***
+2026-07-24T18:07:50.9058487Z   ssh-strict: true
+2026-07-24T18:07:50.9059012Z   ssh-user: git
+2026-07-24T18:07:50.9059620Z   persist-credentials: true
+2026-07-24T18:07:50.9059885Z   clean: true
+2026-07-24T18:07:50.9060121Z   sparse-checkout-cone-mode: true
+2026-07-24T18:07:50.9060398Z   fetch-depth: 1
+2026-07-24T18:07:50.9060619Z   fetch-tags: false
+2026-07-24T18:07:50.9060848Z   show-progress: true
+2026-07-24T18:07:50.9061137Z   lfs: false
+2026-07-24T18:07:50.9061350Z   set-safe-directory: true
+2026-07-24T18:07:50.9061610Z   allow-unsafe-pr-checkout: false
+2026-07-24T18:07:50.9062187Z env:
+2026-07-24T18:07:50.9062399Z   BUILD_DIR: ./build
+2026-07-24T18:07:50.9062631Z   C_COMPILER: clang
+2026-07-24T18:07:50.9062851Z   CXX_COMPILER: clang++
+2026-07-24T18:07:50.9063176Z   OUTPUT_PATH: *.so
+2026-07-24T18:07:50.9063388Z   WIN_FLAGS: 
+2026-07-24T18:07:50.9063592Z   LINUX_FLAGS: 
+2026-07-24T18:07:50.9063799Z ##[endgroup]
+2026-07-24T18:07:50.9130700Z ##[command]/usr/bin/docker exec  bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e sh -c "cat /etc/*release | grep ^ID"
+2026-07-24T18:07:51.1325538Z Syncing repository: Rufemlike/SmokeAPI
+2026-07-24T18:07:51.1327823Z ##[group]Getting Git version info
+2026-07-24T18:07:51.1328456Z Working directory is '/__w/SmokeAPI/SmokeAPI'
+2026-07-24T18:07:51.1329647Z [command]/usr/sbin/git version
+2026-07-24T18:07:51.1330128Z git version 2.52.0
+2026-07-24T18:07:51.1331859Z ##[endgroup]
+2026-07-24T18:07:51.1337408Z Temporarily overriding HOME='/__w/_temp/38ab8521-8246-4884-a66e-95c3ffb75581' before making global git config changes
+2026-07-24T18:07:51.1338614Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-24T18:07:51.1339905Z [command]/usr/sbin/git config --global --add safe.directory /__w/SmokeAPI/SmokeAPI
+2026-07-24T18:07:51.1387292Z Deleting the contents of '/__w/SmokeAPI/SmokeAPI'
+2026-07-24T18:07:51.1391608Z ##[group]Initializing the repository
+2026-07-24T18:07:51.1396083Z [command]/usr/sbin/git init /__w/SmokeAPI/SmokeAPI
+2026-07-24T18:07:51.1465646Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-07-24T18:07:51.1466879Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-07-24T18:07:51.1470206Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-07-24T18:07:51.1471343Z hint: call:
+2026-07-24T18:07:51.1472986Z hint:
+2026-07-24T18:07:51.1473642Z hint: 	git config --global init.defaultBranch <name>
+2026-07-24T18:07:51.1474356Z hint:
+2026-07-24T18:07:51.1474885Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-07-24T18:07:51.1475486Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-07-24T18:07:51.1475935Z hint:
+2026-07-24T18:07:51.1476165Z hint: 	git branch -m <name>
+2026-07-24T18:07:51.1476427Z hint:
+2026-07-24T18:07:51.1476789Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-07-24T18:07:51.1477359Z Initialized empty Git repository in /__w/SmokeAPI/SmokeAPI/.git/
+2026-07-24T18:07:51.1485052Z [command]/usr/sbin/git remote add origin https://github.com/Rufemlike/SmokeAPI
+2026-07-24T18:07:51.1532699Z ##[endgroup]
+2026-07-24T18:07:51.1533414Z ##[group]Disabling automatic garbage collection
+2026-07-24T18:07:51.1536411Z [command]/usr/sbin/git config --local gc.auto 0
+2026-07-24T18:07:51.1577085Z ##[endgroup]
+2026-07-24T18:07:51.1577921Z ##[group]Setting up auth
+2026-07-24T18:07:51.1584317Z [command]/usr/sbin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-24T18:07:51.1630449Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-24T18:07:51.2149139Z [command]/usr/sbin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-24T18:07:51.2190931Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-24T18:07:51.2636895Z [command]/usr/sbin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-24T18:07:51.2673175Z [command]/usr/sbin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-24T18:07:51.3111071Z [command]/usr/sbin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-24T18:07:51.3159852Z ##[endgroup]
+2026-07-24T18:07:51.3161082Z ##[group]Fetching the repository
+2026-07-24T18:07:51.3171132Z [command]/usr/sbin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ae403648f9ecdb5de55f520bdfc18d23b70f9c58:refs/remotes/origin/fex-emu-arm64-fix
+2026-07-24T18:07:52.5218010Z From https://github.com/Rufemlike/SmokeAPI
+2026-07-24T18:07:52.5219215Z  * [new ref]         ae403648f9ecdb5de55f520bdfc18d23b70f9c58 -> origin/fex-emu-arm64-fix
+2026-07-24T18:07:52.5262839Z ##[endgroup]
+2026-07-24T18:07:52.5263684Z ##[group]Determining the checkout info
+2026-07-24T18:07:52.5265914Z ##[endgroup]
+2026-07-24T18:07:52.5273647Z [command]/usr/sbin/git sparse-checkout disable
+2026-07-24T18:07:52.5326317Z [command]/usr/sbin/git config --local --unset-all extensions.worktreeConfig
+2026-07-24T18:07:52.5363653Z ##[group]Checking out the ref
+2026-07-24T18:07:52.5380172Z [command]/usr/sbin/git checkout --progress --force -B fex-emu-arm64-fix refs/remotes/origin/fex-emu-arm64-fix
+2026-07-24T18:07:52.7702025Z Switched to a new branch 'fex-emu-arm64-fix'
+2026-07-24T18:07:52.7702894Z branch 'fex-emu-arm64-fix' set up to track 'origin/fex-emu-arm64-fix'.
+2026-07-24T18:07:52.7730319Z ##[endgroup]
+2026-07-24T18:07:52.7731601Z ##[group]Setting up auth for fetching submodules
+2026-07-24T18:07:52.7738133Z [command]/usr/sbin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-24T18:07:52.7791164Z [command]/usr/sbin/git config --global --unset-all url.https://github.com/.insteadOf
+2026-07-24T18:07:52.7840610Z [command]/usr/sbin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2026-07-24T18:07:52.7884691Z [command]/usr/sbin/git config --global --add url.https://github.com/.insteadOf org-99505088@github.com:
+2026-07-24T18:07:52.7913606Z ##[endgroup]
+2026-07-24T18:07:52.7914324Z ##[group]Fetching submodules
+2026-07-24T18:07:52.7918879Z [command]/usr/sbin/git submodule sync --recursive
+2026-07-24T18:07:52.8369788Z [command]/usr/sbin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2026-07-24T18:07:52.8802816Z Submodule 'KoalaBox' (https://github.com/Rufemlike/KoalaBox.git) registered for path 'KoalaBox'
+2026-07-24T18:07:52.8846270Z Cloning into '/__w/SmokeAPI/SmokeAPI/KoalaBox'...
+2026-07-24T18:07:53.7323704Z From https://github.com/Rufemlike/KoalaBox
+2026-07-24T18:07:53.7324706Z  * branch            c5cd95c4e318a91dec4e6ac854db07e7f5ce346c -> FETCH_HEAD
+2026-07-24T18:07:53.7455530Z Submodule path 'KoalaBox': checked out 'c5cd95c4e318a91dec4e6ac854db07e7f5ce346c'
+2026-07-24T18:07:53.7503702Z [command]/usr/sbin/git submodule foreach --recursive git config --local gc.auto 0
+2026-07-24T18:07:53.7966284Z Entering 'KoalaBox'
+2026-07-24T18:07:53.8054852Z ##[endgroup]
+2026-07-24T18:07:53.8057092Z ##[group]Persisting credentials for submodules
+2026-07-24T18:07:53.8063737Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2026-07-24T18:07:53.8525042Z Entering 'KoalaBox'
+2026-07-24T18:07:53.8646113Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-07-24T18:07:53.9065979Z Entering 'KoalaBox'
+2026-07-24T18:07:53.9172165Z file:/__w/SmokeAPI/SmokeAPI/.git/modules/KoalaBox/config	remote.origin.url
+2026-07-24T18:07:53.9223365Z [command]/usr/sbin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2026-07-24T18:07:53.9651934Z Entering 'KoalaBox'
+2026-07-24T18:07:53.9744990Z [command]/usr/sbin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-99505088@github.com:'
+2026-07-24T18:07:54.0169936Z Entering 'KoalaBox'
+2026-07-24T18:07:54.0259706Z ##[endgroup]
+2026-07-24T18:07:54.0309705Z [command]/usr/sbin/git log -1 --format=%H
+2026-07-24T18:07:54.0345903Z ae403648f9ecdb5de55f520bdfc18d23b70f9c58
+2026-07-24T18:07:54.0597388Z ##[group]Run cmake -B "./build" -DMODULE=SmokeAPI -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++  
+2026-07-24T18:07:54.0598364Z [36;1mcmake -B "./build" -DMODULE=SmokeAPI -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++  [0m
+2026-07-24T18:07:54.0602489Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-07-24T18:07:54.0602808Z env:
+2026-07-24T18:07:54.0603009Z   BUILD_DIR: ./build
+2026-07-24T18:07:54.0603217Z   C_COMPILER: clang
+2026-07-24T18:07:54.0603424Z   CXX_COMPILER: clang++
+2026-07-24T18:07:54.0603630Z   OUTPUT_PATH: *.so
+2026-07-24T18:07:54.0603821Z   WIN_FLAGS: 
+2026-07-24T18:07:54.0604000Z   LINUX_FLAGS: 
+2026-07-24T18:07:54.0604180Z ##[endgroup]
+2026-07-24T18:07:54.1981449Z -- The C compiler identification is Clang 21.1.6
+2026-07-24T18:07:54.3418471Z -- The CXX compiler identification is Clang 21.1.6
+2026-07-24T18:07:54.3495390Z -- Detecting C compiler ABI info
+2026-07-24T18:07:54.4545749Z -- Detecting C compiler ABI info - done
+2026-07-24T18:07:54.4667003Z -- Check for working C compiler: /usr/sbin/clang - skipped
+2026-07-24T18:07:54.4670939Z -- Detecting C compile features
+2026-07-24T18:07:54.4676312Z -- Detecting C compile features - done
+2026-07-24T18:07:54.4832852Z -- Detecting CXX compiler ABI info
+2026-07-24T18:07:54.6078331Z -- Detecting CXX compiler ABI info - done
+2026-07-24T18:07:54.6207071Z -- Check for working CXX compiler: /usr/sbin/clang++ - skipped
+2026-07-24T18:07:54.6210855Z -- Detecting CXX compile features
+2026-07-24T18:07:54.6217464Z -- Detecting CXX compile features - done
+2026-07-24T18:07:54.7399217Z -- Found PkgConfig: /usr/sbin/pkg-config (found version "2.5.1")
+2026-07-24T18:07:54.7404075Z -- Checking for module 'gtk+-3.0'
+2026-07-24T18:07:54.7577631Z --   Found gtk+-3.0, version 3.24.51
+2026-07-24T18:07:54.8735135Z -- CPM: Adding package glob@0 (e796e3ca94e0c514296425d9884e2198c41699ee to /github/home/.cache/cmake/cpm/glob/360d)
+2026-07-24T18:07:55.3977695Z -- Downloading CPM.cmake to /github/home/.cache/cmake/cpm/cpm/CPM_0.35.1.cmake
+2026-07-24T18:07:55.5605700Z -- CPM: Adding package PackageProject.cmake@1.3 (v1.3 to /github/home/.cache/cmake/cpm/packageproject.cmake/209d)
+2026-07-24T18:07:56.0925966Z -- CPM: Adding package googletest@1.16.0 (v1.16.0 to /github/home/.cache/cmake/cpm/googletest/c160)
+2026-07-24T18:07:56.7712504Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-07-24T18:07:56.8810892Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-07-24T18:07:56.8820604Z -- Found Threads: TRUE
+2026-07-24T18:07:56.8900576Z -- CPM: Adding package json@3.12.0 (v3.12.0 to /github/home/.cache/cmake/cpm/json/b88c)
+2026-07-24T18:08:03.0730040Z -- Using the multi-header code from /github/home/.cache/cmake/cpm/json/b88c/include/
+2026-07-24T18:08:03.0730861Z -- Diagnostics enabled (JSON_DIAGNOSTICS=1)
+2026-07-24T18:08:03.0752208Z -- CPM: Adding package mbedtls@ (mbedtls-3.6.5 to /github/home/.cache/cmake/cpm/mbedtls/906c)
+2026-07-24T18:08:25.8919253Z CMake Deprecation Warning at /github/home/.cache/cmake/cpm/mbedtls/906c/CMakeLists.txt:21 (cmake_minimum_required):
+2026-07-24T18:08:25.8921078Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:08:25.8921740Z   CMake.
+2026-07-24T18:08:25.8921925Z 
+2026-07-24T18:08:25.8922277Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:08:25.8923163Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:08:25.8924260Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:08:25.8924630Z 
+2026-07-24T18:08:25.8924635Z 
+2026-07-24T18:08:25.9597397Z -- Could NOT find Python3 (missing: Python3_EXECUTABLE Interpreter) 
+2026-07-24T18:08:25.9695376Z -- CPM: Adding package cpr@1.13.0 (1.13.0 to /github/home/.cache/cmake/cpm/cpr/b6e3)
+2026-07-24T18:08:26.7035367Z -- CXX standard of parent project: 23
+2026-07-24T18:08:26.7035988Z -- CXX standard: 23
+2026-07-24T18:08:26.7036390Z -- C++ Requests CMake Options
+2026-07-24T18:08:26.7037300Z -- =======================================================
+2026-07-24T18:08:26.7037886Z --   CPR_GENERATE_COVERAGE: OFF
+2026-07-24T18:08:26.7038332Z --   CPR_CURL_NOSIGNAL: OFF
+2026-07-24T18:08:26.7038975Z --   CURL_VERBOSE_LOGGING: OFF
+2026-07-24T18:08:26.7039435Z --   CPR_USE_SYSTEM_GTEST: OFF
+2026-07-24T18:08:26.7039861Z --   CPR_USE_SYSTEM_CURL: OFF
+2026-07-24T18:08:26.7040337Z --   CPR_USE_EXISTING_CURL_TARGET: OFF
+2026-07-24T18:08:26.7040807Z --   CPR_CURL_USE_LIBPSL: OFF
+2026-07-24T18:08:26.7041268Z --   CPR_USE_SYSTEM_LIB_PSL: OFF
+2026-07-24T18:08:26.7041709Z --   CPR_ENABLE_CURL_HTTP_ONLY: ON
+2026-07-24T18:08:26.7042140Z --   CPR_ENABLE_SSL: ON
+2026-07-24T18:08:26.7042538Z --   CPR_FORCE_OPENSSL_BACKEND: OFF
+2026-07-24T18:08:26.7043001Z --   CPR_FORCE_WINSSL_BACKEND: OFF
+2026-07-24T18:08:26.7043465Z --   CPR_FORCE_DARWINSSL_BACKEND: OFF
+2026-07-24T18:08:26.7043945Z --   CPR_FORCE_MBEDTLS_BACKEND: ON
+2026-07-24T18:08:26.7044409Z --   CPR_ENABLE_LINTING: OFF
+2026-07-24T18:08:26.7044865Z --   CPR_ENABLE_CPPCHECK: OFF
+2026-07-24T18:08:26.7045295Z --   CPR_BUILD_TESTS: OFF
+2026-07-24T18:08:26.7045700Z --   CPR_BUILD_TESTS_SSL: OFF
+2026-07-24T18:08:26.7045946Z --   CPR_BUILD_TESTS_PROXY: OFF
+2026-07-24T18:08:26.7046376Z --   CPR_BUILD_VERSION_OUTPUT_ONLY: OFF
+2026-07-24T18:08:26.7046672Z --   CPR_SKIP_CA_BUNDLE_SEARCH: OFF
+2026-07-24T18:08:26.7046948Z --   CPR_USE_BOOST_FILESYSTEM: OFF
+2026-07-24T18:08:26.7047224Z --   CPR_DEBUG_SANITIZER_FLAG_THREAD: OFF
+2026-07-24T18:08:26.7047671Z --   CPR_DEBUG_SANITIZER_FLAG_ADDR: OFF
+2026-07-24T18:08:26.7047950Z --   CPR_DEBUG_SANITIZER_FLAG_LEAK: OFF
+2026-07-24T18:08:26.7048253Z --   CPR_DEBUG_SANITIZER_FLAG_UB: OFF
+2026-07-24T18:08:26.7048648Z --   CPR_DEBUG_SANITIZER_FLAG_ALL: OFF
+2026-07-24T18:08:26.7050015Z -- =======================================================
+2026-07-24T18:08:26.7118128Z -- Disabled SSL backend auto detect since either CPR_FORCE_OPENSSL_BACKEND, CPR_FORCE_DARWINSSL_BACKEND, CPR_FORCE_MBEDTLS_BACKEND, or CPR_FORCE_WINSSL_BACKEND is enabled.
+2026-07-24T18:08:26.7119054Z -- Using Mbed TLS.
+2026-07-24T18:08:26.7120014Z -- Configuring built-in curl...
+2026-07-24T18:08:27.9160077Z CMake Deprecation Warning at build/_deps/zlib-src/CMakeLists.txt:1 (cmake_minimum_required):
+2026-07-24T18:08:27.9161042Z -- Using CMake version 4.2.1
+2026-07-24T18:08:27.9161760Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:08:27.9162390Z   CMake.
+2026-07-24T18:08:27.9162618Z 
+2026-07-24T18:08:27.9162943Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:08:27.9163746Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:08:27.9164452Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:08:27.9164822Z 
+2026-07-24T18:08:27.9164827Z 
+2026-07-24T18:08:27.9173942Z -- ZLIB_HEADER_VERSION: 1.2.13
+2026-07-24T18:08:27.9174688Z -- ZLIBNG_HEADER_VERSION: 2.1.3
+2026-07-24T18:08:27.9741066Z -- Arch detected: 'x86_64'
+2026-07-24T18:08:27.9741682Z -- Basearch of 'x86_64' has been detected as: 'x86'
+2026-07-24T18:08:27.9772907Z -- Performing Test FNO_LTO_AVAILABLE
+2026-07-24T18:08:28.0845458Z -- Performing Test FNO_LTO_AVAILABLE - Success
+2026-07-24T18:08:28.0850961Z -- Looking for sys/auxv.h
+2026-07-24T18:08:28.2082135Z -- Looking for sys/auxv.h - found
+2026-07-24T18:08:28.2082873Z -- Looking for sys/sdt.h
+2026-07-24T18:08:28.3235320Z -- Looking for sys/sdt.h - found
+2026-07-24T18:08:28.3236156Z -- Looking for unistd.h
+2026-07-24T18:08:28.4389415Z -- Looking for unistd.h - found
+2026-07-24T18:08:28.4391109Z -- Looking for sys/types.h
+2026-07-24T18:08:28.5469539Z -- Looking for sys/types.h - found
+2026-07-24T18:08:28.5480578Z -- Looking for stdint.h
+2026-07-24T18:08:28.6550855Z -- Looking for stdint.h - found
+2026-07-24T18:08:28.6551753Z -- Looking for stddef.h
+2026-07-24T18:08:28.7628236Z -- Looking for stddef.h - found
+2026-07-24T18:08:28.7629017Z -- Check size of off64_t
+2026-07-24T18:08:28.8728680Z -- Check size of off64_t - done
+2026-07-24T18:08:28.8730288Z -- Looking for fseeko
+2026-07-24T18:08:28.9815958Z -- Looking for fseeko - found
+2026-07-24T18:08:28.9816496Z -- Looking for strerror
+2026-07-24T18:08:29.1137833Z -- Looking for strerror - found
+2026-07-24T18:08:29.1138297Z -- Looking for posix_memalign
+2026-07-24T18:08:29.2306313Z -- Looking for posix_memalign - found
+2026-07-24T18:08:29.2307647Z -- Looking for aligned_alloc
+2026-07-24T18:08:29.3446862Z -- Looking for aligned_alloc - found
+2026-07-24T18:08:29.3453553Z -- Performing Test HAVE_NO_INTERPOSITION
+2026-07-24T18:08:29.4463384Z -- Performing Test HAVE_NO_INTERPOSITION - Success
+2026-07-24T18:08:29.4464025Z -- Performing Test HAVE_ATTRIBUTE_VISIBILITY_HIDDEN
+2026-07-24T18:08:29.5541967Z -- Performing Test HAVE_ATTRIBUTE_VISIBILITY_HIDDEN - Success
+2026-07-24T18:08:29.5542929Z -- Performing Test HAVE_ATTRIBUTE_VISIBILITY_INTERNAL
+2026-07-24T18:08:29.6592556Z -- Performing Test HAVE_ATTRIBUTE_VISIBILITY_INTERNAL - Success
+2026-07-24T18:08:29.6593771Z -- Performing Test HAVE_ATTRIBUTE_ALIGNED
+2026-07-24T18:08:29.7646561Z -- Performing Test HAVE_ATTRIBUTE_ALIGNED - Success
+2026-07-24T18:08:29.7647628Z -- Performing Test HAVE_THREAD_LOCAL
+2026-07-24T18:08:29.8842678Z -- Performing Test HAVE_THREAD_LOCAL - Success
+2026-07-24T18:08:29.8843128Z -- Performing Test HAVE_BUILTIN_CTZ
+2026-07-24T18:08:29.9986581Z -- Performing Test HAVE_BUILTIN_CTZ - Success
+2026-07-24T18:08:29.9987540Z -- Performing Test HAVE_BUILTIN_CTZLL
+2026-07-24T18:08:30.1087144Z -- Performing Test HAVE_BUILTIN_CTZLL - Success
+2026-07-24T18:08:30.1087800Z -- Performing Test HAVE_PTRDIFF_T
+2026-07-24T18:08:30.2184073Z -- Performing Test HAVE_PTRDIFF_T - Success
+2026-07-24T18:08:30.2186322Z -- Performing Test HAVE_AVX2_INTRIN
+2026-07-24T18:08:30.7295927Z -- Performing Test HAVE_AVX2_INTRIN - Success
+2026-07-24T18:08:30.7304967Z -- Performing Test HAVE_CASCADE_LAKE
+2026-07-24T18:08:30.8300276Z -- Performing Test HAVE_CASCADE_LAKE - Success
+2026-07-24T18:08:30.8301869Z -- Performing Test HAVE_AVX512_INTRIN
+2026-07-24T18:08:31.3441534Z -- Performing Test HAVE_AVX512_INTRIN - Success
+2026-07-24T18:08:31.3442152Z -- Performing Test HAVE_MASK_INTRIN
+2026-07-24T18:08:31.8546893Z -- Performing Test HAVE_MASK_INTRIN - Success
+2026-07-24T18:08:31.8551622Z -- Performing Test HAVE_AVX512VNNI_INTRIN
+2026-07-24T18:08:32.3709760Z -- Performing Test HAVE_AVX512VNNI_INTRIN - Success
+2026-07-24T18:08:32.3712255Z -- Performing Test HAVE_SSE42CRC_INLINE_ASM
+2026-07-24T18:08:32.4783785Z -- Performing Test HAVE_SSE42CRC_INLINE_ASM - Success
+2026-07-24T18:08:32.4784684Z -- Performing Test HAVE_SSE42CRC_INTRIN
+2026-07-24T18:08:32.9812703Z -- Performing Test HAVE_SSE42CRC_INTRIN - Success
+2026-07-24T18:08:32.9814638Z -- Performing Test HAVE_SSE2_INTRIN
+2026-07-24T18:08:33.4939536Z -- Performing Test HAVE_SSE2_INTRIN - Success
+2026-07-24T18:08:33.4940895Z -- Performing Test HAVE_SSSE3_INTRIN
+2026-07-24T18:08:33.9974449Z -- Performing Test HAVE_SSSE3_INTRIN - Success
+2026-07-24T18:08:33.9976397Z -- Performing Test HAVE_PCLMULQDQ_INTRIN
+2026-07-24T18:08:34.5069094Z -- Performing Test HAVE_PCLMULQDQ_INTRIN - Success
+2026-07-24T18:08:34.5071634Z -- Performing Test HAVE_VPCLMULQDQ_INTRIN
+2026-07-24T18:08:35.0224703Z -- Performing Test HAVE_VPCLMULQDQ_INTRIN - Success
+2026-07-24T18:08:35.0226012Z -- Performing Test HAVE_XSAVE_INTRIN
+2026-07-24T18:08:35.0807196Z -- Performing Test HAVE_XSAVE_INTRIN - Failed
+2026-07-24T18:08:35.0921161Z -- Architecture-specific source files: arch/x86/x86_features.c;arch/x86/slide_hash_avx2.c;arch/x86/chunkset_avx2.c;arch/x86/compare256_avx2.c;arch/x86/adler32_avx2.c;arch/x86/adler32_avx512.c;arch/x86/adler32_avx512_vnni.c;arch/x86/adler32_sse42.c;arch/x86/insert_string_sse42.c;arch/x86/chunkset_sse2.c;arch/x86/compare256_sse2.c;arch/x86/slide_hash_sse2.c;arch/x86/adler32_ssse3.c;arch/x86/chunkset_ssse3.c;arch/x86/crc32_pclmulqdq.c;arch/x86/crc32_vpclmulqdq.c
+2026-07-24T18:08:35.0924892Z -- The following features have been enabled:
+2026-07-24T18:08:35.0925252Z 
+2026-07-24T18:08:35.0925699Z  * CMAKE_BUILD_TYPE, Build type: Release (selected)
+2026-07-24T18:08:35.0926368Z  * AVX2_SLIDEHASH, Support AVX2 optimized slide_hash, using "-mavx2"
+2026-07-24T18:08:35.0927118Z  * AVX2_CHUNKSET, Support AVX2 optimized chunkset, using "-mavx2"
+2026-07-24T18:08:35.0927865Z  * AVX2_COMPARE256, Support AVX2 optimized compare256, using "-mavx2"
+2026-07-24T18:08:35.0928596Z  * AVX2_ADLER32, Support AVX2-accelerated adler32, using "-mavx2"
+2026-07-24T18:08:35.0929939Z  * AVX512_ADLER32, Support AVX512-accelerated adler32, using "-mavx512f -mavx512dq -mavx512bw -mavx512vl -mtune=cascadelake"
+2026-07-24T18:08:35.0931456Z  * AVX512VNNI_ADLER32, Support AVX512VNNI adler32, using "-mavx512f -mavx512dq -mavx512bw -mavx512vl -mavx512vnni -mtune=cascadelake"
+2026-07-24T18:08:35.0932640Z  * SSE42_CRC, Support SSE4.2 optimized CRC hash generation, using "-msse4.2"
+2026-07-24T18:08:35.0933424Z  * SSSE3_ADLER32, Support SSSE3-accelerated adler32, using "-mssse3"
+2026-07-24T18:08:35.0934342Z  * PCLMUL_CRC, Support CRC hash generation using PCLMULQDQ, using "-mssse3 -msse4.2 -mpclmul"
+2026-07-24T18:08:35.0935861Z  * VPCLMUL_CRC, Support CRC hash generation using VPCLMULQDQ, using "-mvpclmulqdq -mavx512f -mavx512f -mavx512dq -mavx512bw -mavx512vl -mtune=cascadelake"
+2026-07-24T18:08:35.0937159Z  * WITH_GZFILEOP, Compile with support for gzFile related functions
+2026-07-24T18:08:35.0937843Z  * ZLIB_COMPAT, Compile with zlib compatible API
+2026-07-24T18:08:35.0938384Z  * ZLIBNG_ENABLE_TESTS, Test zlib-ng specific API
+2026-07-24T18:08:35.0939172Z  * WITH_SANITIZER, Enable sanitizer support
+2026-07-24T18:08:35.0939602Z  * WITH_GTEST, Build gtest_zlib
+2026-07-24T18:08:35.0939959Z  * WITH_OPTIM, Build with optimisation
+2026-07-24T18:08:35.0940349Z  * WITH_NEW_STRATEGIES, Use new strategies
+2026-07-24T18:08:35.0940737Z  * WITH_AVX2, Build with AVX2
+2026-07-24T18:08:35.0941078Z  * WITH_AVX512, Build with AVX512
+2026-07-24T18:08:35.0941442Z  * WITH_AVX512VNNI, Build with AVX512 VNNI
+2026-07-24T18:08:35.0941819Z  * WITH_SSE2, Build with SSE2
+2026-07-24T18:08:35.0942167Z  * WITH_SSSE3, Build with SSSE3
+2026-07-24T18:08:35.0942534Z  * WITH_SSE42, Build with SSE42
+2026-07-24T18:08:35.0942932Z  * WITH_PCLMULQDQ, Build with PCLMULQDQ
+2026-07-24T18:08:35.0943406Z  * WITH_VPCLMULQDQ, Build with VPCLMULQDQ
+2026-07-24T18:08:35.0943707Z 
+2026-07-24T18:08:35.0943909Z -- The following OPTIONAL packages have been found:
+2026-07-24T18:08:35.0944255Z 
+2026-07-24T18:08:35.0944373Z  * Threads
+2026-07-24T18:08:35.0944647Z  * Git
+2026-07-24T18:08:35.0944809Z 
+2026-07-24T18:08:35.0945007Z -- The following REQUIRED packages have been found:
+2026-07-24T18:08:35.0945357Z 
+2026-07-24T18:08:35.0945478Z  * PkgConfig
+2026-07-24T18:08:35.0945654Z 
+2026-07-24T18:08:35.0945869Z -- The following features have been disabled:
+2026-07-24T18:08:35.0946343Z 
+2026-07-24T18:08:35.0946711Z  * ZLIB_SYMBOL_PREFIX, Publicly exported symbols DO NOT have a custom prefix
+2026-07-24T18:08:35.0947132Z  * ZLIB_ENABLE_TESTS, Build test binaries
+2026-07-24T18:08:35.0947406Z  * WITH_FUZZERS, Build test/fuzz
+2026-07-24T18:08:35.0947677Z  * WITH_BENCHMARKS, Build test/benchmarks
+2026-07-24T18:08:35.0947990Z  * WITH_BENCHMARK_APPS, Build application benchmarks
+2026-07-24T18:08:35.0948557Z  * WITH_NATIVE_INSTRUCTIONS, Instruct the compiler to use the full instruction set on this host (gcc/clang -march=native)
+2026-07-24T18:08:35.0949518Z  * WITH_MAINTAINER_WARNINGS, Build with project maintainer warnings
+2026-07-24T18:08:35.0949912Z  * WITH_CODE_COVERAGE, Enable code coverage reporting
+2026-07-24T18:08:35.0950484Z  * WITH_INFLATE_STRICT, Build with strict inflate distance checking
+2026-07-24T18:08:35.0950958Z  * WITH_INFLATE_ALLOW_INVALID_DIST, Build with zero fill for inflate invalid distances
+2026-07-24T18:08:35.0951429Z  * INSTALL_UTILS, Copy minigzip and minideflate during install
+2026-07-24T18:08:35.0951667Z 
+2026-07-24T18:08:35.0951812Z -- The following OPTIONAL packages have not been found:
+2026-07-24T18:08:35.0952032Z 
+2026-07-24T18:08:35.0952108Z  * Python3
+2026-07-24T18:08:35.0952206Z 
+2026-07-24T18:08:35.0952287Z -- Enabled curl SSL
+2026-07-24T18:08:35.8477176Z -- Using CMake version 4.2.1
+2026-07-24T18:08:35.8499655Z -- curl version=[8.13.0]
+2026-07-24T18:08:35.8501269Z -- CMake platform flags: UNIX
+2026-07-24T18:08:35.8512857Z -- Picky compiler options: -Werror-implicit-function-declaration -Wextra -Wall -pedantic -Wbad-function-cast -Wconversion -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-long-long -Wno-multichar -Wpointer-arith -Wshadow -Wsign-compare -Wundef -Wunused -Wwrite-strings -Waddress -Wattributes -Wcast-align -Wcast-qual -Wdeclaration-after-statement -Wdiv-by-zero -Wempty-body -Wendif-labels -Wfloat-equal -Wformat-security -Wignored-qualifiers -Wmissing-field-initializers -Wmissing-noreturn -Wno-format-nonliteral -Wno-sign-conversion -Wno-system-headers -Wold-style-definition -Wredundant-decls -Wstrict-prototypes -Wtype-limits -Wunreachable-code -Wunused-parameter -Wvla -Wshift-sign-overflow -Wshorten-64-to-32 -Wformat=2 -Wlanguage-extension-token -Wdouble-promotion -Wenum-conversion -Wheader-guard -Wpragmas -Wsometimes-uninitialized -Wunused-const-variable -Wcomma -Wmissing-variable-declarations -Wassign-enum -Wextra-semi-stmt -Wimplicit-fallthrough
+2026-07-24T18:08:35.8615138Z -- Found Perl: /usr/sbin/perl (found version "5.42.0")
+2026-07-24T18:08:35.8653170Z -- Looking for connect in socket
+2026-07-24T18:08:35.9624680Z -- Looking for connect in socket - not found
+2026-07-24T18:08:35.9635263Z -- Performing Test HAVE_SOCKADDR_IN6_SIN6_SCOPE_ID
+2026-07-24T18:08:36.0781079Z -- Performing Test HAVE_SOCKADDR_IN6_SIN6_SCOPE_ID - Success
+2026-07-24T18:08:36.0782136Z -- Performing Test HAVE_SOCKADDR_IN6_SIN6_ADDR
+2026-07-24T18:08:36.1931098Z -- Performing Test HAVE_SOCKADDR_IN6_SIN6_ADDR - Success
+2026-07-24T18:08:36.2180991Z -- Found ZLIB: /usr/lib/libz.so (found version "1.3.1")
+2026-07-24T18:08:36.2232812Z -- Checking for module 'libzstd'
+2026-07-24T18:08:36.2346957Z --   Found libzstd, version 1.5.7
+2026-07-24T18:08:36.2619223Z -- Found Zstd (via pkg-config): /usr/include (found version "1.5.7")
+2026-07-24T18:08:36.2664948Z -- Checking for module 'libnghttp2'
+2026-07-24T18:08:36.2772453Z --   Found libnghttp2, version 1.68.0
+2026-07-24T18:08:36.3045297Z -- Found NGHTTP2 (via pkg-config): /usr/include (found version "1.68.0")
+2026-07-24T18:08:36.3093121Z -- Checking for module 'libidn2'
+2026-07-24T18:08:36.3206984Z --   Found libidn2, version 2.3.8
+2026-07-24T18:08:36.3482924Z -- Found Libidn2 (via pkg-config): /usr/include (found version "2.3.8")
+2026-07-24T18:08:36.3488897Z -- Performing Test USE_UNIX_SOCKETS
+2026-07-24T18:08:36.4676580Z -- Performing Test USE_UNIX_SOCKETS - Success
+2026-07-24T18:08:36.4677559Z -- Found CA bundle: /etc/ssl/certs/ca-certificates.crt
+2026-07-24T18:08:36.4682172Z -- Found CA path: /etc/ssl/certs
+2026-07-24T18:08:36.4684692Z -- Looking for sys/eventfd.h
+2026-07-24T18:08:36.5783051Z -- Looking for sys/eventfd.h - found
+2026-07-24T18:08:36.5783464Z -- Looking for sys/filio.h
+2026-07-24T18:08:36.6357696Z -- Looking for sys/filio.h - not found
+2026-07-24T18:08:36.6358124Z -- Looking for sys/ioctl.h
+2026-07-24T18:08:36.7489291Z -- Looking for sys/ioctl.h - found
+2026-07-24T18:08:36.7490441Z -- Looking for sys/param.h
+2026-07-24T18:08:36.8656924Z -- Looking for sys/param.h - found
+2026-07-24T18:08:36.8657443Z -- Looking for sys/poll.h
+2026-07-24T18:08:36.9812050Z -- Looking for sys/poll.h - found
+2026-07-24T18:08:36.9812518Z -- Looking for sys/resource.h
+2026-07-24T18:08:37.1135032Z -- Looking for sys/resource.h - found
+2026-07-24T18:08:37.1136065Z -- Looking for include file sys/select.h
+2026-07-24T18:08:37.2357997Z -- Looking for include file sys/select.h - found
+2026-07-24T18:08:37.2358977Z -- Looking for include files sys/select.h, sys/socket.h
+2026-07-24T18:08:37.3500344Z -- Looking for include files sys/select.h, sys/socket.h - found
+2026-07-24T18:08:37.3501064Z -- Looking for sys/sockio.h
+2026-07-24T18:08:37.4043384Z -- Looking for sys/sockio.h - not found
+2026-07-24T18:08:37.4044118Z -- Looking for sys/stat.h
+2026-07-24T18:08:37.5146190Z -- Looking for sys/stat.h - found
+2026-07-24T18:08:37.5147692Z -- Looking for 3 include files sys/select.h, ..., sys/time.h
+2026-07-24T18:08:37.6304690Z -- Looking for 3 include files sys/select.h, ..., sys/time.h - found
+2026-07-24T18:08:37.6305753Z -- Looking for sys/un.h
+2026-07-24T18:08:37.7397745Z -- Looking for sys/un.h - found
+2026-07-24T18:08:37.7398412Z -- Looking for 5 include files sys/select.h, ..., sys/utime.h
+2026-07-24T18:08:37.7994722Z -- Looking for 5 include files sys/select.h, ..., sys/utime.h - not found
+2026-07-24T18:08:37.7996243Z -- Looking for 5 include files sys/select.h, ..., arpa/inet.h
+2026-07-24T18:08:37.9137618Z -- Looking for 5 include files sys/select.h, ..., arpa/inet.h - found
+2026-07-24T18:08:37.9138339Z -- Looking for dirent.h
+2026-07-24T18:08:38.0254664Z -- Looking for dirent.h - found
+2026-07-24T18:08:38.0255336Z -- Looking for fcntl.h
+2026-07-24T18:08:38.1542911Z -- Looking for fcntl.h - found
+2026-07-24T18:08:38.1543554Z -- Looking for 6 include files sys/select.h, ..., ifaddrs.h
+2026-07-24T18:08:38.2740973Z -- Looking for 6 include files sys/select.h, ..., ifaddrs.h - found
+2026-07-24T18:08:38.2741782Z -- Looking for io.h
+2026-07-24T18:08:38.3369702Z -- Looking for io.h - not found
+2026-07-24T18:08:38.3370448Z -- Looking for 7 include files sys/select.h, ..., libgen.h
+2026-07-24T18:08:38.4528345Z -- Looking for 7 include files sys/select.h, ..., libgen.h - found
+2026-07-24T18:08:38.4529541Z -- Looking for linux/tcp.h
+2026-07-24T18:08:38.5653659Z -- Looking for linux/tcp.h - found
+2026-07-24T18:08:38.5654431Z -- Looking for locale.h
+2026-07-24T18:08:38.6726004Z -- Looking for locale.h - found
+2026-07-24T18:08:38.6727264Z -- Looking for 8 include files sys/select.h, ..., net/if.h
+2026-07-24T18:08:38.7884269Z -- Looking for 8 include files sys/select.h, ..., net/if.h - found
+2026-07-24T18:08:38.7885885Z -- Looking for 9 include files sys/select.h, ..., netdb.h
+2026-07-24T18:08:38.9050806Z -- Looking for 9 include files sys/select.h, ..., netdb.h - found
+2026-07-24T18:08:38.9052714Z -- Looking for 10 include files sys/select.h, ..., netinet/in.h
+2026-07-24T18:08:39.0292965Z -- Looking for 10 include files sys/select.h, ..., netinet/in.h - found
+2026-07-24T18:08:39.0294587Z -- Looking for netinet/in6.h
+2026-07-24T18:08:39.0886766Z -- Looking for netinet/in6.h - not found
+2026-07-24T18:08:39.0888419Z -- Looking for 11 include files sys/select.h, ..., netinet/tcp.h
+2026-07-24T18:08:39.2053580Z -- Looking for 11 include files sys/select.h, ..., netinet/tcp.h - found
+2026-07-24T18:08:39.2054996Z -- Looking for 12 include files sys/select.h, ..., netinet/udp.h
+2026-07-24T18:08:39.3241275Z -- Looking for 12 include files sys/select.h, ..., netinet/udp.h - found
+2026-07-24T18:08:39.3242776Z -- Looking for poll.h
+2026-07-24T18:08:39.4347897Z -- Looking for poll.h - found
+2026-07-24T18:08:39.4348448Z -- Looking for pwd.h
+2026-07-24T18:08:39.5433582Z -- Looking for pwd.h - found
+2026-07-24T18:08:39.5434307Z -- Looking for stdatomic.h
+2026-07-24T18:08:39.6513065Z -- Looking for stdatomic.h - found
+2026-07-24T18:08:39.6513858Z -- Looking for stdbool.h
+2026-07-24T18:08:39.7739592Z -- Looking for stdbool.h - found
+2026-07-24T18:08:39.7741063Z -- Looking for strings.h
+2026-07-24T18:08:39.8862019Z -- Looking for strings.h - found
+2026-07-24T18:08:39.8862411Z -- Looking for stropts.h
+2026-07-24T18:08:39.9421752Z -- Looking for stropts.h - not found
+2026-07-24T18:08:39.9422606Z -- Looking for termio.h
+2026-07-24T18:08:39.9982901Z -- Looking for termio.h - not found
+2026-07-24T18:08:39.9990506Z -- Looking for termios.h
+2026-07-24T18:08:40.1163884Z -- Looking for termios.h - found
+2026-07-24T18:08:40.1164947Z -- Looking for utime.h
+2026-07-24T18:08:40.2272472Z -- Looking for utime.h - found
+2026-07-24T18:08:40.2274443Z -- Check size of size_t
+2026-07-24T18:08:40.3470193Z -- Check size of size_t - done
+2026-07-24T18:08:40.3471137Z -- Check size of ssize_t
+2026-07-24T18:08:40.4712822Z -- Check size of ssize_t - done
+2026-07-24T18:08:40.4714601Z -- Check size of long long
+2026-07-24T18:08:40.5841620Z -- Check size of long long - done
+2026-07-24T18:08:40.5844473Z -- Check size of long
+2026-07-24T18:08:40.6970198Z -- Check size of long - done
+2026-07-24T18:08:40.6971608Z -- Check size of int
+2026-07-24T18:08:40.8134143Z -- Check size of int - done
+2026-07-24T18:08:40.8135461Z -- Check size of __int64
+2026-07-24T18:08:40.8799531Z -- Check size of __int64 - failed
+2026-07-24T18:08:40.8801653Z -- Check size of time_t
+2026-07-24T18:08:40.9938124Z -- Check size of time_t - done
+2026-07-24T18:08:40.9940876Z -- Check size of suseconds_t
+2026-07-24T18:08:41.1061398Z -- Check size of suseconds_t - done
+2026-07-24T18:08:41.1062335Z -- Looking for fnmatch
+2026-07-24T18:08:41.2188169Z -- Looking for fnmatch - found
+2026-07-24T18:08:41.2191239Z -- Looking for basename
+2026-07-24T18:08:41.3427628Z -- Looking for basename - found
+2026-07-24T18:08:41.3430338Z -- Looking for opendir
+2026-07-24T18:08:41.4548131Z -- Looking for opendir - found
+2026-07-24T18:08:41.4549263Z -- Looking for poll
+2026-07-24T18:08:41.5771391Z -- Looking for poll - found
+2026-07-24T18:08:41.5774364Z -- Looking for socket
+2026-07-24T18:08:41.7133876Z -- Looking for socket - found
+2026-07-24T18:08:41.7135539Z -- Looking for socketpair
+2026-07-24T18:08:41.8494544Z -- Looking for socketpair - found
+2026-07-24T18:08:41.8495796Z -- Looking for recv
+2026-07-24T18:08:41.9740389Z -- Looking for recv - found
+2026-07-24T18:08:41.9743816Z -- Looking for send
+2026-07-24T18:08:42.0996024Z -- Looking for send - found
+2026-07-24T18:08:42.0996892Z -- Looking for sendmsg
+2026-07-24T18:08:42.2077790Z -- Looking for sendmsg - found
+2026-07-24T18:08:42.2078139Z -- Looking for sendmmsg
+2026-07-24T18:08:42.3170883Z -- Looking for sendmmsg - found
+2026-07-24T18:08:42.3173814Z -- Looking for select
+2026-07-24T18:08:42.4373448Z -- Looking for select - found
+2026-07-24T18:08:42.4376370Z -- Looking for strdup
+2026-07-24T18:08:42.5541837Z -- Looking for strdup - found
+2026-07-24T18:08:42.5544415Z -- Looking for memrchr
+2026-07-24T18:08:42.6682668Z -- Looking for memrchr - found
+2026-07-24T18:08:42.6685095Z -- Looking for alarm
+2026-07-24T18:08:42.7865361Z -- Looking for alarm - found
+2026-07-24T18:08:42.7867995Z -- Looking for fcntl
+2026-07-24T18:08:42.8977172Z -- Looking for fcntl - found
+2026-07-24T18:08:42.8977515Z -- Looking for getppid
+2026-07-24T18:08:43.0092488Z -- Looking for getppid - found
+2026-07-24T18:08:43.0093182Z -- Looking for utimes
+2026-07-24T18:08:43.1243785Z -- Looking for utimes - found
+2026-07-24T18:08:43.1244141Z -- Looking for gettimeofday
+2026-07-24T18:08:43.2332702Z -- Looking for gettimeofday - found
+2026-07-24T18:08:43.2335139Z -- Looking for closesocket
+2026-07-24T18:08:43.3052265Z -- Looking for closesocket - not found
+2026-07-24T18:08:43.3054013Z -- Looking for sigsetjmp
+2026-07-24T18:08:43.4310484Z -- Looking for sigsetjmp - found
+2026-07-24T18:08:43.4311010Z -- Looking for getpass_r
+2026-07-24T18:08:43.5415905Z -- Looking for getpass_r - not found
+2026-07-24T18:08:43.5417182Z -- Looking for getpwuid
+2026-07-24T18:08:43.6504878Z -- Looking for getpwuid - found
+2026-07-24T18:08:43.6505734Z -- Looking for getpwuid_r
+2026-07-24T18:08:43.7762089Z -- Looking for getpwuid_r - found
+2026-07-24T18:08:43.7762475Z -- Looking for geteuid
+2026-07-24T18:08:43.8849702Z -- Looking for geteuid - found
+2026-07-24T18:08:43.8850304Z -- Looking for utime
+2026-07-24T18:08:44.0058421Z -- Looking for utime - found
+2026-07-24T18:08:44.0061147Z -- Looking for gmtime_r
+2026-07-24T18:08:44.1360814Z -- Looking for gmtime_r - found
+2026-07-24T18:08:44.1363136Z -- Looking for gethostbyname_r
+2026-07-24T18:08:44.2555515Z -- Looking for gethostbyname_r - found
+2026-07-24T18:08:44.2558524Z -- Looking for gethostname
+2026-07-24T18:08:44.3789247Z -- Looking for gethostname - found
+2026-07-24T18:08:44.3791422Z -- Looking for signal
+2026-07-24T18:08:44.4985768Z -- Looking for signal - found
+2026-07-24T18:08:44.5007592Z -- Looking for strerror_r
+2026-07-24T18:08:44.6375384Z -- Looking for strerror_r - found
+2026-07-24T18:08:44.6378025Z -- Looking for sigaction
+2026-07-24T18:08:44.7734851Z -- Looking for sigaction - found
+2026-07-24T18:08:44.7736942Z -- Looking for siginterrupt
+2026-07-24T18:08:44.8946762Z -- Looking for siginterrupt - found
+2026-07-24T18:08:44.8950084Z -- Looking for getaddrinfo
+2026-07-24T18:08:45.0230293Z -- Looking for getaddrinfo - found
+2026-07-24T18:08:45.0232647Z -- Looking for getifaddrs
+2026-07-24T18:08:45.1656579Z -- Looking for getifaddrs - found
+2026-07-24T18:08:45.1658605Z -- Looking for freeaddrinfo
+2026-07-24T18:08:45.3013893Z -- Looking for freeaddrinfo - found
+2026-07-24T18:08:45.3020832Z -- Looking for pipe
+2026-07-24T18:08:45.4116148Z -- Looking for pipe - found
+2026-07-24T18:08:45.4116490Z -- Looking for eventfd
+2026-07-24T18:08:45.5258474Z -- Looking for eventfd - found
+2026-07-24T18:08:45.5260471Z -- Looking for ftruncate
+2026-07-24T18:08:45.6422808Z -- Looking for ftruncate - found
+2026-07-24T18:08:45.6425596Z -- Looking for getpeername
+2026-07-24T18:08:45.7659380Z -- Looking for getpeername - found
+2026-07-24T18:08:45.7661770Z -- Looking for getsockname
+2026-07-24T18:08:45.8972719Z -- Looking for getsockname - found
+2026-07-24T18:08:45.8973582Z -- Looking for getrlimit
+2026-07-24T18:08:46.0259532Z -- Looking for getrlimit - found
+2026-07-24T18:08:46.0260130Z -- Looking for setlocale
+2026-07-24T18:08:46.1368624Z -- Looking for setlocale - found
+2026-07-24T18:08:46.1369439Z -- Looking for setrlimit
+2026-07-24T18:08:46.2538179Z -- Looking for setrlimit - found
+2026-07-24T18:08:46.2539049Z -- Looking for if_nametoindex
+2026-07-24T18:08:46.3651969Z -- Looking for if_nametoindex - found
+2026-07-24T18:08:46.3652372Z -- Looking for realpath
+2026-07-24T18:08:46.4768043Z -- Looking for realpath - found
+2026-07-24T18:08:46.4768568Z -- Looking for sched_yield
+2026-07-24T18:08:46.6009261Z -- Looking for sched_yield - found
+2026-07-24T18:08:46.6011348Z -- Looking for strcasecmp
+2026-07-24T18:08:46.7144626Z -- Looking for strcasecmp - found
+2026-07-24T18:08:46.7147403Z -- Looking for stricmp
+2026-07-24T18:08:46.7739457Z -- Looking for stricmp - not found
+2026-07-24T18:08:46.7742433Z -- Looking for strcmpi
+2026-07-24T18:08:46.8414807Z -- Looking for strcmpi - not found
+2026-07-24T18:08:46.8416050Z -- Looking for setmode
+2026-07-24T18:08:46.9559022Z -- Looking for setmode - not found
+2026-07-24T18:08:46.9559858Z -- Looking for snprintf
+2026-07-24T18:08:47.0666004Z -- Looking for snprintf - found
+2026-07-24T18:08:47.0668071Z -- Looking for inet_ntop
+2026-07-24T18:08:47.2097899Z -- Looking for inet_ntop - found
+2026-07-24T18:08:47.2102118Z -- Looking for inet_pton
+2026-07-24T18:08:47.3437566Z -- Looking for inet_pton - found
+2026-07-24T18:08:47.3440109Z -- Looking for fsetxattr
+2026-07-24T18:08:47.4606504Z -- Looking for fsetxattr - found
+2026-07-24T18:08:47.4607026Z -- Performing Test HAVE_FSETXATTR_5
+2026-07-24T18:08:47.5718996Z -- Performing Test HAVE_FSETXATTR_5 - Success
+2026-07-24T18:08:47.5719600Z -- Performing Test HAVE_FSETXATTR_6
+2026-07-24T18:08:47.6403957Z -- Performing Test HAVE_FSETXATTR_6 - Failed
+2026-07-24T18:08:47.6405216Z -- Check size of sa_family_t
+2026-07-24T18:08:47.7684168Z -- Check size of sa_family_t - done
+2026-07-24T18:08:47.7684810Z -- Performing Test HAVE_FCNTL_O_NONBLOCK
+2026-07-24T18:08:47.8876082Z -- Performing Test HAVE_FCNTL_O_NONBLOCK - Success
+2026-07-24T18:08:47.8876809Z -- Performing Test HAVE_IOCTLSOCKET
+2026-07-24T18:08:47.9434620Z -- Performing Test HAVE_IOCTLSOCKET - Failed
+2026-07-24T18:08:47.9435224Z -- Performing Test HAVE_IOCTLSOCKET_CAMEL
+2026-07-24T18:08:47.9990940Z -- Performing Test HAVE_IOCTLSOCKET_CAMEL - Failed
+2026-07-24T18:08:47.9991420Z -- Performing Test HAVE_IOCTLSOCKET_CAMEL_FIONBIO
+2026-07-24T18:08:48.0561208Z -- Performing Test HAVE_IOCTLSOCKET_CAMEL_FIONBIO - Failed
+2026-07-24T18:08:48.0561828Z -- Performing Test HAVE_IOCTLSOCKET_FIONBIO
+2026-07-24T18:08:48.1155088Z -- Performing Test HAVE_IOCTLSOCKET_FIONBIO - Failed
+2026-07-24T18:08:48.1155704Z -- Performing Test HAVE_IOCTL_FIONBIO
+2026-07-24T18:08:48.2472869Z -- Performing Test HAVE_IOCTL_FIONBIO - Success
+2026-07-24T18:08:48.2473484Z -- Performing Test HAVE_IOCTL_SIOCGIFADDR
+2026-07-24T18:08:48.3773362Z -- Performing Test HAVE_IOCTL_SIOCGIFADDR - Success
+2026-07-24T18:08:48.3773817Z -- Performing Test HAVE_SETSOCKOPT_SO_NONBLOCK
+2026-07-24T18:08:48.4445980Z -- Performing Test HAVE_SETSOCKOPT_SO_NONBLOCK - Failed
+2026-07-24T18:08:48.4446430Z -- Performing Test HAVE_GETHOSTBYNAME_R_3
+2026-07-24T18:08:48.5092517Z -- Performing Test HAVE_GETHOSTBYNAME_R_3 - Failed
+2026-07-24T18:08:48.5093165Z -- Performing Test HAVE_GETHOSTBYNAME_R_5
+2026-07-24T18:08:48.5764357Z -- Performing Test HAVE_GETHOSTBYNAME_R_5 - Failed
+2026-07-24T18:08:48.5765016Z -- Performing Test HAVE_GETHOSTBYNAME_R_6
+2026-07-24T18:08:48.6960487Z -- Performing Test HAVE_GETHOSTBYNAME_R_6 - Success
+2026-07-24T18:08:48.6961009Z -- Performing Test HAVE_BOOL_T
+2026-07-24T18:08:48.8095077Z -- Performing Test HAVE_BOOL_T - Success
+2026-07-24T18:08:48.8095641Z -- Performing Test STDC_HEADERS
+2026-07-24T18:08:48.9636195Z -- Performing Test STDC_HEADERS - Success
+2026-07-24T18:08:48.9636918Z -- Performing Test HAVE_ATOMIC
+2026-07-24T18:08:49.0935521Z -- Performing Test HAVE_ATOMIC - Success
+2026-07-24T18:08:49.0936195Z -- Performing Test HAVE_GETHOSTBYNAME_R_3_REENTRANT
+2026-07-24T18:08:49.1642414Z -- Performing Test HAVE_GETHOSTBYNAME_R_3_REENTRANT - Failed
+2026-07-24T18:08:49.1643140Z -- Performing Test HAVE_GETHOSTBYNAME_R_5_REENTRANT
+2026-07-24T18:08:49.2298646Z -- Performing Test HAVE_GETHOSTBYNAME_R_5_REENTRANT - Failed
+2026-07-24T18:08:49.2299530Z -- Performing Test HAVE_GETHOSTBYNAME_R_6_REENTRANT
+2026-07-24T18:08:49.3529393Z -- Performing Test HAVE_GETHOSTBYNAME_R_6_REENTRANT - Success
+2026-07-24T18:08:49.3530710Z -- Performing Test HAVE_FILE_OFFSET_BITS
+2026-07-24T18:08:49.4633261Z -- Performing Test HAVE_FILE_OFFSET_BITS - Success
+2026-07-24T18:08:49.4635879Z -- Check size of off_t
+2026-07-24T18:08:49.5798468Z -- Check size of off_t - done
+2026-07-24T18:08:49.5804064Z -- Check size of curl_off_t
+2026-07-24T18:08:49.6989934Z -- Check size of curl_off_t - done
+2026-07-24T18:08:49.6992509Z -- Check size of curl_socket_t
+2026-07-24T18:08:49.8295217Z -- Check size of curl_socket_t - done
+2026-07-24T18:08:49.8299471Z -- Performing Test HAVE_WRITABLE_ARGV
+2026-07-24T18:08:49.9428923Z -- Performing Test HAVE_WRITABLE_ARGV - Success
+2026-07-24T18:08:49.9432294Z -- Performing Test HAVE_TIME_T_UNSIGNED
+2026-07-24T18:08:50.0628092Z -- Performing Test HAVE_TIME_T_UNSIGNED - Failed
+2026-07-24T18:08:50.0630306Z -- Performing Test HAVE_GLIBC_STRERROR_R
+2026-07-24T18:08:50.1883785Z -- Performing Test HAVE_GLIBC_STRERROR_R - Success
+2026-07-24T18:08:50.1884448Z -- Performing Test HAVE_POSIX_STRERROR_R
+2026-07-24T18:08:50.2504721Z -- Performing Test HAVE_POSIX_STRERROR_R - Failed
+2026-07-24T18:08:50.2505242Z -- Performing Test HAVE_CLOCK_GETTIME_MONOTONIC
+2026-07-24T18:08:50.3657662Z -- Performing Test HAVE_CLOCK_GETTIME_MONOTONIC - Success
+2026-07-24T18:08:50.3671602Z -- Check size of struct sockaddr_storage
+2026-07-24T18:08:50.4886485Z -- Check size of struct sockaddr_storage - done
+2026-07-24T18:08:50.4887911Z -- Performing Test HAVE_MSG_NOSIGNAL
+2026-07-24T18:08:50.6264436Z -- Performing Test HAVE_MSG_NOSIGNAL - Success
+2026-07-24T18:08:50.6291190Z -- Performing Test HAVE_STRUCT_TIMEVAL
+2026-07-24T18:08:50.7505666Z -- Performing Test HAVE_STRUCT_TIMEVAL - Success
+2026-07-24T18:08:50.7507296Z -- Performing Test HAVE_H_ERRNO
+2026-07-24T18:08:50.8762043Z -- Performing Test HAVE_H_ERRNO - Success
+2026-07-24T18:08:50.8763669Z -- Performing Test HAVE_CLOCK_GETTIME_MONOTONIC_RAW
+2026-07-24T18:08:51.0064764Z -- Performing Test HAVE_CLOCK_GETTIME_MONOTONIC_RAW - Success
+2026-07-24T18:08:51.0128064Z -- Protocols: http https ws wss
+2026-07-24T18:08:51.0131699Z -- Features: alt-svc AsynchDNS HSTS HTTP2 HTTPS-proxy IDN IPv6 Largefile libz NTLM SSL threadsafe UnixSockets zstd
+2026-07-24T18:08:51.0132882Z -- Enabled SSL backends: mbedTLS
+2026-07-24T18:08:51.0276016Z -- 
+2026-07-24T18:08:51.0276367Z buildinfo.configure.tool: cmake
+2026-07-24T18:08:51.0276732Z buildinfo.configure.command: /usr/sbin/cmake
+2026-07-24T18:08:51.0277120Z buildinfo.configure.version: 4.2.1
+2026-07-24T18:08:51.0277787Z buildinfo.configure.args: -DMODULE="SmokeAPI"
+2026-07-24T18:08:51.0278194Z buildinfo.configure.generator: Unix Makefiles
+2026-07-24T18:08:51.0278563Z buildinfo.configure.make: /usr/sbin/make
+2026-07-24T18:08:51.0279170Z buildinfo.host.cpu: x86_64
+2026-07-24T18:08:51.0279452Z buildinfo.host.os: Linux
+2026-07-24T18:08:51.0279724Z buildinfo.target.cpu: x86_64
+2026-07-24T18:08:51.0280008Z buildinfo.target.os: Linux
+2026-07-24T18:08:51.0280283Z buildinfo.target.flags: UNIX
+2026-07-24T18:08:51.0280577Z buildinfo.compiler: Clang
+2026-07-24T18:08:51.0280862Z buildinfo.compiler.version: 21.1.6
+2026-07-24T18:08:51.0281157Z buildinfo.sysroot: 
+2026-07-24T18:08:51.0281308Z 
+2026-07-24T18:08:52.6073097Z -- CPM: Adding package PolyHook_2_0@0 (09a882ef40b821b32a51770785a8e05373073e84 to /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc)
+2026-07-24T18:09:00.7933081Z CMake Deprecation Warning at /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmtk/CMakeLists.txt:1 (cmake_minimum_required):
+2026-07-24T18:09:00.7934246Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:09:00.7934846Z   CMake.
+2026-07-24T18:09:00.7935067Z 
+2026-07-24T18:09:00.7935374Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:09:00.7936161Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:09:00.7936853Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:09:00.7937254Z 
+2026-07-24T18:09:00.7937289Z 
+2026-07-24T18:09:00.7985047Z -- Performing Test __CxxFlag__fno_threadsafe_statics
+2026-07-24T18:09:00.9259403Z -- Performing Test __CxxFlag__fno_threadsafe_statics - Success
+2026-07-24T18:09:00.9266262Z -- Performing Test __CxxFlag__fno_semantic_interposition
+2026-07-24T18:09:01.0512204Z -- Performing Test __CxxFlag__fno_semantic_interposition - Success
+2026-07-24T18:09:01.0519561Z -- Performing Test __CxxFlag__fmerge_all_constants
+2026-07-24T18:09:01.1828161Z -- Performing Test __CxxFlag__fmerge_all_constants - Success
+2026-07-24T18:09:01.1844076Z -- Performing Test __CxxFlag__fno_enforce_eh_specs
+2026-07-24T18:09:01.2430471Z -- Performing Test __CxxFlag__fno_enforce_eh_specs - Failed
+2026-07-24T18:09:01.2431491Z -- Dependency: adding libc (Linux, BSD, or other UNIX/POSIX environment)
+2026-07-24T18:09:01.2432139Z -- Performing Test ASMJIT_LIBC_HAS_LIBPTHREAD
+2026-07-24T18:09:01.3867360Z -- Dependency: libpthread provided by libc (not linking to libpthread)
+2026-07-24T18:09:01.3868041Z -- Performing Test ASMJIT_LIBC_HAS_LIBPTHREAD - Success
+2026-07-24T18:09:01.3868595Z -- Performing Test ASMJIT_LIBC_HAS_LIBRT
+2026-07-24T18:09:01.5202070Z -- Dependency: shm_open provided by libc (not linking to librt)
+2026-07-24T18:09:01.5202831Z -- Performing Test ASMJIT_LIBC_HAS_LIBRT - Success
+2026-07-24T18:09:01.5223210Z ** AsmJit Summary **
+2026-07-24T18:09:01.5223866Z    ASMJIT_DIR=/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit
+2026-07-24T18:09:01.5224502Z    ASMJIT_TEST=FALSE
+2026-07-24T18:09:01.5224863Z    ASMJIT_TARGET_TYPE=STATIC
+2026-07-24T18:09:01.5225295Z    ASMJIT_DEPS=c
+2026-07-24T18:09:01.5225624Z    ASMJIT_LIBS=asmjit;c
+2026-07-24T18:09:01.5225980Z    ASMJIT_CFLAGS=-DASMJIT_STATIC
+2026-07-24T18:09:01.5226953Z    ASMJIT_PRIVATE_CFLAGS=-Wall;-Wextra;-Wconversion;-fno-math-errno;-fno-threadsafe-statics;-fno-semantic-interposition;-DASMJIT_STATIC
+2026-07-24T18:09:01.5227966Z    ASMJIT_PRIVATE_CFLAGS_DBG=
+2026-07-24T18:09:01.5228448Z    ASMJIT_PRIVATE_CFLAGS_REL=-O2;-fmerge-all-constants
+2026-07-24T18:09:01.5256867Z ** AsmTK Summary **
+2026-07-24T18:09:01.5257565Z    ASMTK_DIR=/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmtk
+2026-07-24T18:09:01.5258195Z    ASMJIT_EXTERNAL=FALSE
+2026-07-24T18:09:01.5258569Z    ASMTK_TEST=
+2026-07-24T18:09:01.5259229Z    ASMTK_TARGET_TYPE=STATIC
+2026-07-24T18:09:01.5259644Z    ASMTK_CFLAGS=-DASMTK_STATIC
+2026-07-24T18:09:01.5260553Z    ASMTK_PRIVATE_CFLAGS=-Wall;-Wextra;-Wconversion;-fno-math-errno;-fno-threadsafe-statics;-DASMTK_STATIC;-DASMJIT_STATIC
+2026-07-24T18:09:01.5261502Z    ASMTK_PRIVATE_CFLAGS_DBG=
+2026-07-24T18:09:01.5262161Z    ASMTK_PRIVATE_CFLAGS_REL=-O2
+2026-07-24T18:09:01.5275539Z CMake Deprecation Warning at /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/zydis/dependencies/zycore/CMakeLists.txt:5 (cmake_minimum_required):
+2026-07-24T18:09:01.5276497Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:09:01.5276947Z   CMake.
+2026-07-24T18:09:01.5277067Z 
+2026-07-24T18:09:01.5277306Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:09:01.5277900Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:09:01.5278403Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:09:01.5278863Z 
+2026-07-24T18:09:01.5278870Z 
+2026-07-24T18:09:01.5355649Z -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+2026-07-24T18:09:01.5366177Z CMake Deprecation Warning at /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/zydis/CMakeLists.txt:1 (cmake_minimum_required):
+2026-07-24T18:09:01.5367020Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:09:01.5367466Z   CMake.
+2026-07-24T18:09:01.5367584Z 
+2026-07-24T18:09:01.5367822Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:09:01.5368404Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:09:01.5369199Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:09:01.5369508Z 
+2026-07-24T18:09:01.5369511Z 
+2026-07-24T18:09:01.5424733Z -- CPM: Adding package spdlog@1.15.3 (v1.15.3 to /github/home/.cache/cmake/cpm/spdlog/42d4)
+2026-07-24T18:09:02.1947084Z -- Build spdlog: 1.15.3
+2026-07-24T18:09:02.1984382Z -- Build type: Release
+2026-07-24T18:09:02.1993154Z -- Looking for fwrite_unlocked
+2026-07-24T18:09:02.3105852Z -- Looking for fwrite_unlocked - found
+2026-07-24T18:09:02.3125523Z -- CPM: Adding package utfcpp@4.0.6 (v4.0.6 to /github/home/.cache/cmake/cpm/utfcpp/9885)
+2026-07-24T18:09:02.9990010Z -- CPM: Adding package ELFIO@ (Release_3.12 to /github/home/.cache/cmake/cpm/elfio/e273)
+2026-07-24T18:09:04.4637626Z -- CPM: Adding package cxxopts@3.3.1 (v3.3.1 to /github/home/.cache/cmake/cpm/cxxopts/3917)
+2026-07-24T18:09:05.0700406Z -- CPM: Adding package inja@3.4.0 (v3.4.0 to /github/home/.cache/cmake/cpm/inja/75e4)
+2026-07-24T18:09:06.2838959Z CMake Deprecation Warning at /github/home/.cache/cmake/cpm/inja/75e4/CMakeLists.txt:1 (cmake_minimum_required):
+2026-07-24T18:09:06.2839933Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-07-24T18:09:06.2840312Z   CMake.
+2026-07-24T18:09:06.2840416Z 
+2026-07-24T18:09:06.2840618Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-07-24T18:09:06.2841097Z   to tell CMake that the project requires at least <min> but has been updated
+2026-07-24T18:09:06.2841519Z   to work with policies introduced by <max> or earlier.
+2026-07-24T18:09:06.2841744Z 
+2026-07-24T18:09:06.2841748Z 
+2026-07-24T18:09:06.2928518Z scripts/update_single_include.sh: line 6: python3: command not found
+2026-07-24T18:09:06.2966222Z -- CPM: Adding package miniz@0 (c883286f1a6443720e7705450f59e579a4bbb8e2 to /github/home/.cache/cmake/cpm/miniz/2b00)
+2026-07-24T18:09:07.4431767Z -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+2026-07-24T18:09:07.5773942Z -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+2026-07-24T18:09:07.5779843Z -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+2026-07-24T18:09:07.7011213Z -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+2026-07-24T18:09:07.7013537Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+2026-07-24T18:09:07.8349976Z -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+2026-07-24T18:09:07.8374636Z -- CPM: Adding package preprocessor@ (boost-1.89.0 to /github/home/.cache/cmake/cpm/preprocessor/8d74)
+2026-07-24T18:09:08.9325037Z -- CPM: Adding package BS_thread_pool@5.0.0 (v5.0.0 to /github/home/.cache/cmake/cpm/bs_thread_pool/ab0b)
+2026-07-24T18:09:09.5471053Z -- CPM: Adding package cpp-tree-sitter@0 (9cd7f3c9de9fc6d19bc982c6772fcd7a39e5797a to /github/home/.cache/cmake/cpm/cpp-tree-sitter/b845)
+2026-07-24T18:09:10.0849474Z -- Downloading CPM.cmake to /github/home/.cache/cmake/cpm/cpm/CPM_0.38.2.cmake
+2026-07-24T18:09:10.1780825Z -- CPM: Adding package tree-sitter@0.22.6 (v0.22.6 to /github/home/.cache/cmake/cpm/tree-sitter/fc0e)
+2026-07-24T18:09:10.1787593Z -- Populating tree-sitter
+2026-07-24T18:09:10.2139031Z -- Configuring done (0.0s)
+2026-07-24T18:09:10.2162501Z -- Generating done (0.0s)
+2026-07-24T18:09:10.2165717Z -- Build files have been written to: /__w/SmokeAPI/SmokeAPI/build/_deps/tree-sitter-subbuild
+2026-07-24T18:09:10.2699129Z [ 11%] Creating directories for 'tree-sitter-populate'
+2026-07-24T18:09:10.2930130Z [ 22%] Performing download step (git clone) for 'tree-sitter-populate'
+2026-07-24T18:09:10.3153116Z Cloning into 'fc0e'...
+2026-07-24T18:09:11.7919774Z HEAD is now at b40f342 0.22.6
+2026-07-24T18:09:11.8676426Z [ 33%] Performing update step for 'tree-sitter-populate'
+2026-07-24T18:09:11.8864500Z -- Already at requested tag: v0.22.6
+2026-07-24T18:09:11.8961795Z [ 44%] No patch step for 'tree-sitter-populate'
+2026-07-24T18:09:11.9192520Z [ 55%] No configure step for 'tree-sitter-populate'
+2026-07-24T18:09:11.9470138Z [ 66%] No build step for 'tree-sitter-populate'
+2026-07-24T18:09:11.9740378Z [ 77%] No install step for 'tree-sitter-populate'
+2026-07-24T18:09:12.0007259Z [ 88%] No test step for 'tree-sitter-populate'
+2026-07-24T18:09:12.0306548Z [100%] Completed 'tree-sitter-populate'
+2026-07-24T18:09:12.0609643Z [100%] Built target tree-sitter-populate
+2026-07-24T18:09:12.0715253Z -- CPM: Adding package tree-sitter-cpp@0.23.4 (v0.23.4 to /github/home/.cache/cmake/cpm/tree-sitter-cpp/66d2)
+2026-07-24T18:09:12.0723841Z -- Populating tree-sitter-cpp
+2026-07-24T18:09:12.1045311Z -- Configuring done (0.0s)
+2026-07-24T18:09:12.1070180Z -- Generating done (0.0s)
+2026-07-24T18:09:12.1074655Z -- Build files have been written to: /__w/SmokeAPI/SmokeAPI/build/_deps/tree-sitter-cpp-subbuild
+2026-07-24T18:09:12.1647476Z [ 11%] Creating directories for 'tree-sitter-cpp-populate'
+2026-07-24T18:09:12.1868880Z [ 22%] Performing download step (git clone) for 'tree-sitter-cpp-populate'
+2026-07-24T18:09:12.2069075Z Cloning into '66d2'...
+2026-07-24T18:10:32.9243326Z HEAD is now at f41e1a0 0.23.4
+2026-07-24T18:10:32.9980347Z [ 33%] Performing update step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.0184796Z -- Already at requested tag: v0.23.4
+2026-07-24T18:10:33.0302055Z [ 44%] No patch step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.0584082Z [ 55%] No configure step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.0912746Z [ 66%] No build step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.1237394Z [ 77%] No install step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.1559049Z [ 88%] No test step for 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.1861880Z [100%] Completed 'tree-sitter-cpp-populate'
+2026-07-24T18:10:33.2190755Z [100%] Built target tree-sitter-cpp-populate
+2026-07-24T18:10:33.2397273Z -- CPM: Adding package embed@1.2.19 (v1.2.19 to /github/home/.cache/cmake/cpm/embed/0ceb)
+2026-07-24T18:10:33.8425895Z -- Generating b::embed() HPP files ...
+2026-07-24T18:10:33.8426410Z -- Generating b::embed() HPP files ... Done
+2026-07-24T18:10:33.8456483Z -- Configuring done (159.7s)
+2026-07-24T18:10:34.0431298Z CMake Warning:
+2026-07-24T18:10:34.0431834Z   Manually-specified variables were not used by the project:
+2026-07-24T18:10:34.0432635Z 
+2026-07-24T18:10:34.0432751Z     MODULE
+2026-07-24T18:10:34.0432917Z 
+2026-07-24T18:10:34.0432933Z 
+2026-07-24T18:10:34.0433068Z -- Generating done (0.2s)
+2026-07-24T18:10:34.0443908Z -- Build files have been written to: /__w/SmokeAPI/SmokeAPI/build
+2026-07-24T18:10:34.0746075Z ##[group]Run cmake --build "./build" --config Release --target SmokeAPI
+2026-07-24T18:10:34.0746728Z [36;1mcmake --build "./build" --config Release --target SmokeAPI[0m
+2026-07-24T18:10:34.0747380Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-07-24T18:10:34.0747745Z env:
+2026-07-24T18:10:34.0747982Z   BUILD_DIR: ./build
+2026-07-24T18:10:34.0748250Z   C_COMPILER: clang
+2026-07-24T18:10:34.0748524Z   CXX_COMPILER: clang++
+2026-07-24T18:10:34.0749338Z   OUTPUT_PATH: *.so
+2026-07-24T18:10:34.0749634Z   WIN_FLAGS: 
+2026-07-24T18:10:34.0749874Z   LINUX_FLAGS: 
+2026-07-24T18:10:34.0750121Z ##[endgroup]
+2026-07-24T18:10:34.2439793Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/spdlog.cpp.o
+2026-07-24T18:10:41.9055527Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
+2026-07-24T18:10:44.4869451Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
+2026-07-24T18:10:47.2669365Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
+2026-07-24T18:10:50.8488589Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/async.cpp.o
+2026-07-24T18:10:54.6307586Z [  1%] Building CXX object _deps/spdlog-build/CMakeFiles/spdlog.dir/src/cfg.cpp.o
+2026-07-24T18:10:57.0559770Z [  2%] Linking CXX static library libspdlog.a
+2026-07-24T18:10:57.1586974Z [  2%] Built target spdlog
+2026-07-24T18:10:57.1909743Z [  2%] Building CXX object _deps/glob-build/CMakeFiles/Glob.dir/source/glob.cpp.o
+2026-07-24T18:11:01.8849064Z [  2%] Linking CXX static library libglob.a
+2026-07-24T18:11:01.9627474Z [  2%] Built target Glob
+2026-07-24T18:11:01.9887842Z [  2%] Building C object _deps/mbedtls-build/3rdparty/everest/CMakeFiles/everest.dir/library/everest.c.o
+2026-07-24T18:11:02.0456600Z [  2%] Building C object _deps/mbedtls-build/3rdparty/everest/CMakeFiles/everest.dir/library/x25519.c.o
+2026-07-24T18:11:02.0897669Z [  2%] Building C object _deps/mbedtls-build/3rdparty/everest/CMakeFiles/everest.dir/library/Hacl_Curve25519_joined.c.o
+2026-07-24T18:11:02.1407717Z [  2%] Linking C static library libeverest.a
+2026-07-24T18:11:02.1988591Z [  2%] Built target everest
+2026-07-24T18:11:02.2246806Z [  2%] Building C object _deps/mbedtls-build/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.o
+2026-07-24T18:11:02.2888977Z [  2%] Building C object _deps/mbedtls-build/3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.o
+2026-07-24T18:11:02.3581808Z [  2%] Linking C static library libp256m.a
+2026-07-24T18:11:02.4240765Z [  2%] Built target p256m
+2026-07-24T18:11:02.4544600Z [  2%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/aes.c.o
+2026-07-24T18:11:02.7350439Z [  2%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/aesni.c.o
+2026-07-24T18:11:02.8113983Z [  2%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/aesce.c.o
+2026-07-24T18:11:02.8635953Z [  2%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/aria.c.o
+2026-07-24T18:11:03.0371922Z [  2%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/asn1parse.c.o
+2026-07-24T18:11:03.1993984Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/asn1write.c.o
+2026-07-24T18:11:03.3409845Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/base64.c.o
+2026-07-24T18:11:03.4590200Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/bignum.c.o
+2026-07-24T18:11:03.9482517Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/bignum_core.c.o
+2026-07-24T18:11:04.2421549Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/bignum_mod.c.o
+2026-07-24T18:11:04.2860556Z [  3%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/bignum_mod_raw.c.o
+2026-07-24T18:11:04.3302784Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/block_cipher.c.o
+2026-07-24T18:11:04.3865088Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/camellia.c.o
+2026-07-24T18:11:04.6257921Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ccm.c.o
+2026-07-24T18:11:04.7899116Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/chacha20.c.o
+2026-07-24T18:11:04.9055843Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/chachapoly.c.o
+2026-07-24T18:11:04.9877111Z [  4%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/cipher.c.o
+2026-07-24T18:11:05.1665364Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/cipher_wrap.c.o
+2026-07-24T18:11:05.2803075Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/constant_time.c.o
+2026-07-24T18:11:05.4009824Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/cmac.c.o
+2026-07-24T18:11:05.5535176Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ctr_drbg.c.o
+2026-07-24T18:11:05.6696249Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/des.c.o
+2026-07-24T18:11:05.8768890Z [  6%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/dhm.c.o
+2026-07-24T18:11:05.9808583Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecdh.c.o
+2026-07-24T18:11:06.0682969Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecdsa.c.o
+2026-07-24T18:11:06.1680548Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecjpake.c.o
+2026-07-24T18:11:06.3247468Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecp.c.o
+2026-07-24T18:11:06.6610211Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecp_curves.c.o
+2026-07-24T18:11:07.0161602Z [  7%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ecp_curves_new.c.o
+2026-07-24T18:11:07.0623724Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/entropy.c.o
+2026-07-24T18:11:07.1663372Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/entropy_poll.c.o
+2026-07-24T18:11:07.2362317Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/error.c.o
+2026-07-24T18:11:07.3363776Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/gcm.c.o
+2026-07-24T18:11:07.5558307Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/hkdf.c.o
+2026-07-24T18:11:07.6266415Z [  8%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/hmac_drbg.c.o
+2026-07-24T18:11:07.7323794Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/lmots.c.o
+2026-07-24T18:11:07.8461364Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/lms.c.o
+2026-07-24T18:11:07.9461635Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/md.c.o
+2026-07-24T18:11:08.0996609Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/md5.c.o
+2026-07-24T18:11:08.2256600Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/memory_buffer_alloc.c.o
+2026-07-24T18:11:08.2742438Z [  9%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/nist_kw.c.o
+2026-07-24T18:11:08.3884420Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/oid.c.o
+2026-07-24T18:11:08.5648680Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/padlock.c.o
+2026-07-24T18:11:08.6134578Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pem.c.o
+2026-07-24T18:11:08.7181884Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pk.c.o
+2026-07-24T18:11:08.8727737Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pk_ecc.c.o
+2026-07-24T18:11:08.9501488Z [ 11%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pk_wrap.c.o
+2026-07-24T18:11:09.0506066Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pkcs12.c.o
+2026-07-24T18:11:09.1644807Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pkcs5.c.o
+2026-07-24T18:11:09.2800453Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pkparse.c.o
+2026-07-24T18:11:09.4433864Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/pkwrite.c.o
+2026-07-24T18:11:09.5669910Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/platform.c.o
+2026-07-24T18:11:09.6210080Z [ 12%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/platform_util.c.o
+2026-07-24T18:11:09.6913225Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/poly1305.c.o
+2026-07-24T18:11:09.7896443Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto.c.o
+2026-07-24T18:11:10.5891249Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_aead.c.o
+2026-07-24T18:11:10.6892369Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_cipher.c.o
+2026-07-24T18:11:10.8100142Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_client.c.o
+2026-07-24T18:11:10.8808871Z [ 13%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_driver_wrappers_no_static.c.o
+2026-07-24T18:11:10.9630240Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_ecp.c.o
+2026-07-24T18:11:11.0749660Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_ffdh.c.o
+2026-07-24T18:11:11.1708004Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_hash.c.o
+2026-07-24T18:11:11.2592429Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_mac.c.o
+2026-07-24T18:11:11.3826283Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_pake.c.o
+2026-07-24T18:11:11.4843567Z [ 14%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_rsa.c.o
+2026-07-24T18:11:11.6105212Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_se.c.o
+2026-07-24T18:11:11.6601040Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_slot_management.c.o
+2026-07-24T18:11:11.8132487Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_crypto_storage.c.o
+2026-07-24T18:11:11.9101462Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_its_file.c.o
+2026-07-24T18:11:11.9818245Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/psa_util.c.o
+2026-07-24T18:11:12.0946992Z [ 16%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/ripemd160.c.o
+2026-07-24T18:11:12.3114085Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/rsa.c.o
+2026-07-24T18:11:12.6258189Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/rsa_alt_helpers.c.o
+2026-07-24T18:11:12.7145486Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/sha1.c.o
+2026-07-24T18:11:12.9120923Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/sha256.c.o
+2026-07-24T18:11:13.0992736Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/sha512.c.o
+2026-07-24T18:11:13.2520236Z [ 17%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/sha3.c.o
+2026-07-24T18:11:13.4066212Z [ 18%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/threading.c.o
+2026-07-24T18:11:13.4611650Z [ 18%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/timing.c.o
+2026-07-24T18:11:13.5259683Z [ 18%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/version.c.o
+2026-07-24T18:11:13.5765467Z [ 18%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedcrypto.dir/version_features.c.o
+2026-07-24T18:11:13.6386670Z [ 18%] Linking C static library libmbedcrypto.a
+2026-07-24T18:11:13.7655620Z [ 18%] Built target mbedcrypto
+2026-07-24T18:11:13.7946121Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/pkcs7.c.o
+2026-07-24T18:11:13.9252007Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509.c.o
+2026-07-24T18:11:14.1976476Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509_create.c.o
+2026-07-24T18:11:14.3434549Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509_crl.c.o
+2026-07-24T18:11:14.4780880Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509_crt.c.o
+2026-07-24T18:11:14.8154257Z [ 19%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509_csr.c.o
+2026-07-24T18:11:14.9520175Z [ 20%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509write.c.o
+2026-07-24T18:11:15.0473199Z [ 20%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509write_crt.c.o
+2026-07-24T18:11:15.1806278Z [ 20%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedx509.dir/x509write_csr.c.o
+2026-07-24T18:11:15.2786998Z [ 20%] Linking C static library libmbedx509.a
+2026-07-24T18:11:15.3438150Z [ 20%] Built target mbedx509
+2026-07-24T18:11:15.3706965Z [ 20%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/debug.c.o
+2026-07-24T18:11:15.5089158Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/mps_reader.c.o
+2026-07-24T18:11:15.5880577Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/mps_trace.c.o
+2026-07-24T18:11:15.6374330Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/net_sockets.c.o
+2026-07-24T18:11:15.7712008Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_cache.c.o
+2026-07-24T18:11:15.8842344Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_ciphersuites.c.o
+2026-07-24T18:11:16.0027227Z [ 22%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_client.c.o
+2026-07-24T18:11:16.1853009Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_cookie.c.o
+2026-07-24T18:11:16.2879515Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_debug_helpers_generated.c.o
+2026-07-24T18:11:16.3907415Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_msg.c.o
+2026-07-24T18:11:16.9330587Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_ticket.c.o
+2026-07-24T18:11:17.0591352Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls.c.o
+2026-07-24T18:11:17.6888550Z [ 23%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls12_client.c.o
+2026-07-24T18:11:17.9880429Z [ 24%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls12_server.c.o
+2026-07-24T18:11:18.3671327Z [ 24%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls13_keys.c.o
+2026-07-24T18:11:18.5744098Z [ 24%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls13_server.c.o
+2026-07-24T18:11:18.9010431Z [ 24%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls13_client.c.o
+2026-07-24T18:11:19.2418394Z [ 24%] Building C object _deps/mbedtls-build/library/CMakeFiles/mbedtls.dir/ssl_tls13_generic.c.o
+2026-07-24T18:11:19.4684288Z [ 24%] Linking C static library libmbedtls.a
+2026-07-24T18:11:19.5447729Z [ 24%] Built target mbedtls
+2026-07-24T18:11:19.5770472Z [ 24%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/altsvc.c.o
+2026-07-24T18:11:19.7527535Z [ 24%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/amigaos.c.o
+2026-07-24T18:11:19.8346171Z [ 24%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/asyn-ares.c.o
+2026-07-24T18:11:19.9054395Z [ 24%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/asyn-thread.c.o
+2026-07-24T18:11:20.0470654Z [ 24%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/base64.c.o
+2026-07-24T18:11:20.1495755Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/bufq.c.o
+2026-07-24T18:11:20.3383484Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/bufref.c.o
+2026-07-24T18:11:20.4414349Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cf-h1-proxy.c.o
+2026-07-24T18:11:20.6669110Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cf-h2-proxy.c.o
+2026-07-24T18:11:20.9873649Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cf-haproxy.c.o
+2026-07-24T18:11:21.1138324Z [ 25%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cf-https-connect.c.o
+2026-07-24T18:11:21.3278360Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cf-socket.c.o
+2026-07-24T18:11:21.6336803Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cfilters.c.o
+2026-07-24T18:11:21.9211152Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/conncache.c.o
+2026-07-24T18:11:22.1451290Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cshutdn.c.o
+2026-07-24T18:11:22.3329498Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/connect.c.o
+2026-07-24T18:11:22.6631361Z [ 27%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/content_encoding.c.o
+2026-07-24T18:11:22.8446320Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cookie.c.o
+2026-07-24T18:11:23.1377318Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_addrinfo.c.o
+2026-07-24T18:11:23.2572479Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_des.c.o
+2026-07-24T18:11:23.3276087Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_endian.c.o
+2026-07-24T18:11:23.4011153Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_fnmatch.c.o
+2026-07-24T18:11:23.4764154Z [ 28%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_get_line.c.o
+2026-07-24T18:11:23.5752336Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_gethostname.c.o
+2026-07-24T18:11:23.6505736Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_gssapi.c.o
+2026-07-24T18:11:23.7193955Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_memrchr.c.o
+2026-07-24T18:11:23.7945150Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_multibyte.c.o
+2026-07-24T18:11:23.8698058Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_ntlm_core.c.o
+2026-07-24T18:11:24.0211042Z [ 29%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_range.c.o
+2026-07-24T18:11:24.1221894Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_rtmp.c.o
+2026-07-24T18:11:24.1954222Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_sasl.c.o
+2026-07-24T18:11:24.2652110Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_sha512_256.c.o
+2026-07-24T18:11:24.3939804Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_sspi.c.o
+2026-07-24T18:11:24.4727766Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_threads.c.o
+2026-07-24T18:11:24.5611518Z [ 30%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/curl_trc.c.o
+2026-07-24T18:11:24.7321721Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cw-out.c.o
+2026-07-24T18:11:24.8966449Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/cw-pause.c.o
+2026-07-24T18:11:25.0354347Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/dict.c.o
+2026-07-24T18:11:25.1074221Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/doh.c.o
+2026-07-24T18:11:25.3469981Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/dynbuf.c.o
+2026-07-24T18:11:25.4516304Z [ 32%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/dynhds.c.o
+2026-07-24T18:11:25.5853288Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/easy.c.o
+2026-07-24T18:11:25.7801780Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/easygetopt.c.o
+2026-07-24T18:11:25.8714964Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/easyoptions.c.o
+2026-07-24T18:11:25.9645890Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/escape.c.o
+2026-07-24T18:11:26.1059487Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/file.c.o
+2026-07-24T18:11:26.1771986Z [ 33%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/fileinfo.c.o
+2026-07-24T18:11:26.2503976Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/fopen.c.o
+2026-07-24T18:11:26.3678601Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/formdata.c.o
+2026-07-24T18:11:26.5673183Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/ftp.c.o
+2026-07-24T18:11:26.6375457Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/ftplistparser.c.o
+2026-07-24T18:11:26.7107954Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/getenv.c.o
+2026-07-24T18:11:26.7994009Z [ 34%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/getinfo.c.o
+2026-07-24T18:11:26.9268542Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/gopher.c.o
+2026-07-24T18:11:26.9949419Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hash.c.o
+2026-07-24T18:11:27.1201818Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hash_offt.c.o
+2026-07-24T18:11:27.2400232Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/headers.c.o
+2026-07-24T18:11:27.3851620Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hmac.c.o
+2026-07-24T18:11:27.4742002Z [ 35%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hostasyn.c.o
+2026-07-24T18:11:27.5865834Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hostip.c.o
+2026-07-24T18:11:27.8048319Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hostip4.c.o
+2026-07-24T18:11:27.8723718Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hostip6.c.o
+2026-07-24T18:11:27.9707565Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hostsyn.c.o
+2026-07-24T18:11:28.0429674Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/hsts.c.o
+2026-07-24T18:11:28.2136229Z [ 37%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http.c.o
+2026-07-24T18:11:28.7468933Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http1.c.o
+2026-07-24T18:11:28.8853025Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http2.c.o
+2026-07-24T18:11:29.3794379Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_aws_sigv4.c.o
+2026-07-24T18:11:29.5737746Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_chunks.c.o
+2026-07-24T18:11:29.7479014Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_digest.c.o
+2026-07-24T18:11:29.8532942Z [ 38%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_negotiate.c.o
+2026-07-24T18:11:29.9226971Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_ntlm.c.o
+2026-07-24T18:11:30.0521770Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/http_proxy.c.o
+2026-07-24T18:11:30.2100415Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/httpsrr.c.o
+2026-07-24T18:11:30.2822692Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/idn.c.o
+2026-07-24T18:11:30.3946407Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/if2ip.c.o
+2026-07-24T18:11:30.4928386Z [ 39%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/imap.c.o
+2026-07-24T18:11:30.5679938Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/inet_ntop.c.o
+2026-07-24T18:11:30.6451500Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/inet_pton.c.o
+2026-07-24T18:11:30.7273301Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/krb5.c.o
+2026-07-24T18:11:30.8043655Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/ldap.c.o
+2026-07-24T18:11:30.8775713Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/llist.c.o
+2026-07-24T18:11:30.9776946Z [ 40%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/macos.c.o
+2026-07-24T18:11:31.0481510Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/md4.c.o
+2026-07-24T18:11:31.1698229Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/md5.c.o
+2026-07-24T18:11:31.2629517Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/memdebug.c.o
+2026-07-24T18:11:31.3322548Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/mime.c.o
+2026-07-24T18:11:31.6679354Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/mprintf.c.o
+2026-07-24T18:11:32.1669566Z [ 41%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/mqtt.c.o
+2026-07-24T18:11:32.2452643Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/multi.c.o
+2026-07-24T18:11:32.7232323Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/multi_ev.c.o
+2026-07-24T18:11:32.8917825Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/netrc.c.o
+2026-07-24T18:11:33.0169664Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/nonblock.c.o
+2026-07-24T18:11:33.0992290Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/noproxy.c.o
+2026-07-24T18:11:33.2025874Z [ 43%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/openldap.c.o
+2026-07-24T18:11:33.2698892Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/parsedate.c.o
+2026-07-24T18:11:33.4086713Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/pingpong.c.o
+2026-07-24T18:11:33.5115867Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/pop3.c.o
+2026-07-24T18:11:33.5805225Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/progress.c.o
+2026-07-24T18:11:33.7386789Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/psl.c.o
+2026-07-24T18:11:33.8111241Z [ 44%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/rand.c.o
+2026-07-24T18:11:33.9284932Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/rename.c.o
+2026-07-24T18:11:34.0141790Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/request.c.o
+2026-07-24T18:11:34.1106747Z /__w/SmokeAPI/SmokeAPI/build/_deps/curl-src/lib/request.c:323:31: warning: variable 'tmp' is uninitialized when passed as a const pointer argument here [-Wuninitialized-const-pointer]
+2026-07-24T18:11:34.1108547Z   323 |     result = xfer_send(data, &tmp, 0, 0, &nwritten);
+2026-07-24T18:11:34.1109420Z       |                               ^~~
+2026-07-24T18:11:34.1582248Z 1 warning generated.
+2026-07-24T18:11:34.1724345Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/rtsp.c.o
+2026-07-24T18:11:34.2424586Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/select.c.o
+2026-07-24T18:11:34.3944967Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/sendf.c.o
+2026-07-24T18:11:34.6723050Z [ 45%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/setopt.c.o
+2026-07-24T18:11:34.9487338Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/sha256.c.o
+2026-07-24T18:11:35.0336004Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/share.c.o
+2026-07-24T18:11:35.1573509Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/slist.c.o
+2026-07-24T18:11:35.2498565Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/smb.c.o
+2026-07-24T18:11:35.3189311Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/smtp.c.o
+2026-07-24T18:11:35.3879204Z [ 46%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/socketpair.c.o
+2026-07-24T18:11:35.4940344Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/socks.c.o
+2026-07-24T18:11:35.7423654Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/socks_gssapi.c.o
+2026-07-24T18:11:35.8115239Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/socks_sspi.c.o
+2026-07-24T18:11:35.8838118Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/speedcheck.c.o
+2026-07-24T18:11:35.9956917Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/splay.c.o
+2026-07-24T18:11:36.0884722Z [ 48%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/strcase.c.o
+2026-07-24T18:11:36.1798679Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/strdup.c.o
+2026-07-24T18:11:36.2611595Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/strequal.c.o
+2026-07-24T18:11:36.3561358Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/strerror.c.o
+2026-07-24T18:11:36.4720457Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/strparse.c.o
+2026-07-24T18:11:36.5995683Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/system_win32.c.o
+2026-07-24T18:11:36.6705095Z [ 49%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/telnet.c.o
+2026-07-24T18:11:36.7489843Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/tftp.c.o
+2026-07-24T18:11:36.8198182Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/timediff.c.o
+2026-07-24T18:11:36.8978372Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/timeval.c.o
+2026-07-24T18:11:36.9762497Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/transfer.c.o
+2026-07-24T18:11:37.1834355Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/url.c.o
+2026-07-24T18:11:37.6300811Z [ 50%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/urlapi.c.o
+2026-07-24T18:11:37.9477081Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/version.c.o
+2026-07-24T18:11:38.0665530Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/version_win32.c.o
+2026-07-24T18:11:38.1425383Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/warnless.c.o
+2026-07-24T18:11:38.2310857Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/ws.c.o
+2026-07-24T18:11:38.4979714Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/cleartext.c.o
+2026-07-24T18:11:38.5662266Z [ 51%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/cram.c.o
+2026-07-24T18:11:38.6733290Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/digest.c.o
+2026-07-24T18:11:38.8691440Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/digest_sspi.c.o
+2026-07-24T18:11:38.9398087Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/gsasl.c.o
+2026-07-24T18:11:39.0100656Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/krb5_gssapi.c.o
+2026-07-24T18:11:39.0790387Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/krb5_sspi.c.o
+2026-07-24T18:11:39.1476439Z [ 53%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/ntlm.c.o
+2026-07-24T18:11:39.3071133Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/ntlm_sspi.c.o
+2026-07-24T18:11:39.3776558Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/oauth2.c.o
+2026-07-24T18:11:39.4465059Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/spnego_gssapi.c.o
+2026-07-24T18:11:39.5170233Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/spnego_sspi.c.o
+2026-07-24T18:11:39.5924531Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vauth/vauth.c.o
+2026-07-24T18:11:39.7050099Z [ 54%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/bearssl.c.o
+2026-07-24T18:11:39.7754605Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/cipher_suite.c.o
+2026-07-24T18:11:39.9598504Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/gtls.c.o
+2026-07-24T18:11:40.0363777Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/hostcheck.c.o
+2026-07-24T18:11:40.1066935Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/keylog.c.o
+2026-07-24T18:11:40.1770961Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/mbedtls.c.o
+2026-07-24T18:11:40.4425849Z [ 55%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/mbedtls_threadlock.c.o
+2026-07-24T18:11:40.5291285Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/openssl.c.o
+2026-07-24T18:11:40.6031070Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/rustls.c.o
+2026-07-24T18:11:40.6858074Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/schannel.c.o
+2026-07-24T18:11:40.7610512Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/schannel_verify.c.o
+2026-07-24T18:11:40.8315499Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/sectransp.c.o
+2026-07-24T18:11:40.9058063Z [ 56%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/vtls.c.o
+2026-07-24T18:11:41.2552347Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/vtls_scache.c.o
+2026-07-24T18:11:41.5044864Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/vtls_spack.c.o
+2026-07-24T18:11:41.5772692Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/wolfssl.c.o
+2026-07-24T18:11:41.6561899Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vtls/x509asn1.c.o
+2026-07-24T18:11:41.8948387Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/curl_msh3.c.o
+2026-07-24T18:11:41.9687857Z [ 58%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/curl_ngtcp2.c.o
+2026-07-24T18:11:42.0425176Z [ 59%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/curl_osslq.c.o
+2026-07-24T18:11:42.1181786Z [ 59%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/curl_quiche.c.o
+2026-07-24T18:11:42.1954665Z [ 59%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/vquic.c.o
+2026-07-24T18:11:42.3118577Z [ 59%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vquic/vquic-tls.c.o
+2026-07-24T18:11:42.3907615Z [ 59%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vssh/libssh.c.o
+2026-07-24T18:11:42.4640694Z [ 60%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vssh/libssh2.c.o
+2026-07-24T18:11:42.5345151Z [ 60%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vssh/curl_path.c.o
+2026-07-24T18:11:42.6080557Z [ 60%] Building C object _deps/curl-build/lib/CMakeFiles/libcurl_static.dir/vssh/wolfssh.c.o
+2026-07-24T18:11:42.6931462Z [ 60%] Linking C static library libcurl.a
+2026-07-24T18:11:42.8648448Z [ 60%] Built target libcurl_static
+2026-07-24T18:11:42.8917703Z [ 60%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/accept_encoding.cpp.o
+2026-07-24T18:11:43.9270862Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/async.cpp.o
+2026-07-24T18:11:46.3694402Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/auth.cpp.o
+2026-07-24T18:11:48.4272344Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/callback.cpp.o
+2026-07-24T18:11:49.3542102Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/cert_info.cpp.o
+2026-07-24T18:11:49.9283536Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/connection_pool.cpp.o
+2026-07-24T18:11:50.7209846Z [ 61%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/cookies.cpp.o
+2026-07-24T18:11:52.6538797Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/cprtypes.cpp.o
+2026-07-24T18:11:53.4756013Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/curl_container.cpp.o
+2026-07-24T18:11:54.6971588Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/curlholder.cpp.o
+2026-07-24T18:11:55.4497192Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/error.cpp.o
+2026-07-24T18:11:56.5349792Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/file.cpp.o
+2026-07-24T18:11:58.2574626Z [ 62%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/multipart.cpp.o
+2026-07-24T18:11:59.9341881Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/parameters.cpp.o
+2026-07-24T18:12:00.7250620Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/payload.cpp.o
+2026-07-24T18:12:01.5454338Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/proxies.cpp.o
+2026-07-24T18:12:02.1852392Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/proxyauth.cpp.o
+2026-07-24T18:12:04.4299834Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/session.cpp.o
+2026-07-24T18:12:10.9546191Z [ 64%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/threadpool.cpp.o
+2026-07-24T18:12:13.7110472Z [ 65%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/timeout.cpp.o
+2026-07-24T18:12:15.4627082Z [ 65%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/unix_socket.cpp.o
+2026-07-24T18:12:15.9006735Z [ 65%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/util.cpp.o
+2026-07-24T18:12:18.3384022Z [ 65%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/response.cpp.o
+2026-07-24T18:12:20.9274019Z [ 65%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/redirect.cpp.o
+2026-07-24T18:12:20.9896703Z [ 66%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/interceptor.cpp.o
+2026-07-24T18:12:24.3162536Z [ 66%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/ssl_ctx.cpp.o
+2026-07-24T18:12:26.4714161Z [ 66%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/curlmultiholder.cpp.o
+2026-07-24T18:12:26.5389940Z [ 66%] Building CXX object _deps/cpr-build/cpr/CMakeFiles/cpr.dir/multiperform.cpp.o
+2026-07-24T18:12:30.2915292Z [ 66%] Linking CXX static library libcpr.a
+2026-07-24T18:12:30.3859463Z [ 66%] Built target cpr
+2026-07-24T18:12:30.4141282Z [ 66%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/API/Memory.c.o
+2026-07-24T18:12:30.4619469Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/API/Process.c.o
+2026-07-24T18:12:30.5042616Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/API/Synchronization.c.o
+2026-07-24T18:12:30.5626757Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/API/Terminal.c.o
+2026-07-24T18:12:30.6320535Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/API/Thread.c.o
+2026-07-24T18:12:30.6929135Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/Allocator.c.o
+2026-07-24T18:12:30.7584378Z [ 67%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/ArgParse.c.o
+2026-07-24T18:12:30.8548910Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/Bitset.c.o
+2026-07-24T18:12:31.0083265Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/Format.c.o
+2026-07-24T18:12:31.1212917Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/List.c.o
+2026-07-24T18:12:31.2502872Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/String.c.o
+2026-07-24T18:12:31.4925624Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/Vector.c.o
+2026-07-24T18:12:31.6620614Z [ 69%] Building C object _deps/polyhook_2_0-build/zydis/dependencies/zycore/CMakeFiles/Zycore.dir/src/Zycore.c.o
+2026-07-24T18:12:31.7147216Z [ 70%] Linking C static library libZycore.a
+2026-07-24T18:12:31.7910591Z [ 70%] Built target Zycore
+2026-07-24T18:12:31.8210237Z [ 70%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/MetaInfo.c.o
+2026-07-24T18:12:31.8776559Z [ 70%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Mnemonic.c.o
+2026-07-24T18:12:31.9476479Z [ 70%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Register.c.o
+2026-07-24T18:12:32.0133199Z [ 70%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Segment.c.o
+2026-07-24T18:12:32.0946166Z [ 70%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/SharedData.c.o
+2026-07-24T18:12:32.9646570Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/String.c.o
+2026-07-24T18:12:33.0766538Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Utils.c.o
+2026-07-24T18:12:33.1647587Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Zydis.c.o
+2026-07-24T18:12:33.2249266Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Decoder.c.o
+2026-07-24T18:12:33.6871485Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/DecoderData.c.o
+2026-07-24T18:12:33.9517462Z [ 71%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Encoder.c.o
+2026-07-24T18:12:34.6068229Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/EncoderData.c.o
+2026-07-24T18:12:34.9859074Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Disassembler.c.o
+2026-07-24T18:12:35.0630430Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/Formatter.c.o
+2026-07-24T18:12:35.1811896Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/FormatterBuffer.c.o
+2026-07-24T18:12:35.2579697Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/FormatterATT.c.o
+2026-07-24T18:12:35.5020822Z [ 72%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/FormatterBase.c.o
+2026-07-24T18:12:35.9205720Z [ 74%] Building C object _deps/polyhook_2_0-build/zydis/CMakeFiles/Zydis.dir/src/FormatterIntel.c.o
+2026-07-24T18:12:36.1863766Z [ 74%] Linking C static library libZydis.a
+2026-07-24T18:12:36.2742065Z [ 74%] Built target Zydis
+2026-07-24T18:12:36.3054563Z [ 74%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/archtraits.cpp.o
+2026-07-24T18:12:36.8696521Z [ 74%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/assembler.cpp.o
+2026-07-24T18:12:37.3998291Z [ 74%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/builder.cpp.o
+2026-07-24T18:12:38.0895838Z [ 74%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/codeholder.cpp.o
+2026-07-24T18:12:39.0155764Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/codewriter.cpp.o
+2026-07-24T18:12:39.4938438Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/compiler.cpp.o
+2026-07-24T18:12:40.1730293Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/constpool.cpp.o
+2026-07-24T18:12:40.4436755Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/cpuinfo.cpp.o
+2026-07-24T18:12:40.9330433Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/emithelper.cpp.o
+2026-07-24T18:12:41.4797563Z [ 75%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/emitter.cpp.o
+2026-07-24T18:12:41.9714196Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/emitterutils.cpp.o
+2026-07-24T18:12:42.4348267Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/environment.cpp.o
+2026-07-24T18:12:42.7045151Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/errorhandler.cpp.o
+2026-07-24T18:12:42.8545314Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/formatter.cpp.o
+2026-07-24T18:12:43.4758361Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/func.cpp.o
+2026-07-24T18:12:43.9564960Z [ 76%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/funcargscontext.cpp.o
+2026-07-24T18:12:44.4596822Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/globals.cpp.o
+2026-07-24T18:12:44.6609352Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/inst.cpp.o
+2026-07-24T18:12:45.0114345Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/instdb.cpp.o
+2026-07-24T18:12:45.3865581Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/jitallocator.cpp.o
+2026-07-24T18:12:45.9252708Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/jitruntime.cpp.o
+2026-07-24T18:12:46.3607615Z [ 77%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/logger.cpp.o
+2026-07-24T18:12:46.7321417Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/operand.cpp.o
+2026-07-24T18:12:46.9937595Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/osutils.cpp.o
+2026-07-24T18:12:47.2170097Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/ralocal.cpp.o
+2026-07-24T18:12:48.0740486Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/rapass.cpp.o
+2026-07-24T18:12:49.2374059Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/rastack.cpp.o
+2026-07-24T18:12:49.7037092Z [ 79%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/string.cpp.o
+2026-07-24T18:12:49.9912352Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/support.cpp.o
+2026-07-24T18:12:50.1910088Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/target.cpp.o
+2026-07-24T18:12:50.5429555Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/type.cpp.o
+2026-07-24T18:12:50.8935736Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/virtmem.cpp.o
+2026-07-24T18:12:51.2793747Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zone.cpp.o
+2026-07-24T18:12:51.5251630Z [ 80%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zonehash.cpp.o
+2026-07-24T18:12:51.7527438Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zonelist.cpp.o
+2026-07-24T18:12:51.9580513Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zonestack.cpp.o
+2026-07-24T18:12:52.1863255Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zonetree.cpp.o
+2026-07-24T18:12:52.3927625Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/core/zonevector.cpp.o
+2026-07-24T18:12:52.6667682Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/armformatter.cpp.o
+2026-07-24T18:12:53.2724627Z [ 81%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64assembler.cpp.o
+2026-07-24T18:12:54.7491029Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64builder.cpp.o
+2026-07-24T18:12:55.3355885Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64compiler.cpp.o
+2026-07-24T18:12:56.0060196Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64emithelper.cpp.o
+2026-07-24T18:12:56.6787464Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64formatter.cpp.o
+2026-07-24T18:12:57.2480529Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64func.cpp.o
+2026-07-24T18:12:57.7194165Z [ 82%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64instapi.cpp.o
+2026-07-24T18:12:58.2467741Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64instdb.cpp.o
+2026-07-24T18:12:58.7962113Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64operand.cpp.o
+2026-07-24T18:12:59.1732802Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/arm/a64rapass.cpp.o
+2026-07-24T18:13:00.1753880Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86assembler.cpp.o
+2026-07-24T18:13:02.3568473Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86builder.cpp.o
+2026-07-24T18:13:03.0864680Z [ 83%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86compiler.cpp.o
+2026-07-24T18:13:03.9500322Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86emithelper.cpp.o
+2026-07-24T18:13:04.7757299Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86formatter.cpp.o
+2026-07-24T18:13:05.4894322Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86func.cpp.o
+2026-07-24T18:13:06.2318529Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86instdb.cpp.o
+2026-07-24T18:13:07.4323112Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86instapi.cpp.o
+2026-07-24T18:13:08.2558022Z [ 85%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86operand.cpp.o
+2026-07-24T18:13:08.7198010Z [ 86%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmjit.dir/github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/asmjit/src/asmjit/x86/x86rapass.cpp.o
+2026-07-24T18:13:10.0699273Z [ 86%] Linking CXX static library libasmjit.a
+2026-07-24T18:13:10.1732750Z [ 86%] Built target asmjit
+2026-07-24T18:13:10.2019988Z [ 86%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmtk.dir/src/asmtk/asmparser.cpp.o
+2026-07-24T18:13:11.4879243Z [ 86%] Building CXX object _deps/polyhook_2_0-build/asmtk/CMakeFiles/asmtk.dir/src/asmtk/asmtokenizer.cpp.o
+2026-07-24T18:13:12.2346414Z [ 86%] Linking CXX static library libasmtk.a
+2026-07-24T18:13:12.3119491Z [ 86%] Built target asmtk
+2026-07-24T18:13:12.3425364Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/MemProtector.cpp.o
+2026-07-24T18:13:13.5894436Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/MemAccessor.cpp.o
+2026-07-24T18:13:14.8637379Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/TestEffectTracker.cpp.o
+2026-07-24T18:13:16.1492568Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/StackCanary.cpp.o
+2026-07-24T18:13:16.2096931Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/FBAllocator.cpp.o
+2026-07-24T18:13:17.4679120Z [ 87%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/RangeAllocator.cpp.o
+2026-07-24T18:13:19.0079536Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/ErrorLog.cpp.o
+2026-07-24T18:13:20.3679004Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/UID.cpp.o
+2026-07-24T18:13:21.6131656Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/Misc.cpp.o
+2026-07-24T18:13:22.7755954Z /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/sources/Misc.cpp:14:10: warning: implicit conversion of NULL constant to 'uint64_t' (aka 'unsigned long') [-Wnull-conversion]
+2026-07-24T18:13:22.7757598Z    14 |                 return NULL;
+2026-07-24T18:13:22.7758119Z       |                 ~~~~~~ ^~~~
+2026-07-24T18:13:22.7758631Z       |                        0
+2026-07-24T18:13:22.7760989Z /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/sources/Misc.cpp:36:9: warning: implicit conversion of NULL constant to 'uint64_t' (aka 'unsigned long') [-Wnull-conversion]
+2026-07-24T18:13:22.7761998Z    36 |         return NULL;
+2026-07-24T18:13:22.7762312Z       |         ~~~~~~ ^~~~
+2026-07-24T18:13:22.7762730Z       |                0
+2026-07-24T18:13:22.7772551Z /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/sources/Misc.cpp:56:10: warning: implicit conversion of NULL constant to 'uint64_t' (aka 'unsigned long') [-Wnull-conversion]
+2026-07-24T18:13:22.7773709Z    56 |                 return NULL;
+2026-07-24T18:13:22.7774061Z       |                 ~~~~~~ ^~~~
+2026-07-24T18:13:22.7774396Z       |                        0
+2026-07-24T18:13:22.7778537Z /github/home/.cache/cmake/cpm/polyhook_2_0/c6fc/sources/Misc.cpp:78:9: warning: implicit conversion of NULL constant to 'uint64_t' (aka 'unsigned long') [-Wnull-conversion]
+2026-07-24T18:13:22.7780089Z    78 |         return NULL;
+2026-07-24T18:13:22.7780518Z       |         ~~~~~~ ^~~~
+2026-07-24T18:13:22.7780916Z       |                0
+2026-07-24T18:13:22.8883622Z 4 warnings generated.
+2026-07-24T18:13:22.9107469Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/PolyHookOs.cpp.o
+2026-07-24T18:13:24.1959612Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/ZydisDisassembler.cpp.o
+2026-07-24T18:13:25.9091087Z [ 88%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/ADetour.cpp.o
+2026-07-24T18:13:27.9149731Z [ 90%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/x64Detour.cpp.o
+2026-07-24T18:13:33.8045126Z [ 90%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/x86Detour.cpp.o
+2026-07-24T18:13:38.4167471Z [ 90%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/VTableSwapHook.cpp.o
+2026-07-24T18:13:40.0463926Z [ 90%] Building CXX object _deps/polyhook_2_0-build/CMakeFiles/PolyHook_2.dir/sources/VFuncSwapHook.cpp.o
+2026-07-24T18:13:41.6260645Z [ 90%] Linking CXX static library libPolyHook_2.a
+2026-07-24T18:13:41.7115873Z [ 90%] Built target PolyHook_2
+2026-07-24T18:13:41.7407710Z [ 90%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/cmake_pch.hxx.pch
+2026-07-24T18:13:41.8049661Z [ 90%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/cache.cpp.o
+2026-07-24T18:13:48.9084867Z [ 90%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/globals.cpp.o
+2026-07-24T18:13:49.3884557Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/logger.cpp.o
+2026-07-24T18:13:56.0734472Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/hook.cpp.o
+2026-07-24T18:14:01.9044979Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/http_client.cpp.o
+2026-07-24T18:14:10.1916791Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/io.cpp.o
+2026-07-24T18:14:13.7371528Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/lib.cpp.o
+2026-07-24T18:14:17.3389494Z [ 91%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/lib_monitor.cpp.o
+2026-07-24T18:14:21.6204354Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/patcher.cpp.o
+2026-07-24T18:14:28.4564871Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/path.cpp.o
+2026-07-24T18:14:30.0988681Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/paths.cpp.o
+2026-07-24T18:14:31.8832010Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/re.cpp.o
+2026-07-24T18:14:34.3387750Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/str.cpp.o
+2026-07-24T18:14:35.8170427Z [ 92%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/lib_linux.cpp.o
+2026-07-24T18:14:40.6180334Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/lib_monitor_linux.cpp.o
+2026-07-24T18:14:43.0618412Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/path_linux.cpp.o
+2026-07-24T18:14:44.5375347Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/paths_linux.cpp.o
+2026-07-24T18:14:45.9831526Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/re_linux.cpp.o
+2026-07-24T18:14:49.4821465Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/str_linux.cpp.o
+2026-07-24T18:14:49.9095363Z [ 93%] Building CXX object KoalaBox/CMakeFiles/KoalaBox.dir/src/util_linux.cpp.o
+2026-07-24T18:14:53.4324080Z [ 93%] Built target KoalaBox
+2026-07-24T18:14:53.4475997Z [ 93%] Generating _deps/embed-build/embed/autogen/smokeapi/src/smokeapi_res_interface_lookup_json.cpp
+2026-07-24T18:14:53.6724205Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/cmake_pch.hxx.pch
+2026-07-24T18:14:53.7267070Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/interfaces/steam_apps.cpp.o
+2026-07-24T18:14:59.3714867Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/interfaces/steam_http.cpp.o
+2026-07-24T18:15:04.6962009Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/interfaces/steam_inventory.cpp.o
+2026-07-24T18:15:10.0225697Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/interfaces/steam_user.cpp.o
+2026-07-24T18:15:14.9735751Z [ 95%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/api.cpp.o
+2026-07-24T18:15:21.0406018Z [ 96%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/cache.cpp.o
+2026-07-24T18:15:27.1356322Z [ 96%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/config.cpp.o
+2026-07-24T18:15:30.9526704Z [ 96%] Building CXX object CMakeFiles/SmokeAPI.dir/static/smoke_api/types.cpp.o
+2026-07-24T18:15:34.3400392Z [ 96%] Building CXX object CMakeFiles/SmokeAPI.dir/src/generated/64/proxy_exports.cpp.o
+2026-07-24T18:15:38.6620604Z [ 96%] Building CXX object CMakeFiles/SmokeAPI.dir/src/smoke_api/smoke_api.cpp.o
+2026-07-24T18:15:41.6399344Z /__w/SmokeAPI/SmokeAPI/src/smoke_api/smoke_api.cpp:228:36: error: use of undeclared identifier 'glob'
+2026-07-24T18:15:41.6400344Z   228 |         for(const auto& lib_path : glob::rglob({"./" + lib_name, "**/" + lib_name})) {
+2026-07-24T18:15:41.6400871Z       |                                    ^
+2026-07-24T18:15:44.7332887Z 1 error generated.
+2026-07-24T18:15:44.7616454Z make[3]: *** [CMakeFiles/SmokeAPI.dir/build.make:247: CMakeFiles/SmokeAPI.dir/src/smoke_api/smoke_api.cpp.o] Error 1
+2026-07-24T18:15:44.7620172Z make[2]: *** [CMakeFiles/Makefile2:1036: CMakeFiles/SmokeAPI.dir/all] Error 2
+2026-07-24T18:15:44.7624555Z make[1]: *** [CMakeFiles/Makefile2:1043: CMakeFiles/SmokeAPI.dir/rule] Error 2
+2026-07-24T18:15:44.7629727Z make: *** [Makefile:203: SmokeAPI] Error 2
+2026-07-24T18:15:44.7721732Z ##[error]Process completed with exit code 2.
+2026-07-24T18:15:44.7893174Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-24T18:15:44.7895326Z Post job cleanup.
+2026-07-24T18:15:44.7904897Z ##[command]/usr/bin/docker exec  bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e sh -c "cat /etc/*release | grep ^ID"
+2026-07-24T18:15:45.0108636Z [command]/usr/sbin/git version
+2026-07-24T18:15:45.0198670Z git version 2.52.0
+2026-07-24T18:15:45.0281406Z Temporarily overriding HOME='/__w/_temp/e9cce5a8-d62c-4429-9810-b39041000901' before making global git config changes
+2026-07-24T18:15:45.0283085Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-24T18:15:45.0292059Z [command]/usr/sbin/git config --global --add safe.directory /__w/SmokeAPI/SmokeAPI
+2026-07-24T18:15:45.0375893Z [command]/usr/sbin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-24T18:15:45.0444879Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-24T18:15:45.1056792Z Entering 'KoalaBox'
+2026-07-24T18:15:45.1240483Z [command]/usr/sbin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-24T18:15:45.1299941Z http.https://github.com/.extraheader
+2026-07-24T18:15:45.1329937Z [command]/usr/sbin/git config --local --unset-all http.https://github.com/.extraheader
+2026-07-24T18:15:45.1389790Z [command]/usr/sbin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-24T18:15:45.1862069Z Entering 'KoalaBox'
+2026-07-24T18:15:45.1960132Z http.https://github.com/.extraheader
+2026-07-24T18:15:45.2032780Z [command]/usr/sbin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-24T18:15:45.2079906Z [command]/usr/sbin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-24T18:15:45.2548989Z Entering 'KoalaBox'
+2026-07-24T18:15:45.2601691Z file:/__w/SmokeAPI/SmokeAPI/.git/modules/KoalaBox/config	remote.origin.url
+2026-07-24T18:15:45.2647774Z [command]/usr/sbin/git config --file /__w/SmokeAPI/SmokeAPI/.git/modules/KoalaBox/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-24T18:15:45.2876291Z Stop and remove container: fa82ba9a9a544f74b5b86569e358723f_ghcrioacidicoalakoalaboxmaster_11f6fe
+2026-07-24T18:15:45.2881687Z ##[command]/usr/bin/docker rm --force bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:15:45.3869152Z bc9f468137478d2b7277728e7a9526ef7c46fe4a89680cbaffbfb2d55c3ece8e
+2026-07-24T18:15:45.3904440Z Remove container network: github_network_0d97c3b2792e4828b528d728f869dcc6
+2026-07-24T18:15:45.3909799Z ##[command]/usr/bin/docker network rm github_network_0d97c3b2792e4828b528d728f869dcc6
+2026-07-24T18:15:45.4945328Z github_network_0d97c3b2792e4828b528d728f869dcc6
+2026-07-24T18:15:45.5024382Z Cleaning up orphan processes
+2026-07-24T18:15:45.5415279Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
