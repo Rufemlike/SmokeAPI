@@ -106,7 +106,7 @@ namespace dlc_downloader {
         if (cdlc_folders.contains(dlc_id)) {
             // Use absolute path to avoid CWD issues in multi-process architectures
             std::wstring dlc_folder = cdlc_folders[dlc_id];
-            std::wstring zip_path = (koalabox::paths::get_self_dir().parent_path() / (L"temp_" + dlc_folder + L".zip")).wstring();
+            std::wstring zip_path = (koalabox::paths::get_self_dir() / (L"temp_" + dlc_folder + L".zip")).wstring();
             
             // Use FindFirstFileW to get file size even if it's exclusively locked by another process/thread (URLDownloadToFileW)
             WIN32_FIND_DATAW findData;
@@ -206,7 +206,7 @@ namespace dlc_downloader {
                     dlc_folder = cdlc_folders[dlc_id];
                 }
 
-                std::wstring temp_extract_path = (koalabox::paths::get_self_dir().parent_path() / (L"temp_" + dlc_folder)).wstring();
+                std::wstring temp_extract_path = (koalabox::paths::get_self_dir() / (L"temp_" + dlc_folder)).wstring();
                 std::wstring zip_path = temp_extract_path + L".zip";
                 std::wstring final_dest_path = (koalabox::paths::get_self_dir().parent_path() / dlc_folder).wstring();
 
