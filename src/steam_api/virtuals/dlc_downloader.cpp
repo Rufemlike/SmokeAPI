@@ -84,12 +84,7 @@ namespace dlc_downloader {
                     if (downloaded) *downloaded = state.downloaded;
                     if (total) *total = state.total;
                     
-                    // We only log every ~50th call to avoid spamming the log if called frequently, 
-                    // or we can log it with a static counter.
-                    static int log_counter = 0;
-                    if (++log_counter % 50 == 0) {
-                        LOG_INFO("DLC Downloader get_progress (memory): dlc_id={}, downloaded={}, total={}", dlc_id, state.downloaded, state.total);
-                    }
+                    LOG_INFO("DLC Downloader get_progress (memory): dlc_id={}, downloaded={}, total={}", dlc_id, state.downloaded, state.total);
                     return true;
                 }
             }

@@ -57,13 +57,12 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept 
             std::wstring folderName = cdlc_folders[dlc_id];
             
             // Check both root directory (if working dir is Arma 3) and parent directory (if working dir is Launcher)
-            if (std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec)) {
-                return true;
-            } else {
-                return false;
-            }
+            bool installed = std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec);
+            LOG_INFO("ISteamApps_BIsDlcInstalled (Launcher) -> DLC ID: {}, Folder: {}, Installed: {}", dlc_id, std::string(folderName.begin(), folderName.end()), installed);
+            return installed;
         } else {
             // For the game itself, always claim the DLC is installed so that the CDLC hotbar/icons are always visible and active
+            LOG_INFO("ISteamApps_BIsDlcInstalled (Game) -> DLC ID: {} always claim Installed: true", dlc_id);
             return true;
         }
     }
