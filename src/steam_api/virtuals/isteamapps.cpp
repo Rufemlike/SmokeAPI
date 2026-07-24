@@ -23,6 +23,23 @@ VIRTUAL(bool) ISteamApps_BIsSubscribedApp(PARAMS(const AppId_t dlc_id)) noexcept
 
 #include <filesystem>
 
+#if defined(KB_WIN) || defined(_WIN32)
+#include <windows.h>
+#endif
+#include <algorithm>
+
+static bool is_launcher_process() {
+#if defined(KB_WIN) || defined(_WIN32)
+    wchar_t path[MAX_PATH];
+    if (GetModuleFileNameW(NULL, path, MAX_PATH)) {
+        std::wstring wpath(path);
+        std::transform(wpath.begin(), wpath.end(), wpath.begin(), ::tolower);
+        return wpath.find(L"launcher") != std::wstring::npos;
+    }
+#endif
+    return false;
+}
+
 VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept {
     std::map<AppId_t, std::wstring> cdlc_folders = {
         { 1227700, L"vn" },
@@ -35,14 +52,19 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept 
     };
     
     if (cdlc_folders.contains(dlc_id)) {
-        std::error_code ec;
-        std::wstring folderName = cdlc_folders[dlc_id];
-        
-        // Check both root directory (if working dir is Arma 3) and parent directory (if working dir is Launcher)
-        if (std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec)) {
-            return true;
+        if (is_launcher_process()) {
+            std::error_code ec;
+            std::wstring folderName = cdlc_folders[dlc_id];
+            
+            // Check both root directory (if working dir is Arma 3) and parent directory (if working dir is Launcher)
+            if (std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec)) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            // For the game itself, always claim the DLC is installed so that the CDLC hotbar/icons are always visible and active
+            return true;
         }
     }
     
