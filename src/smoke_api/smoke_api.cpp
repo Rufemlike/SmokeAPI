@@ -1,7 +1,5 @@
 #include <regex>
 #include <set>
-
-#include <glob/glob.h>
 #include <polyhook2/MemProtector.hpp>
 
 #include <koalabox/config.hpp>
@@ -217,6 +215,8 @@ namespace {
         return std::nullopt;
     }
 
+    void hook_flat_apis(void* steam_api_handle);
+
     void init_hook_mode([[maybe_unused]] void* self_module_handle) {
         is_hook_mode = true;
 #ifdef KB_LINUX
@@ -236,6 +236,7 @@ namespace {
 
                         original_steamapi_handle = *lib_handle;
                         proxy_exports::init(self_module_handle, original_steamapi_handle);
+                        hook_flat_apis(original_steamapi_handle);
                         return;
                     }
                 }
@@ -255,6 +256,46 @@ namespace {
 #ifdef KB_LINUX
         proxy_exports::init(self_module_handle, original_steamapi_handle);
 #endif
+        hook_flat_apis(original_steamapi_handle);
+    }
+}
+
+// Flat APIs
+C_DECL(void*) SteamAPI_SteamApps_v008() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamApps_v008);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "STEAMAPPS_INTERFACE_VERSION008");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamHTTP_v003() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamHTTP_v003);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "STEAMHTTP_INTERFACE_VERSION003");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamGameServer_v015() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamGameServer_v015);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "SteamGameServer015");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamUser_v023() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamUser_v023);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "SteamUser023");
+    return ptr;
+}
+
+namespace {
+    void hook_flat_apis(void* steam_api_handle) {
+        if(!steam_api_handle) return;
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamApps_v008, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamHTTP_v003, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamGameServer_v015, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamUser_v023, steam_api_handle);
     }
 }
 

@@ -40,6 +40,7 @@ namespace {
             data.entry_map = {
                 ENTRY(ISteamApps, BIsSubscribedApp),
                 ENTRY(ISteamApps, BIsDlcInstalled),
+                ENTRY(ISteamApps, InstallDLC),
                 ENTRY(ISteamApps, GetDLCCount),
                 ENTRY(ISteamApps, BGetDLCDataByIndex),
             };
@@ -55,6 +56,7 @@ namespace {
                 ENTRY(ISteamClient, GetISteamGameServer),
                 ENTRY(ISteamClient, GetISteamGenericInterface),
                 ENTRY(ISteamClient, GetISteamInventory),
+                ENTRY(ISteamClient, GetISteamHTTP),
             };
             map.emplace(steam_interfaces::STEAM_CLIENT, std::move(data));
         }
@@ -72,6 +74,8 @@ namespace {
             interface_data_t data;
             data.fallback_version = "STEAMHTTP_INTERFACE_VERSION003";
             data.entry_map = {
+                ENTRY(ISteamHTTP, CreateHTTPRequest),
+                ENTRY(ISteamHTTP, ReleaseHTTPRequest),
                 ENTRY(ISteamHTTP, GetHTTPResponseBodyData),
                 ENTRY(ISteamHTTP, GetHTTPResponseBodySize),
                 ENTRY(ISteamHTTP, GetHTTPStreamingResponseBodyData),
