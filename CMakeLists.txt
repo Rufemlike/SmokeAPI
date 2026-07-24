@@ -44,6 +44,8 @@ set(SMOKE_API_SOURCES
     ${GENERATED_SOURCES}
     src/smoke_api/smoke_api.cpp
     src/smoke_api/smoke_api.hpp
+    src/smoke_api/dlc_downloader.cpp
+    src/smoke_api/dlc_downloader.hpp
     src/steam_api/virtuals/isteamapps.cpp
     src/steam_api/virtuals/isteamclient.cpp
     src/steam_api/virtuals/isteamgameserver.cpp
@@ -81,6 +83,15 @@ add_library(SmokeAPI::common ALIAS SmokeAPI_common)
 target_include_directories(SmokeAPI_common INTERFACE
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/static>"
 )
+
+## https://github.com/nlohmann/json
+CPMAddPackage("gh:nlohmann/json#b88c7f99992f9a150bc0928a38d5af3bd5cdd108")
+target_link_libraries(SmokeAPI_common INTERFACE nlohmann_json::nlohmann_json)
+
+## https://github.com/richgel999/miniz
+CPMAddPackage("gh:richgel999/miniz#c883286f1a6443720e7705450f59e579a4bbb8e2")
+target_link_libraries(SmokeAPI_common INTERFACE miniz)
+
 target_link_libraries(SmokeAPI_common INTERFACE KoalaBox $<TARGET_OBJECTS:KoalaBox>)
 
 ### Static SmokeAPI
