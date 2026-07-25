@@ -4,7 +4,6 @@
 #include "smoke_api/interfaces/steam_apps.hpp"
 #include "steam_api/virtuals/steam_api_virtuals.hpp"
 #include "smoke_api/dlc_downloader.hpp"
-#include <shellapi.h>
 #include <map>
 #include <string>
 

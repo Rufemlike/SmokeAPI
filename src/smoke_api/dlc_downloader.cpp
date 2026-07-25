@@ -7,7 +7,9 @@
 #include <thread>
 #include <mutex>
 #include <map>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include <iostream>
 
 namespace smoke_api::dlc_downloader {
@@ -28,7 +30,7 @@ namespace smoke_api::dlc_downloader {
     }
 
     void DownloadThread(AppId_t dlc_id, std::string yandex_public_link, std::string folder_name) {
-        std::ofstream log("C:\\Users\\Admin\\dl_log.txt", std::ios::app);
+        std::ofstream log("dl_log.txt", std::ios::app);
         log << "Starting download for AppID " << dlc_id << ", Link: " << yandex_public_link << std::endl;
         
         {
@@ -163,13 +165,17 @@ namespace smoke_api::dlc_downloader {
             }
             
             std::this_thread::sleep_for(std::chrono::seconds(5));
+#ifdef _WIN32
             FreeConsole();
+#endif
 
         } catch (const std::exception& e) {
             log << "Error: " << e.what() << std::endl;
             printf("\n[%s] ERROR: %s\n", folder_name.c_str(), e.what());
             std::this_thread::sleep_for(std::chrono::seconds(10));
+#ifdef _WIN32
             FreeConsole();
+#endif
             
             std::lock_guard<std::mutex> lock(g_mutex);
             g_downloads[dlc_id].active = false;
@@ -187,10 +193,12 @@ namespace smoke_api::dlc_downloader {
         }
         
         // Spawn console for user feedback
+#ifdef _WIN32
         AllocConsole();
         FILE* fp;
         freopen_s(&fp, "CONOUT$", "w", stdout);
         freopen_s(&fp, "CONOUT$", "w", stderr);
+#endif
         printf("--- Arma 3 CDLC Downloader ---\n");
         printf("Preparing to download %s...\n", folder_name.c_str());
         
