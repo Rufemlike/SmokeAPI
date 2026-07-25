@@ -98,10 +98,32 @@ namespace smoke_api::dlc_downloader {
                         
                         double dl_mb = (double)downloadNow / (1024.0 * 1024.0);
                         double total_mb = (double)actual_total / (1024.0 * 1024.0);
-                        printf("\r[%s] Downloading: %d%% (%.2f MB / %.2f MB)      ", folder_name.c_str(), percent, dl_mb, total_mb);
+                        
+                        int barWidth = 30;
+                        int pos = percent * barWidth / 100;
+                        std::string bar;
+                        bar.reserve(barWidth * 4 + 20);
+                        
+                        bar += "\x1b[36m"; // Cyan for filled portion
+                        for (int i = 0; i < barWidth; ++i) {
+                            if (i == pos) {
+                                bar += "\x1b[90m"; // Dark gray for empty portion
+                            }
+                            if (i < pos) {
+                                bar += "█";
+                            } else {
+                                bar += "░";
+                            }
+                        }
+                        bar += "\x1b[0m"; // Reset colors
+                        
+                        printf("\r[%s] Downloading: [ %s ] \x1b[32m%d%%\x1b[0m (%.2f MB / %.2f MB)      ", 
+                               folder_name.c_str(), bar.c_str(), percent, dl_mb, total_mb);
+                        fflush(stdout);
                     } else {
                         double dl_mb = (double)downloadNow / (1024.0 * 1024.0);
-                        printf("\r[%s] Downloading: %.2f MB (size unknown)      ", folder_name.c_str(), dl_mb);
+                        printf("\r[%s] Downloading: \x1b[33m%.2f MB\x1b[0m (size unknown)      ", folder_name.c_str(), dl_mb);
+                        fflush(stdout);
                     }
                     
                     return true;
@@ -151,7 +173,7 @@ namespace smoke_api::dlc_downloader {
             }
 
             mz_zip_reader_end(&zip);
-            printf("\n[%s] Extraction complete! You can close this window or wait 5 seconds.\n", folder_name.c_str());
+            printf("\n[%s] \x1b[32mExtraction complete! You can close this window or wait 5 seconds.\x1b[0m\n", folder_name.c_str());
             log << "dlc_downloader: Extraction complete!" << std::endl;
 
             // 4. Cleanup
@@ -171,7 +193,7 @@ namespace smoke_api::dlc_downloader {
 
         } catch (const std::exception& e) {
             log << "Error: " << e.what() << std::endl;
-            printf("\n[%s] ERROR: %s\n", folder_name.c_str(), e.what());
+            printf("\n[%s] \x1b[31mERROR: %s\x1b[0m\n", folder_name.c_str(), e.what());
             std::this_thread::sleep_for(std::chrono::seconds(10));
 #ifdef _WIN32
             FreeConsole();
@@ -198,9 +220,22 @@ namespace smoke_api::dlc_downloader {
         FILE* fp;
         freopen_s(&fp, "CONOUT$", "w", stdout);
         freopen_s(&fp, "CONOUT$", "w", stderr);
+
+        // Enable Virtual Terminal Processing for ANSI colors
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+        if (hOut != INVALID_HANDLE_VALUE) {
+            DWORD dwMode = 0;
+            if (GetConsoleMode(hOut, &dwMode)) {
+#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
 #endif
-        printf("--- Arma 3 CDLC Downloader ---\n");
-        printf("Preparing to download %s...\n", folder_name.c_str());
+                dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+                SetConsoleMode(hOut, dwMode);
+            }
+        }
+#endif
+        printf("\x1b[35m--- Arma 3 CDLC Downloader ---\x1b[0m\n");
+        printf("Preparing to download \x1b[36m%s\x1b[0m...\n", folder_name.c_str());
         
         std::thread t(DownloadThread, dlc_id, yandex_public_link, folder_name);
         t.detach();
