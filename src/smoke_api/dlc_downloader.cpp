@@ -24,7 +24,18 @@ namespace smoke_api::dlc_downloader {
         FILE* fp;
         freopen_s(&fp, "NUL", "w", stdout);
         freopen_s(&fp, "NUL", "w", stderr);
-        FreeConsole();
+        
+        HWND hwnd = GetConsoleWindow();
+        if (hwnd != NULL) {
+            HMENU hMenu = GetSystemMenu(hwnd, FALSE);
+            if (hMenu != NULL) {
+                EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | MF_ENABLED);
+            }
+            FreeConsole();
+            PostMessage(hwnd, WM_CLOSE, 0, 0);
+        } else {
+            FreeConsole();
+        }
 #endif
     }
 
