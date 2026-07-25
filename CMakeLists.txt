@@ -44,6 +44,7 @@ set(SMOKE_API_SOURCES
     ${GENERATED_SOURCES}
     src/smoke_api/smoke_api.cpp
     src/smoke_api/smoke_api.hpp
+    src/smoke_api/updater.cpp
     src/smoke_api/dlc_downloader.cpp
     src/smoke_api/dlc_downloader.hpp
     src/steam_api/virtuals/isteamapps.cpp

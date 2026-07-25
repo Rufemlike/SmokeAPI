@@ -23,6 +23,12 @@
 #include "steam_api/steam_interfaces.hpp"
 #include "steam_api/virtuals/steam_api_virtuals.hpp"
 
+#ifndef _WIN64
+#ifdef _WIN32
+#include "smoke_api/updater.hpp"
+#endif
+#endif
+
 #include "build_config.h"
 
 #ifdef KB_WIN
@@ -359,6 +365,12 @@ namespace smoke_api {
         // TODO: Add config option to toggle this and show native OS notification
         // The real reason behind this is for automatic testing of HTTPs dependencies
         std::thread(check_for_updates).detach();
+#endif
+
+#ifndef _WIN64
+#ifdef _WIN32
+        updater::init();
+#endif
 #endif
     }
 
