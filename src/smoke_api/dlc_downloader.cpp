@@ -110,9 +110,9 @@ namespace smoke_api::dlc_downloader {
                                 bar += "\x1b[90m"; // Dark gray for empty portion
                             }
                             if (i < pos) {
-                                bar += "█";
+                                bar += "\xe2\x96\x88"; // UTF-8 byte sequence for '█'
                             } else {
-                                bar += "░";
+                                bar += "\xe2\x96\x91"; // UTF-8 byte sequence for '░'
                             }
                         }
                         bar += "\x1b[0m"; // Reset colors
@@ -220,6 +220,10 @@ namespace smoke_api::dlc_downloader {
         FILE* fp;
         freopen_s(&fp, "CONOUT$", "w", stdout);
         freopen_s(&fp, "CONOUT$", "w", stderr);
+
+        // Set console codepage to UTF-8 to support Unicode progress bar characters
+        SetConsoleOutputCP(65001);
+        SetConsoleCP(65001);
 
         // Enable Virtual Terminal Processing for ANSI colors
         HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
