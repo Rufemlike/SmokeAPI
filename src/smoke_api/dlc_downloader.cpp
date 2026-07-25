@@ -19,6 +19,15 @@ namespace smoke_api::dlc_downloader {
     static std::map<AppId_t, DownloadState> g_downloads;
     static std::mutex g_mutex;
 
+    void CloseConsoleWindow() {
+#ifdef _WIN32
+        FILE* fp;
+        freopen_s(&fp, "NUL", "w", stdout);
+        freopen_s(&fp, "NUL", "w", stderr);
+        FreeConsole();
+#endif
+    }
+
     bool GetProgress(AppId_t dlc_id, uint64_t* downloaded, uint64_t* total) {
         std::lock_guard<std::mutex> lock(g_mutex);
         if (g_downloads.contains(dlc_id)) {
@@ -215,13 +224,12 @@ namespace smoke_api::dlc_downloader {
             }
             
             std::this_thread::sleep_for(std::chrono::seconds(5));
-#ifdef _WIN32
-            FreeConsole();
-#endif
+            CloseConsoleWindow();
 
         } catch (const std::exception& e) {
             std::string err_msg = e.what();
-            if (err_msg == "CANCELLED") {
+            if (is_cancelled || err_msg == "CANCELLED") {
+                err_msg = "CANCELLED";
                 printf("\n[%s] \x1b[33mDownload cancelled by user. Cleaning up...\x1b[0m\n", folder_name.c_str());
                 log << "dlc_downloader: Download cancelled by user." << std::endl;
             } else {
@@ -248,10 +256,8 @@ namespace smoke_api::dlc_downloader {
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(err_msg == "CANCELLED" ? 2 : 10));
-#ifdef _WIN32
-            FreeConsole();
-#endif
+            std::this_thread::sleep_for(std::chrono::seconds(err_msg == "CANCELLED" ? 1 : 5));
+            CloseConsoleWindow();
         }
         log.close();
     }
