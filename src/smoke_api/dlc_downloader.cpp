@@ -9,6 +9,7 @@
 #include <map>
 #ifdef _WIN32
 #include <windows.h>
+#include <conio.h>
 #endif
 #include <iostream>
 
@@ -37,6 +38,8 @@ namespace smoke_api::dlc_downloader {
             std::lock_guard<std::mutex> lock(g_mutex);
             g_downloads[dlc_id] = DownloadState{true, 0, 100, false, false};
         }
+
+        bool is_cancelled = false;
 
         try {
             std::string api_url = "https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=" + yandex_public_link;
@@ -80,8 +83,18 @@ namespace smoke_api::dlc_downloader {
             cpr::Response download_resp = cpr::Download(
                 out_file, 
                 cpr::Url{direct_url},
-                cpr::ProgressCallback([&dlc_id, folder_name, expected_total](cpr::cpr_off_t downloadTotal, cpr::cpr_off_t downloadNow, cpr::cpr_off_t uploadTotal, cpr::cpr_off_t uploadNow, intptr_t userdata) -> bool {
+                cpr::ProgressCallback([&dlc_id, folder_name, expected_total, &is_cancelled](cpr::cpr_off_t downloadTotal, cpr::cpr_off_t downloadNow, cpr::cpr_off_t uploadTotal, cpr::cpr_off_t uploadNow, intptr_t userdata) -> bool {
                     std::lock_guard<std::mutex> lock(g_mutex);
+                    
+#ifdef _WIN32
+                    if (_kbhit()) {
+                        int ch = _getch();
+                        if (ch == 27 || ch == 'q' || ch == 'Q') { // ESC or Q
+                            is_cancelled = true;
+                            return false; // Abort download
+                        }
+                    }
+#endif
                     
                     // Use hardcoded total if Yandex doesn't provide one
                     uint64_t actual_total = downloadTotal > 0 ? downloadTotal : expected_total;
@@ -131,6 +144,11 @@ namespace smoke_api::dlc_downloader {
             );
 
             out_file.close();
+
+            if (is_cancelled) {
+                throw std::runtime_error("CANCELLED");
+            }
+
             log << "Download Status: " << download_resp.status_code << ", Error: " << download_resp.error.message << std::endl;
 
             if (download_resp.status_code != 200 && download_resp.status_code != 206) {
@@ -151,6 +169,16 @@ namespace smoke_api::dlc_downloader {
 
             mz_uint num_files = mz_zip_reader_get_num_files(&zip);
             for (mz_uint i = 0; i < num_files; ++i) {
+#ifdef _WIN32
+                if (_kbhit()) {
+                    int ch = _getch();
+                    if (ch == 27 || ch == 'q' || ch == 'Q') {
+                        mz_zip_reader_end(&zip);
+                        is_cancelled = true;
+                        throw std::runtime_error("CANCELLED");
+                    }
+                }
+#endif
                 mz_zip_archive_file_stat st;
                 if (!mz_zip_reader_file_stat(&zip, i, &st)) continue;
 
@@ -192,16 +220,38 @@ namespace smoke_api::dlc_downloader {
 #endif
 
         } catch (const std::exception& e) {
-            log << "Error: " << e.what() << std::endl;
-            printf("\n[%s] \x1b[31mERROR: %s\x1b[0m\n", folder_name.c_str(), e.what());
-            std::this_thread::sleep_for(std::chrono::seconds(10));
+            std::string err_msg = e.what();
+            if (err_msg == "CANCELLED") {
+                printf("\n[%s] \x1b[33mDownload cancelled by user. Cleaning up...\x1b[0m\n", folder_name.c_str());
+                log << "dlc_downloader: Download cancelled by user." << std::endl;
+            } else {
+                log << "Error: " << err_msg << std::endl;
+                printf("\n[%s] \x1b[31mERROR: %s\x1b[0m\n", folder_name.c_str(), err_msg.c_str());
+            }
+
+            // Cleanup files
+            std::error_code ec;
+            fs::path temp_zip = fs::current_path() / (folder_name + "_temp.zip");
+            fs::path extract_dir = fs::current_path() / folder_name;
+            fs::remove(temp_zip, ec);
+            fs::remove_all(extract_dir, ec);
+
+            // Mark download status
+            {
+                std::lock_guard<std::mutex> lock(g_mutex);
+                g_downloads[dlc_id].active = false;
+                if (err_msg == "CANCELLED") {
+                    g_downloads[dlc_id].finished = false;
+                    g_downloads[dlc_id].error = false;
+                } else {
+                    g_downloads[dlc_id].error = true;
+                }
+            }
+
+            std::this_thread::sleep_for(std::chrono::seconds(err_msg == "CANCELLED" ? 2 : 10));
 #ifdef _WIN32
             FreeConsole();
 #endif
-            
-            std::lock_guard<std::mutex> lock(g_mutex);
-            g_downloads[dlc_id].active = false;
-            g_downloads[dlc_id].error = true;
         }
         log.close();
     }
@@ -225,6 +275,15 @@ namespace smoke_api::dlc_downloader {
         SetConsoleOutputCP(65001);
         SetConsoleCP(65001);
 
+        // Disable close button to prevent termination of launcher
+        HWND hwnd = GetConsoleWindow();
+        if (hwnd != NULL) {
+            HMENU hMenu = GetSystemMenu(hwnd, FALSE);
+            if (hMenu != NULL) {
+                EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
+            }
+        }
+
         // Enable Virtual Terminal Processing for ANSI colors
         HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hOut != INVALID_HANDLE_VALUE) {
@@ -239,6 +298,7 @@ namespace smoke_api::dlc_downloader {
         }
 #endif
         printf("\x1b[35m--- Arma 3 CDLC Downloader ---\x1b[0m\n");
+        printf("\x1b[33mНажмите ESC или Q для отмены загрузки.\x1b[0m\n");
         printf("Preparing to download \x1b[36m%s\x1b[0m...\n", folder_name.c_str());
         
         std::thread t(DownloadThread, dlc_id, yandex_public_link, folder_name);
