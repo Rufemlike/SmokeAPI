@@ -7,11 +7,6 @@
 #include <map>
 #include <string>
 
-namespace dlc_downloader {
-    void start_download(uint32_t dlc_id);
-    bool get_progress(uint32_t dlc_id, uint64_t* downloaded, uint64_t* total);
-}
-
 VIRTUAL(bool) ISteamApps_BIsSubscribedApp(PARAMS(const AppId_t dlc_id)) noexcept {
     return smoke_api::steam_apps::IsDlcUnlocked(
         __func__,
@@ -22,23 +17,6 @@ VIRTUAL(bool) ISteamApps_BIsSubscribedApp(PARAMS(const AppId_t dlc_id)) noexcept
 }
 
 #include <filesystem>
-
-#if defined(KB_WIN) || defined(_WIN32)
-#include <windows.h>
-#endif
-#include <algorithm>
-
-static bool is_launcher_process() {
-#if defined(KB_WIN) || defined(_WIN32)
-    wchar_t path[MAX_PATH];
-    if (GetModuleFileNameW(NULL, path, MAX_PATH)) {
-        std::wstring wpath(path);
-        std::transform(wpath.begin(), wpath.end(), wpath.begin(), ::tolower);
-        return wpath.find(L"launcher") != std::wstring::npos;
-    }
-#endif
-    return false;
-}
 
 VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept {
     std::map<AppId_t, std::wstring> cdlc_folders = {
@@ -52,26 +30,14 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept 
     };
     
     if (cdlc_folders.contains(dlc_id)) {
-        if (is_launcher_process()) {
-            // If the DLC is currently downloading in the background, always claim it is NOT installed to the launcher
-            // so that the launcher continues to display the progress bar instead of marking it as complete immediately.
-            uint64_t downloaded = 0, total = 0;
-            if (dlc_downloader::get_progress(dlc_id, &downloaded, &total)) {
-                LOG_INFO("ISteamApps_BIsDlcInstalled (Launcher) -> DLC ID: {} is downloading in background, claiming Installed: false", dlc_id);
-                return false;
-            }
-
-            std::error_code ec;
-            std::wstring folderName = cdlc_folders[dlc_id];
-            
-            // Check both root directory (if working dir is Arma 3) and parent directory (if working dir is Launcher)
-            bool installed = std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec);
-            LOG_INFO("ISteamApps_BIsDlcInstalled (Launcher) -> DLC ID: {}, Folder: {}, Installed: {}", dlc_id, std::string(folderName.begin(), folderName.end()), installed);
-            return installed;
-        } else {
-            // For the game itself, always claim the DLC is installed so that the CDLC hotbar/icons are always visible and active
-            LOG_INFO("ISteamApps_BIsDlcInstalled (Game) -> DLC ID: {} always claim Installed: true", dlc_id);
+        std::error_code ec;
+        std::wstring folderName = cdlc_folders[dlc_id];
+        
+        // Check both root directory (if working dir is Arma 3) and parent directory (if working dir is Launcher)
+        if (std::filesystem::exists(folderName, ec) || std::filesystem::exists(L"..\\" + folderName, ec)) {
             return true;
+        } else {
+            return false;
         }
     }
     
@@ -84,7 +50,6 @@ VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(const AppId_t dlc_id)) noexcept 
 }
 
 VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(const AppId_t dlc_id)) noexcept {
-<<<<<<< HEAD
     std::map<AppId_t, std::pair<std::string, std::string>> cdlc_data = {
         { 1227700, {"https://disk.yandex.ru/d/nj5Ul8x4So8Epw", "vn"} },
         { 1042220, {"https://disk.yandex.ru/d/-xC0SdseCArXYw", "GM"} },
@@ -98,9 +63,6 @@ VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(const AppId_t dlc_id)) noexcept {
     if (cdlc_data.contains(dlc_id)) {
         smoke_api::dlc_downloader::StartDownload(dlc_id, cdlc_data[dlc_id].first, cdlc_data[dlc_id].second);
     }
-=======
-    dlc_downloader::start_download(dlc_id);
->>>>>>> 32800f4626d4592c4022bdcf6c094e9d24258083
 
     const auto original = SWAPPED_CALL_CLOSURE(ISteamApps_InstallDLC, ARGS(dlc_id));
     original();
@@ -155,22 +117,4 @@ VIRTUAL(bool) ISteamApps_BGetDLCDataByIndex(
             ARGS(*p_dlc_id)
         )
     );
-}
-
-VIRTUAL(bool) ISteamApps_GetDlcDownloadProgress(
-    PARAMS(
-        const AppId_t dlc_id,
-        uint64_t* punBytesDownloaded,
-        uint64_t* punBytesTotal
-    )
-) noexcept {
-    if (dlc_downloader::get_progress(dlc_id, punBytesDownloaded, punBytesTotal)) {
-        return true;
-    }
-
-    const auto original = SWAPPED_CALL_CLOSURE(
-        ISteamApps_GetDlcDownloadProgress,
-        ARGS(dlc_id, punBytesDownloaded, punBytesTotal)
-    );
-    return original();
 }
