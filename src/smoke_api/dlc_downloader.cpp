@@ -96,10 +96,10 @@ namespace smoke_api::dlc_downloader {
                         int percent = (int)((downloadNow * 100) / actual_total);
                         if (percent > 99 && downloadTotal == 0) percent = 99; // Cap at 99% if using estimated size
                         
-                        double dl_mb = (double)downloadNow / (1024.0 * 1024.0);
-                        double total_mb = (double)actual_total / (1024.0 * 1024.0);
+                        double dl_gb = (double)downloadNow / (1024.0 * 1024.0 * 1024.0);
+                        double total_gb = (double)actual_total / (1024.0 * 1024.0 * 1024.0);
                         
-                        int barWidth = 30;
+                        int barWidth = 15;
                         int pos = percent * barWidth / 100;
                         std::string bar;
                         bar.reserve(barWidth * 4 + 20);
@@ -117,12 +117,12 @@ namespace smoke_api::dlc_downloader {
                         }
                         bar += "\x1b[0m"; // Reset colors
                         
-                        printf("\r[%s] Downloading: [ %s ] \x1b[32m%d%%\x1b[0m (%.2f MB / %.2f MB)      ", 
-                               folder_name.c_str(), bar.c_str(), percent, dl_mb, total_mb);
+                        printf("\r[%s] \x1b[32m%3d%%\x1b[0m [%s] %.2f/%.2f GB    ", 
+                               folder_name.c_str(), percent, bar.c_str(), dl_gb, total_gb);
                         fflush(stdout);
                     } else {
-                        double dl_mb = (double)downloadNow / (1024.0 * 1024.0);
-                        printf("\r[%s] Downloading: \x1b[33m%.2f MB\x1b[0m (size unknown)      ", folder_name.c_str(), dl_mb);
+                        double dl_gb = (double)downloadNow / (1024.0 * 1024.0 * 1024.0);
+                        printf("\r[%s] Downloading: \x1b[33m%.2f GB\x1b[0m (size unknown)      ", folder_name.c_str(), dl_gb);
                         fflush(stdout);
                     }
                     
