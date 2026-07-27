@@ -1,5 +1,9 @@
 #pragma once
 
+#include <cstdint>
+#include <string>
+#include <map>
+#include <vector>
 #include <nlohmann/json.hpp>
 
 #include <koalabox/hook.hpp>

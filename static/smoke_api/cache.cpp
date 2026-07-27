@@ -1,3 +1,4 @@
+#include <mutex>
 #include <koalabox/cache.hpp>
 #include <koalabox/logger.hpp>
 

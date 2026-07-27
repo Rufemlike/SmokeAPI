@@ -18,14 +18,12 @@ namespace {
         void* function_address; // e.g. ISteamClient_GetISteamApps
     };
 
-    struct interface_data_t { // NOLINT(*-exception-escape)
+    struct interface_data_t {
         std::string fallback_version; // e.g. "SteamClient021"
         // Key is function name without interface prefix
         std::map<std::string, interface_entry> entry_map;
-        // e.g. {ENTRY(ISteamClient, GetISteamApps), ...}
     };
 
-    // Key is interface name, e.g. "SteamClient"
     std::map<std::string, interface_data_t> get_virtual_hook_map() {
 #define ENTRY(INTERFACE, FUNC) \
             { \
@@ -34,79 +32,85 @@ namespace {
                 } \
             }
 
-        return {
-            {
-                "STEAMAPPS_INTERFACE_VERSION",
-                interface_data_t{
-                    .fallback_version = "STEAMAPPS_INTERFACE_VERSION008",
-                    .entry_map = {
-                        ENTRY(ISteamApps, BIsSubscribedApp),
-                        ENTRY(ISteamApps, BIsDlcInstalled),
-                        ENTRY(ISteamApps, GetDLCCount),
-                        ENTRY(ISteamApps, BGetDLCDataByIndex),
-                    }
-                }
-            },
-            {
-                steam_interfaces::STEAM_CLIENT,
-                interface_data_t{
-                    .fallback_version = "SteamClient021",
-                    .entry_map = {
-                        ENTRY(ISteamClient, GetISteamApps),
-                        ENTRY(ISteamClient, GetISteamUser),
-                        ENTRY(ISteamClient, GetISteamGenericInterface),
-                        ENTRY(ISteamClient, GetISteamInventory),
-                    }
-                }
-            },
-            {
-                "SteamGameServer",
-                interface_data_t{
-                    .fallback_version = "SteamGameServer015",
-                    .entry_map = {
-                        ENTRY(ISteamGameServer, UserHasLicenseForApp),
-                    }
-                }
-            },
-            {
-                "STEAMHTTP_INTERFACE_VERSION",
-                interface_data_t{
-                    .fallback_version = "STEAMHTTP_INTERFACE_VERSION003",
-                    .entry_map = {
-                        ENTRY(ISteamHTTP, GetHTTPResponseBodyData),
-                        ENTRY(ISteamHTTP, GetHTTPStreamingResponseBodyData),
-                        ENTRY(ISteamHTTP, SetHTTPRequestRawPostBody),
-                    }
-                }
-            },
-            {
-                "STEAMINVENTORY_INTERFACE_V",
-                interface_data_t{
-                    .fallback_version = "STEAMINVENTORY_INTERFACE_V003",
-                    .entry_map = {
-                        ENTRY(ISteamInventory, GetResultStatus),
-                        ENTRY(ISteamInventory, GetResultItems),
-                        ENTRY(ISteamInventory, CheckResultSteamID),
-                        ENTRY(ISteamInventory, GetAllItems),
-                        ENTRY(ISteamInventory, GetItemsByID),
-                        ENTRY(ISteamInventory, SerializeResult),
-                        ENTRY(ISteamInventory, GetItemDefinitionIDs),
-                    }
-                }
-            },
-            {
-                "SteamUser",
-                interface_data_t{
-                    .fallback_version = "SteamUser023",
-                    .entry_map = {
-                        ENTRY(ISteamUser, UserHasLicenseForApp),
-                        ENTRY(ISteamUser, BIsSubscribedApp),
-                    }
-                }
-            },
-            // Hooking SteamUtils for GetAppID should be avoided, since it leads to crashes in TW:WH3.
-            // No idea why...
-        };
+        std::map<std::string, interface_data_t> map;
+
+        {
+            interface_data_t data;
+            data.fallback_version = "STEAMAPPS_INTERFACE_VERSION008";
+            data.entry_map = {
+                ENTRY(ISteamApps, BIsSubscribedApp),
+                ENTRY(ISteamApps, BIsDlcInstalled),
+                ENTRY(ISteamApps, InstallDLC),
+                ENTRY(ISteamApps, GetDLCCount),
+                ENTRY(ISteamApps, BGetDLCDataByIndex),
+                ENTRY(ISteamApps, GetDlcDownloadProgress),
+            };
+            map.emplace("STEAMAPPS_INTERFACE_VERSION", std::move(data));
+        }
+
+        {
+            interface_data_t data;
+            data.fallback_version = "SteamClient021";
+            data.entry_map = {
+                ENTRY(ISteamClient, GetISteamApps),
+                ENTRY(ISteamClient, GetISteamUser),
+                ENTRY(ISteamClient, GetISteamGameServer),
+                ENTRY(ISteamClient, GetISteamGenericInterface),
+                ENTRY(ISteamClient, GetISteamInventory),
+                ENTRY(ISteamClient, GetISteamHTTP),
+            };
+            map.emplace(steam_interfaces::STEAM_CLIENT, std::move(data));
+        }
+
+        {
+            interface_data_t data;
+            data.fallback_version = "SteamGameServer015";
+            data.entry_map = {
+                ENTRY(ISteamGameServer, UserHasLicenseForApp),
+            };
+            map.emplace("SteamGameServer", std::move(data));
+        }
+
+        {
+            interface_data_t data;
+            data.fallback_version = "STEAMHTTP_INTERFACE_VERSION003";
+            data.entry_map = {
+                ENTRY(ISteamHTTP, CreateHTTPRequest),
+                ENTRY(ISteamHTTP, ReleaseHTTPRequest),
+                ENTRY(ISteamHTTP, GetHTTPResponseBodyData),
+                ENTRY(ISteamHTTP, GetHTTPResponseBodySize),
+                ENTRY(ISteamHTTP, GetHTTPStreamingResponseBodyData),
+                ENTRY(ISteamHTTP, SetHTTPRequestRawPostBody),
+            };
+            map.emplace("STEAMHTTP_INTERFACE_VERSION", std::move(data));
+        }
+
+        {
+            interface_data_t data;
+            data.fallback_version = "STEAMINVENTORY_INTERFACE_V003";
+            data.entry_map = {
+                ENTRY(ISteamInventory, GetResultStatus),
+                ENTRY(ISteamInventory, GetResultItems),
+                ENTRY(ISteamInventory, CheckResultSteamID),
+                ENTRY(ISteamInventory, GetAllItems),
+                ENTRY(ISteamInventory, GetItemsByID),
+                ENTRY(ISteamInventory, SerializeResult),
+                ENTRY(ISteamInventory, GetItemDefinitionIDs),
+            };
+            map.emplace("STEAMINVENTORY_INTERFACE_V", std::move(data));
+        }
+
+        {
+            interface_data_t data;
+            data.fallback_version = "SteamUser023";
+            data.entry_map = {
+                ENTRY(ISteamUser, UserHasLicenseForApp),
+                ENTRY(ISteamUser, BIsSubscribedApp),
+            };
+            map.emplace("SteamUser", std::move(data));
+        }
+
+        return map;
     }
 
     // Key is function name, Value is ordinal
@@ -162,18 +166,21 @@ namespace steam_interfaces {
         static std::mutex section;
         const std::lock_guard guard(section);
 
-        static std::set<const void*> processed_interfaces;
-
-        if(processed_interfaces.contains(interface_ptr)) {
-            LOG_DEBUG("Interface '{}' @ {} has already been processed.", version_string, interface_ptr);
-            return;
-        }
-        processed_interfaces.insert(interface_ptr);
-
         static const auto virtual_hook_map = get_virtual_hook_map();
         for(const auto& [prefix, data] : virtual_hook_map) {
             if(not version_string.starts_with(prefix)) {
                 continue;
+            }
+
+            // Check if this specific object's vtable is already hooked.
+            // When games like Arma 3 restart Steam API without unloading our DLL,
+            // the object pointer might be identical but it has the original, unhooked vtable.
+            if (!data.entry_map.empty()) {
+                const auto& first_entry = data.entry_map.begin()->second;
+                if (koalabox::hook::is_vt_hooked(interface_ptr, first_entry.function_name)) {
+                    LOG_DEBUG("Interface '{}' @ {} is already hooked.", version_string, interface_ptr);
+                    return;
+                }
             }
 
             LOG_INFO("Processing '{}' @ {} found in virtual hook map", version_string, interface_ptr);
@@ -208,8 +215,10 @@ namespace steam_interfaces {
             // Remove steam client map since we don't want to hook its methods
             virtual_hook_map.erase(STEAM_CLIENT);
 
-            // Map virtual hook map to a set of keys
-            const auto prefixes = std::views::keys(virtual_hook_map) | std::ranges::to<std::set>();
+            std::set<std::string> prefixes;
+            for(const auto& [prefix, data] : virtual_hook_map) {
+                prefixes.insert(prefix);
+            }
 
             const auto CreateInterface$ = KB_LIB_GET_FUNC(steamclient_handle, CreateInterface);
 
@@ -238,9 +247,13 @@ namespace steam_interfaces {
                     continue;
                 }
 
-                ISteamClient_GetISteamGenericInterface(
-                    ARGS(steam_user, steam_pipe, interface_version.c_str())
-                );
+                // [FIX] Disabled eager initialization because it causes Segmentation Faults
+                // on Linux dedicated servers (e.g. Arma 3) when invalid handles (1, 1) are passed
+                // before SteamAPI has properly initialized them.
+                //
+                // ISteamClient_GetISteamGenericInterface(
+                //    ARGS(steam_user, steam_pipe, interface_version.c_str())
+                // );
 
             }
         } catch(const std::exception& e) {

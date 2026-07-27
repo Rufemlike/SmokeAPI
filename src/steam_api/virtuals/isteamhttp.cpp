@@ -3,6 +3,55 @@
 #include "smoke_api/interfaces/steam_http.hpp"
 #include "steam_api/virtuals/steam_api_virtuals.hpp"
 
+VIRTUAL(HTTPRequestHandle) ISteamHTTP_CreateHTTPRequest(
+    PARAMS(
+        const uint32_t eHTTPRequestMethod,
+        const char* pchAbsoluteURL
+    )
+) noexcept {
+    return smoke_api::steam_http::CreateHTTPRequest(
+        __func__,
+        eHTTPRequestMethod,
+        pchAbsoluteURL,
+        SWAPPED_CALL_CLOSURE(
+            ISteamHTTP_CreateHTTPRequest,
+            ARGS(eHTTPRequestMethod, pchAbsoluteURL)
+        )
+    );
+}
+
+VIRTUAL(bool) ISteamHTTP_ReleaseHTTPRequest(
+    PARAMS(
+        const HTTPRequestHandle hRequest
+    )
+) noexcept {
+    return smoke_api::steam_http::ReleaseHTTPRequest(
+        __func__,
+        hRequest,
+        SWAPPED_CALL_CLOSURE(
+            ISteamHTTP_ReleaseHTTPRequest,
+            ARGS(hRequest)
+        )
+    );
+}
+
+VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodySize(
+    PARAMS(
+        const HTTPRequestHandle hRequest,
+        uint32_t* pBodySize
+    )
+) noexcept {
+    return smoke_api::steam_http::GetHTTPResponseBodySize(
+        __func__,
+        hRequest,
+        pBodySize,
+        SWAPPED_CALL_CLOSURE(
+            ISteamHTTP_GetHTTPResponseBodySize,
+            ARGS(hRequest, pBodySize)
+        )
+    );
+}
+
 VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodyData(
     PARAMS(
         const HTTPRequestHandle hRequest,

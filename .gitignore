@@ -11,6 +11,7 @@ CMakeUserPresets.json
 # IDE and Editor files
 .idea/
 .vs/
+.vscode/
 *.user
 *.suo
 
@@ -29,3 +30,10 @@ CMakeUserPresets.json
 *.log
 *.log.log
 SmokeAPI.cache.json
+smoke_api.json
+arma3_cdlc_strings.txt
+client_log.txt
+imports.txt
+original_steam_api64_exports.txt
+mod.cpp
+

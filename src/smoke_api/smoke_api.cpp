@@ -1,7 +1,6 @@
 #include <regex>
 #include <set>
-
-#include <glob/glob.h>
+#include <filesystem>
 #include <polyhook2/MemProtector.hpp>
 
 #include <koalabox/config.hpp>
@@ -56,6 +55,7 @@ namespace {
     namespace kb = koalabox;
 
     void* original_steamapi_handle = nullptr;
+    void* g_steamclient_handle = nullptr;
     bool is_hook_mode;
 
     void check_for_updates() {
@@ -104,7 +104,7 @@ namespace {
             versions.insert(i->str());
         }
 
-        LOG_DEBUG("Found {} steamclient version(s) in read-only section: {}", versions.size(), versions);
+        LOG_DEBUG("Found {} steamclient version(s) in read-only section", versions.size());
 
         return versions;
     }
@@ -127,11 +127,9 @@ namespace {
 
     // ReSharper disable once CppDFAConstantFunctionResult
     bool on_steamclient_loaded(void* steamclient_handle) {
-        KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
+        g_steamclient_handle = steamclient_handle;
 
-        if(!is_hook_mode) {
-            return true;
-        }
+        KB_HOOK_DETOUR_MODULE(CreateInterface, steamclient_handle);
 
         // Check for late hooking
 
@@ -218,6 +216,8 @@ namespace {
         return std::nullopt;
     }
 
+    void hook_flat_apis(void* steam_api_handle);
+
     void init_hook_mode([[maybe_unused]] void* self_module_handle) {
         is_hook_mode = true;
 #ifdef KB_LINUX
@@ -226,7 +226,23 @@ namespace {
         // Hence, we need to patch the stubs even in hook mode.
 
         const std::string lib_name = STEAM_API_MODULE ".so";
-        for(const auto& lib_path : glob::rglob({"./" + lib_name, "**/" + lib_name})) {
+        std::vector<std::filesystem::path> candidate_paths;
+
+        if (std::filesystem::exists("./" + lib_name)) {
+            candidate_paths.push_back("./" + lib_name);
+        }
+
+        try {
+            for (const auto& entry : std::filesystem::recursive_directory_iterator(".", std::filesystem::directory_options::skip_permission_denied)) {
+                if (entry.is_regular_file() && entry.path().filename() == lib_name) {
+                    candidate_paths.push_back(entry.path());
+                }
+            }
+        } catch (const std::exception& e) {
+            LOG_WARN("Failed to scan directory for {}: {}", lib_name, e.what());
+        }
+
+        for (const auto& lib_path : candidate_paths) {
             if(const auto lib_bitness = kb::lib::get_bitness(lib_path)) {
                 if(static_cast<uint8_t>(*lib_bitness) == kb::platform::bitness) {
                     if(const auto lib_handle = kb::lib::load(lib_path)) {
@@ -237,6 +253,7 @@ namespace {
 
                         original_steamapi_handle = *lib_handle;
                         proxy_exports::init(self_module_handle, original_steamapi_handle);
+                        hook_flat_apis(original_steamapi_handle);
                         return;
                     }
                 }
@@ -256,6 +273,46 @@ namespace {
 #ifdef KB_LINUX
         proxy_exports::init(self_module_handle, original_steamapi_handle);
 #endif
+        hook_flat_apis(original_steamapi_handle);
+    }
+}
+
+// Flat APIs
+C_DECL(void*) SteamAPI_SteamApps_v008() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamApps_v008);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "STEAMAPPS_INTERFACE_VERSION008");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamHTTP_v003() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamHTTP_v003);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "STEAMHTTP_INTERFACE_VERSION003");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamGameServer_v015() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamGameServer_v015);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "SteamGameServer015");
+    return ptr;
+}
+
+C_DECL(void*) SteamAPI_SteamUser_v023() {
+    static const auto original = KB_HOOK_GET_HOOKED_FN(SteamAPI_SteamUser_v023);
+    const auto ptr = original();
+    steam_interfaces::hook_virtuals(ptr, "SteamUser023");
+    return ptr;
+}
+
+namespace {
+    void hook_flat_apis(void* steam_api_handle) {
+        if(!steam_api_handle) return;
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamApps_v008, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamHTTP_v003, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamGameServer_v015, steam_api_handle);
+        KB_HOOK_DETOUR_MODULE(SteamAPI_SteamUser_v023, steam_api_handle);
     }
 }
 
@@ -274,11 +331,7 @@ namespace smoke_api {
 
             config::get() = kb::config::parse<config::Config>();
 
-            if(config::get().logging) {
-                kb::logger::init_file_logger(kb::paths::get_log_path());
-            } else {
-                kb::logger::init_null_logger();
-            }
+            kb::logger::init_file_logger(kb::paths::get_log_path());
 
             LOG_INFO("{} v{}{} | Built at '{}'", PROJECT_NAME, PROJECT_VERSION, VERSION_SUFFIX, __TIMESTAMP__);
             LOG_DEBUG("Parsed config:\n{}", nlohmann::ordered_json(config::get()).dump(2));
@@ -372,5 +425,20 @@ namespace smoke_api {
         LOG_ERROR("Failed to find App ID");
 
         return 0;
+    }
+
+    void* get_steamclient_handle() {
+        if (!g_steamclient_handle) {
+            g_steamclient_handle = kb::lib::get_lib_handle(STEAMCLIENT_DLL);
+            if (!g_steamclient_handle) {
+                if (auto opt_handle = kb::lib::load(STEAMCLIENT_DLL)) {
+                    g_steamclient_handle = *opt_handle;
+                }
+            }
+            if (g_steamclient_handle) {
+                LOG_DEBUG("get_steamclient_handle: resolved to {}", g_steamclient_handle);
+            }
+        }
+        return g_steamclient_handle;
     }
 }

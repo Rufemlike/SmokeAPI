@@ -31,6 +31,20 @@ VIRTUAL(void*) ISteamClient_GetISteamUser(
     );
 }
 
+VIRTUAL(void*) ISteamClient_GetISteamGameServer(
+    PARAMS(
+        const HSteamUser hSteamUser,
+        const HSteamPipe hSteamPipe,
+        const char* pchVersion
+    )
+) noexcept {
+    return steam_client::GetGenericInterface(
+        __func__,
+        pchVersion,
+        SWAPPED_CALL_CLOSURE(ISteamClient_GetISteamGameServer, ARGS(hSteamUser, hSteamPipe, pchVersion))
+    );
+}
+
 VIRTUAL(void*) ISteamClient_GetISteamGenericInterface(
     PARAMS(
         const HSteamUser hSteamUser,
@@ -60,6 +74,23 @@ VIRTUAL(void*) ISteamClient_GetISteamInventory(
         pchVersion,
         SWAPPED_CALL_CLOSURE(
             ISteamClient_GetISteamInventory,
+            ARGS(hSteamUser, hSteamPipe, pchVersion)
+        )
+    );
+}
+
+VIRTUAL(void*) ISteamClient_GetISteamHTTP(
+    PARAMS(
+        const HSteamUser hSteamUser,
+        const HSteamPipe hSteamPipe,
+        const char* pchVersion
+    )
+) noexcept {
+    return steam_client::GetGenericInterface(
+        __func__,
+        pchVersion,
+        SWAPPED_CALL_CLOSURE(
+            ISteamClient_GetISteamHTTP,
             ARGS(hSteamUser, hSteamPipe, pchVersion)
         )
     );

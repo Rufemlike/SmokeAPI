@@ -4,18 +4,26 @@
 
 // ISteamApps
 VIRTUAL(bool) ISteamApps_BIsSubscribedApp(PARAMS(AppId_t)) noexcept;
+VIRTUAL(bool) ISteamApps_GetDlcDownloadProgress(PARAMS(AppId_t, uint64_t*, uint64_t*)) noexcept;
 VIRTUAL(bool) ISteamApps_BIsDlcInstalled(PARAMS(AppId_t)) noexcept;
+VIRTUAL(void) ISteamApps_InstallDLC(PARAMS(AppId_t)) noexcept;
 VIRTUAL(int) ISteamApps_GetDLCCount(PARAMS()) noexcept;
 VIRTUAL(bool) ISteamApps_BGetDLCDataByIndex(PARAMS(int, AppId_t*, bool*, char*, int)) noexcept;
+VIRTUAL(bool) ISteamApps_GetDlcDownloadProgress(PARAMS(AppId_t, uint64_t*, uint64_t*)) noexcept;
 
 // ISteamClient
 VIRTUAL(void*) ISteamClient_GetISteamApps(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamUser(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
+VIRTUAL(void*) ISteamClient_GetISteamGameServer(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamGenericInterface(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamInventory(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
+VIRTUAL(void*) ISteamClient_GetISteamHTTP(PARAMS(HSteamUser, HSteamPipe, const char*)) noexcept;
 VIRTUAL(void*) ISteamClient_GetISteamUtils(PARAMS(HSteamPipe, const char*)) noexcept; // Unhooked
 
 // ISteamHTTP
+VIRTUAL(HTTPRequestHandle) ISteamHTTP_CreateHTTPRequest(PARAMS(uint32_t, const char*)) noexcept;
+VIRTUAL(bool) ISteamHTTP_ReleaseHTTPRequest(PARAMS(HTTPRequestHandle)) noexcept;
+VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodySize(PARAMS(HTTPRequestHandle, uint32_t*)) noexcept;
 VIRTUAL(bool) ISteamHTTP_GetHTTPResponseBodyData(PARAMS(HTTPRequestHandle, const uint8_t*, uint32_t)) noexcept;
 VIRTUAL(bool) ISteamHTTP_GetHTTPStreamingResponseBodyData(
     PARAMS(HTTPRequestHandle, uint32_t, const uint8_t*, uint32_t)

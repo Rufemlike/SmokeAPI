@@ -3,6 +3,26 @@
 #include "smoke_api/types.hpp"
 
 namespace smoke_api::steam_http {
+    HTTPRequestHandle CreateHTTPRequest(
+        const std::string& function_name,
+        uint32_t eHTTPRequestMethod,
+        const char* pchAbsoluteURL,
+        const std::function<HTTPRequestHandle()>& original_function
+    ) noexcept;
+
+    bool ReleaseHTTPRequest(
+        const std::string& function_name,
+        HTTPRequestHandle hRequest,
+        const std::function<bool()>& original_function
+    ) noexcept;
+
+    bool GetHTTPResponseBodySize(
+        const std::string& function_name,
+        HTTPRequestHandle hRequest,
+        uint32_t* pBodySize,
+        const std::function<bool()>& original_function
+    ) noexcept;
+
     bool GetHTTPResponseBodyData(
         const std::string& function_name,
         HTTPRequestHandle hRequest,

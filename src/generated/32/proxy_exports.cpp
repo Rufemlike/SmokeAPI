@@ -11,6 +11,20 @@
 
 #include "proxy_exports.hpp"
 
+#ifdef KB_WIN
+#include <windows.h>
+#include <shellapi.h>
+#endif
+#include <map>
+#include <string>
+
+static void(*original_SteamAPI_ISteamApps_InstallDLC)(void*, uint32_t) = nullptr;
+static bool(*original_SteamAPI_ISteamApps_GetDlcDownloadProgress)(void*, uint32_t, uint64_t*, uint64_t*) = nullptr;
+
+namespace dlc_downloader {
+    extern bool get_progress(uint32_t dlc_id, uint64_t* downloaded, uint64_t* total);
+}
+
 #define EXPORT extern "C" __attribute__((visibility("default"))) __attribute__((naked))
 
 EXPORT void CAddAppDependencyResult_t_RemoveCallResult() {
@@ -1028,9 +1042,15 @@ EXPORT void SteamAPI_ISteamApps_GetDLCCount() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_ISteamApps_GetDlcDownloadProgress() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
+extern "C" __attribute__((visibility("default"))) bool SteamAPI_ISteamApps_GetDlcDownloadProgress(void* self, uint32_t dlc_id, uint64_t* punBytesDownloaded, uint64_t* punBytesTotal) {
+    if (dlc_downloader::get_progress(dlc_id, punBytesDownloaded, punBytesTotal)) {
+        return true;
+    }
+    
+    if (original_SteamAPI_ISteamApps_GetDlcDownloadProgress) {
+        return original_SteamAPI_ISteamApps_GetDlcDownloadProgress(self, dlc_id, punBytesDownloaded, punBytesTotal);
+    }
+    return false;
 }
 
 EXPORT void SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime() {
@@ -1068,9 +1088,38 @@ EXPORT void SteamAPI_ISteamApps_GetPublisherOwnedAppData() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_ISteamApps_InstallDLC() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
+extern "C" __attribute__((visibility("default"))) void SteamAPI_ISteamApps_InstallDLC(void* self, uint32_t dlc_id) {
+    std::wstring custom_url;
+    
+    std::map<uint32_t, std::wstring> custom_links = {
+        { 1227700, L"https://disk.yandex.ru/d/nj5Ul8x4So8Epw" }, // SOG
+        { 1042220, L"https://disk.yandex.ru/d/-xC0SdseCArXYw" }, // GM
+        { 1175380, L"https://disk.yandex.ru/d/hPHm5qdT74eITg" }, // Spearhead
+        { 1294440, L"https://disk.yandex.ru/d/jANLf30L-UZaLQ" }, // CSLA
+        { 1681170, L"https://disk.yandex.ru/d/Bpo9PSE19s0MFw" }, // Western Sahara
+        { 2647760, L"https://disk.yandex.ru/d/WgGFfb5e7B9klQ" }, // Reaction Forces
+        { 2647830, L"https://disk.yandex.ru/d/dED2jqTk2tuhvQ" }  // Expeditionary
+    };
+    
+    if (custom_links.contains(dlc_id)) {
+        custom_url = custom_links[dlc_id];
+    } else {
+        custom_url = L"https://disk.yandex.ru/d/xCJaj_NRswhojA";
+    }
+    
+#ifdef KB_WIN
+    SHELLEXECUTEINFOW exec_info = {0};
+    exec_info.cbSize = sizeof(SHELLEXECUTEINFOW);
+    exec_info.lpVerb = L"open";
+    exec_info.lpFile = custom_url.c_str();
+    exec_info.nShow = SW_SHOWNORMAL;
+    
+    ShellExecuteExW(&exec_info);
+#endif
+
+    if (original_SteamAPI_ISteamApps_InstallDLC) {
+        original_SteamAPI_ISteamApps_InstallDLC(self, dlc_id);
+    }
 }
 
 EXPORT void SteamAPI_ISteamApps_MarkContentCorrupt() {
@@ -6198,11 +6247,6 @@ EXPORT void SteamAPI_SteamAppList_v001() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_SteamApps_v008() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
 EXPORT void SteamAPI_SteamController_v007() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
@@ -6358,17 +6402,7 @@ EXPORT void SteamAPI_SteamGameServer_v014() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_SteamGameServer_v015() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
 EXPORT void SteamAPI_SteamHTMLSurface_v005() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
-EXPORT void SteamAPI_SteamHTTP_v003() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
 }
@@ -6839,11 +6873,6 @@ EXPORT void SteamAPI_SteamUser_v021() {
 }
 
 EXPORT void SteamAPI_SteamUser_v022() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
-EXPORT void SteamAPI_SteamUser_v023() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
 }
@@ -9401,11 +9430,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_GetDlcDownloadProgress");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_GetDlcDownloadProgress");
-        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_GetDlcDownloadProgress' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
+        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_GetDlcDownloadProgress' src: {}", __func__, src_address);
+        original_SteamAPI_ISteamApps_GetDlcDownloadProgress = reinterpret_cast<bool(*)(void*, uint32_t, uint64_t*, uint64_t*)>(src_address);
 
         dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime");
@@ -9449,11 +9476,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_InstallDLC");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_InstallDLC");
-        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_InstallDLC' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
+        LOG_TRACE("{} -> 'SteamAPI_ISteamApps_InstallDLC' src: {}", __func__, src_address);
+        original_SteamAPI_ISteamApps_InstallDLC = reinterpret_cast<void(*)(void*, uint32_t)>(src_address);
 
         dest_address = dlsym(self_lib_handle, "SteamAPI_ISteamApps_MarkContentCorrupt");
         src_address = dlsym(original_lib_handle, "SteamAPI_ISteamApps_MarkContentCorrupt");
@@ -15605,12 +15630,6 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamApps_v008");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamApps_v008");
-        LOG_TRACE("{} -> 'SteamAPI_SteamApps_v008' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamController_v007");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamController_v007");
         LOG_TRACE("{} -> 'SteamAPI_SteamController_v007' src: {}, dest: {}", __func__, src_address, dest_address);
@@ -15797,21 +15816,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamGameServer_v015");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamGameServer_v015");
-        LOG_TRACE("{} -> 'SteamAPI_SteamGameServer_v015' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamHTMLSurface_v005");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTMLSurface_v005");
         LOG_TRACE("{} -> 'SteamAPI_SteamHTMLSurface_v005' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamHTTP_v003");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTTP_v003");
-        LOG_TRACE("{} -> 'SteamAPI_SteamHTTP_v003' src: {}, dest: {}", __func__, src_address, dest_address);
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
@@ -16376,12 +16383,6 @@ namespace proxy_exports {
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamUser_v022");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamUser_v022");
         LOG_TRACE("{} -> 'SteamAPI_SteamUser_v022' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamUser_v023");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamUser_v023");
-        LOG_TRACE("{} -> 'SteamAPI_SteamUser_v023' src: {}, dest: {}", __func__, src_address, dest_address);
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
