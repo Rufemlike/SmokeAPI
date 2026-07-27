@@ -1,6 +1,6 @@
 #include <regex>
 #include <set>
-#include <glob/glob.h>
+#include <filesystem>
 #include <polyhook2/MemProtector.hpp>
 
 #include <koalabox/config.hpp>
@@ -226,7 +226,23 @@ namespace {
         // Hence, we need to patch the stubs even in hook mode.
 
         const std::string lib_name = STEAM_API_MODULE ".so";
-        for(const auto& lib_path : glob::rglob({"./" + lib_name, "**/" + lib_name})) {
+        std::vector<std::filesystem::path> candidate_paths;
+
+        if (std::filesystem::exists("./" + lib_name)) {
+            candidate_paths.push_back("./" + lib_name);
+        }
+
+        try {
+            for (const auto& entry : std::filesystem::recursive_directory_iterator(".", std::filesystem::directory_options::skip_permission_denied)) {
+                if (entry.is_regular_file() && entry.path().filename() == lib_name) {
+                    candidate_paths.push_back(entry.path());
+                }
+            }
+        } catch (const std::exception& e) {
+            LOG_WARN("Failed to scan directory for {}: {}", lib_name, e.what());
+        }
+
+        for (const auto& lib_path : candidate_paths) {
             if(const auto lib_bitness = kb::lib::get_bitness(lib_path)) {
                 if(static_cast<uint8_t>(*lib_bitness) == kb::platform::bitness) {
                     if(const auto lib_handle = kb::lib::load(lib_path)) {

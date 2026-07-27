@@ -11,6 +11,7 @@ CMakeUserPresets.json
 # IDE and Editor files
 .idea/
 .vs/
+.vscode/
 *.user
 *.suo
 
