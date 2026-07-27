@@ -5584,12 +5584,6 @@ __attribute__((visibility("hidden"))) void* ptr_SteamAPI_Shutdown = nullptr;
 EXPORT void SteamAPI_Shutdown() {
     asm volatile ("jmp *ptr_SteamAPI_Shutdown(%rip)");
 }
-extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamApps_v008;
-__attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamApps_v008 = nullptr;
-
-EXPORT void SteamAPI_SteamApps_v008() {
-    asm volatile ("jmp *ptr_SteamAPI_SteamApps_v008(%rip)");
-}
 extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamController_v008;
 __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamController_v008 = nullptr;
 
@@ -5668,23 +5662,11 @@ __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamGameServerUtils_v0
 EXPORT void SteamAPI_SteamGameServerUtils_v010() {
     asm volatile ("jmp *ptr_SteamAPI_SteamGameServerUtils_v010(%rip)");
 }
-extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamGameServer_v015;
-__attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamGameServer_v015 = nullptr;
-
-EXPORT void SteamAPI_SteamGameServer_v015() {
-    asm volatile ("jmp *ptr_SteamAPI_SteamGameServer_v015(%rip)");
-}
 extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamHTMLSurface_v005;
 __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamHTMLSurface_v005 = nullptr;
 
 EXPORT void SteamAPI_SteamHTMLSurface_v005() {
     asm volatile ("jmp *ptr_SteamAPI_SteamHTMLSurface_v005(%rip)");
-}
-extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamHTTP_v003;
-__attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamHTTP_v003 = nullptr;
-
-EXPORT void SteamAPI_SteamHTTP_v003() {
-    asm volatile ("jmp *ptr_SteamAPI_SteamHTTP_v003(%rip)");
 }
 extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamIPAddress_t_IsSet;
 __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamIPAddress_t_IsSet = nullptr;
@@ -6057,12 +6039,6 @@ __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamUserStats_v013 = n
 
 EXPORT void SteamAPI_SteamUserStats_v013() {
     asm volatile ("jmp *ptr_SteamAPI_SteamUserStats_v013(%rip)");
-}
-extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamUser_v023;
-__attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamUser_v023 = nullptr;
-
-EXPORT void SteamAPI_SteamUser_v023() {
-    asm volatile ("jmp *ptr_SteamAPI_SteamUser_v023(%rip)");
 }
 extern "C" __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamUtils_v010;
 __attribute__((visibility("hidden"))) void* ptr_SteamAPI_SteamUtils_v010 = nullptr;
@@ -9331,9 +9307,6 @@ namespace proxy_exports {
         src_address = dlsym(original_lib_handle, "SteamAPI_Shutdown");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_Shutdown = src_address;
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamApps_v008");
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        ptr_SteamAPI_SteamApps_v008 = src_address;
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamController_v008");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamController_v008 = src_address;
@@ -9373,15 +9346,9 @@ namespace proxy_exports {
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamGameServerUtils_v010");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamGameServerUtils_v010 = src_address;
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamGameServer_v015");
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        ptr_SteamAPI_SteamGameServer_v015 = src_address;
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTMLSurface_v005");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamHTMLSurface_v005 = src_address;
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTTP_v003");
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        ptr_SteamAPI_SteamHTTP_v003 = src_address;
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamIPAddress_t_IsSet");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamIPAddress_t_IsSet = src_address;
@@ -9568,9 +9535,6 @@ namespace proxy_exports {
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamUserStats_v013");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamUserStats_v013 = src_address;
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamUser_v023");
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        ptr_SteamAPI_SteamUser_v023 = src_address;
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamUtils_v010");
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         ptr_SteamAPI_SteamUtils_v010 = src_address;

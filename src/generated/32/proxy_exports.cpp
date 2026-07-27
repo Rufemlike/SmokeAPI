@@ -6247,11 +6247,6 @@ EXPORT void SteamAPI_SteamAppList_v001() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_SteamApps_v008() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
 EXPORT void SteamAPI_SteamController_v007() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
@@ -6407,17 +6402,7 @@ EXPORT void SteamAPI_SteamGameServer_v014() {
     asm volatile ("jmp *%eax");
 }
 
-EXPORT void SteamAPI_SteamGameServer_v015() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
 EXPORT void SteamAPI_SteamHTMLSurface_v005() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
-EXPORT void SteamAPI_SteamHTTP_v003() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
 }
@@ -6888,11 +6873,6 @@ EXPORT void SteamAPI_SteamUser_v021() {
 }
 
 EXPORT void SteamAPI_SteamUser_v022() {
-    asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
-    asm volatile ("jmp *%eax");
-}
-
-EXPORT void SteamAPI_SteamUser_v023() {
     asm volatile ("movl $0xDeadC0de, %%eax":::"eax");
     asm volatile ("jmp *%eax");
 }
@@ -15650,12 +15630,6 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamApps_v008");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamApps_v008");
-        LOG_TRACE("{} -> 'SteamAPI_SteamApps_v008' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamController_v007");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamController_v007");
         LOG_TRACE("{} -> 'SteamAPI_SteamController_v007' src: {}, dest: {}", __func__, src_address, dest_address);
@@ -15842,21 +15816,9 @@ namespace proxy_exports {
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamGameServer_v015");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamGameServer_v015");
-        LOG_TRACE("{} -> 'SteamAPI_SteamGameServer_v015' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamHTMLSurface_v005");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTMLSurface_v005");
         LOG_TRACE("{} -> 'SteamAPI_SteamHTMLSurface_v005' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamHTTP_v003");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamHTTP_v003");
-        LOG_TRACE("{} -> 'SteamAPI_SteamHTTP_v003' src: {}, dest: {}", __func__, src_address, dest_address);
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
@@ -16421,12 +16383,6 @@ namespace proxy_exports {
         dest_address = dlsym(self_lib_handle, "SteamAPI_SteamUser_v022");
         src_address = dlsym(original_lib_handle, "SteamAPI_SteamUser_v022");
         LOG_TRACE("{} -> 'SteamAPI_SteamUser_v022' src: {}, dest: {}", __func__, src_address, dest_address);
-        if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
-        std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
-
-        dest_address = dlsym(self_lib_handle, "SteamAPI_SteamUser_v023");
-        src_address = dlsym(original_lib_handle, "SteamAPI_SteamUser_v023");
-        LOG_TRACE("{} -> 'SteamAPI_SteamUser_v023' src: {}, dest: {}", __func__, src_address, dest_address);
         if(!src_address) src_address = reinterpret_cast<void*>(panic_exit);
         std::memcpy(static_cast<uint8_t*>(dest_address) + 1, &src_address, sizeof(void*));
 
