@@ -4,6 +4,8 @@
 #include <miniz.h>
 #include <nlohmann/json.hpp>
 #include <filesystem>
+#include <fstream>
+#include <cstdint>
 #include <thread>
 #include <mutex>
 #include <map>
